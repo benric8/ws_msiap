@@ -171,10 +171,7 @@
 									<tr style="height: 30px">
 										<td colspan="3" style="font-weight: bold;">Datos del documento que autoriza la consulta</td>
 										<td colspan="2" rowspan="8" style="padding-left: 80px;">
-											<h:graphicImage
-												value="PhotoServlet/#{ingSolicitudInterna.txtNumrIdentidad.value}E#{ingSolicitudInterna.txtNumrIdentidad.submittedValue}"
-												rendered="#{ingSolicitudInterna.renderPhoto}"
-												style="border:2px solid #ddd;border-radius:4px;padding:1px;width:auto;height:150px;" />
+											
 										</td>
 									</tr>
 									<tr>

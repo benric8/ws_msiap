@@ -1152,7 +1152,7 @@ public class IngSolicitudInterna extends AbstractPageBean {
 						logger.error("Error al obtener fecha de nacimiento.", e);
 					}
 					request.getSession().setAttribute("PERSONA_RENIEC_BEAN", beanPersona);
-					this.renderPhoto = true;
+					
 					seleccionarDepartamento(beanPersona.getDistritoNac(),beanPersona.getProvinciaNac(),beanPersona.getDepartamentoNac());
 
 			} catch (Exception e) {
@@ -1164,7 +1164,6 @@ public class IngSolicitudInterna extends AbstractPageBean {
 				txtNombre3.resetValue();
 				txtNomPadre.resetValue();
 				txtNomMadre.resetValue();
-				this.renderPhoto = false;
 				txtLugarNacimiento.resetValue();
 				error("Problema con el servicio de consulta datos del DNI, por favor intente otra vez. De persistir comuníquese con el área de Help Desk del RENIEC.");
 				//error("Ocurrió un error al obtener datos del Documento Nacional de Identidad.");
@@ -1287,8 +1286,6 @@ public class IngSolicitudInterna extends AbstractPageBean {
 			String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue()==null?
 					ddTipoDocumento.getValue():ddTipoDocumento.getSubmittedValue());
 
-			if (tipoDocumento.equals("0010") && nroDocumento.matches("[0-9]{8}"))
-				this.renderPhoto = true;
 		}
 	}
 

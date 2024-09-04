@@ -64,10 +64,7 @@
 											</h:selectOneMenu></td>
 										<td style="width: 30px;" />
 										<td valign="top" colspan="2" rowspan="6" style="padding-left: 100px;">
-											<h:graphicImage
-												value="PhotoServlet/#{ingSolicitudSimple.txtNumrIdentidad.value}E#{ingSolicitudSimple.txtNumrIdentidad.submittedValue}"
-												rendered="#{ingSolicitudSimple.renderPhoto}"
-												style="border:2px solid #ddd;border-radius:4px;padding:1px;width:auto;height:150px;" />
+											
 										</td>
 									</tr>
 
