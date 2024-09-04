@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="BOLETIN">
+  <!-- <resultMap class="pe.gob.pj.rnc.model.Boletin" id="abatorgenerated_BoletinResult">
+    <result column="NUMR_BOLETN" jdbcType="NUMERIC" property="NUMR_BOLETN"/>
+    <result column="APLL_PATER_BOLETN" jdbcType="VARCHAR" property="APLL_PATER_BOLETN"/>
+    <result column="APLL_MATER_BOLETN" jdbcType="VARCHAR" property="APLL_MATER_BOLETN"/>
+    <result column="NOMB_BOLETN" jdbcType="VARCHAR" property="NOMB_BOLETN"/>
+    <result column="NOMB_PADRE_BOLETN" jdbcType="VARCHAR" property="NOMB_PADRE_BOLETN"/>
+    <result column="NOMB_MADRE_BOLETN" jdbcType="VARCHAR" property="NOMB_MADRE_BOLETN"/>
+    <result column="FECH_NACIM_BOLETN" jdbcType="CHAR" property="FECH_NACIM_BOLETN"/>
+    <result column="NUMR_INSTA_BOLETN" jdbcType="CHAR" property="NUMR_INSTA_BOLETN"/>
+    <result column="TIPO_PRONU" jdbcType="CHAR" property="TIPO_PRONU"/>
+    <result column="CODG_LUGAR" jdbcType="CHAR" property="CODG_LUGAR"/>
+    <result column="FECH_PRONU_BOLETN" jdbcType="CHAR" property="FECH_PRONU_BOLETN"/>
+    <result column="CODG_DELIT" jdbcType="CHAR" property="CODG_DELIT"/>
+    <result column="CODG_PENA" jdbcType="NUMERIC" property="CODG_PENA"/>
+    <result column="ANNO_PENA_BOLETN" jdbcType="NUMERIC" property="ANNO_PENA_BOLETN"/>
+    <result column="MESS_PENA_BOLETN" jdbcType="NUMERIC" property="MESS_PENA_BOLETN"/>
+    <result column="DIAA_PENA_BOLETN" jdbcType="NUMERIC" property="DIAA_PENA_BOLETN"/>
+    <result column="TIPO_REHAB_BOLETN" jdbcType="CHAR" property="TIPO_REHAB_BOLETN"/>
+    <result column="CODG_USUAR" jdbcType="VARCHAR" property="CODG_USUAR"/>
+    <result column="CODG_USUAR_MODIF" jdbcType="VARCHAR" property="CODG_USUAR_MODIF"/>
+    <result column="MONT_REPAR_BOLETN" jdbcType="NUMERIC" property="MONT_REPAR_BOLETN"/>
+    <result column="NUME_EXPTE_BOLETN" jdbcType="VARCHAR" property="NUME_EXPTE_BOLETN"/>
+    <result column="FECH_DIGIT_BOLETN" jdbcType="TIMESTAMP" property="FECH_DIGIT_BOLETN"/>
+    <result column="INDC_ANULD_BOLETN" jdbcType="CHAR" property="INDC_ANULD_BOLETN"/>
+    <result column="OBSE_BOLETN" jdbcType="VARCHAR" property="OBSE_BOLETN"/>
+    <result column="MONED_REPAR_BOLETN" jdbcType="CHAR" property="MONED_REPAR_BOLETN"/>
+    <result column="FECH_INICI_CONDEN" jdbcType="TIMESTAMP" property="FECH_INICI_CONDEN"/>
+    <result column="FECH_FIN_CONDEN" jdbcType="TIMESTAMP" property="FECH_FIN_CONDEN"/>
+    <result column="AGRAV_BOLETN" jdbcType="VARCHAR" property="AGRAV_BOLETN"/>
+    <result column="OBSE_JUZGDO" jdbcType="VARCHAR" property="OBSE_JUZGDO"/>
+    <result column="CODG_LUGAR_NACIM" jdbcType="CHAR" property="CODG_LUGAR_NACIM"/>
+    <result column="DOCU_IDENT_SOLIC" jdbcType="CHAR" property="DOCU_IDENT_SOLIC"/>
+    <result column="NUME_IDENT_SOLIC" jdbcType="VARCHAR" property="NUME_IDENT_SOLIC"/>
+    <result column="CODG_PROFE" jdbcType="CHAR" property="CODG_PROFE"/>
+    <result column="CODG_ASPEC" jdbcType="CHAR" property="CODG_ASPEC"/>
+    <result column="CODG_ESTAD" jdbcType="CHAR" property="CODG_ESTAD"/>
+    <result column="ESTATURA_BOLETN" jdbcType="NUMERIC" property="ESTATURA_BOLETN"/>
+    <result column="NUME_HIJOS_BOLETN" jdbcType="NUMERIC" property="NUME_HIJOS_BOLETN"/>
+    <result column="CODG_DELIT2" jdbcType="CHAR" property="CODG_DELIT2"/>
+    <result column="CODG_DELIT3" jdbcType="CHAR" property="CODG_DELIT3"/>
+    <result column="CODG_DELIT4" jdbcType="CHAR" property="CODG_DELIT4"/>
+    <result column="CODG_DELIT5" jdbcType="CHAR" property="CODG_DELIT5"/>
+    <result column="DESC_DELIT_ANTIG" jdbcType="VARCHAR" property="DESC_DELIT_ANTIG"/>
+    <result column="OBSERVADO" jdbcType="CHAR" property="OBSERVADO"/>
+    <result column="ANN0" jdbcType="CHAR" property="ANN0"/>
+    <result column="CODG_ESTADO_BOLETIN" jdbcType="CHAR" property="CODG_ESTADO_BOLETIN"/>
+    <result column="CODG_USU_REGISTRO" jdbcType="CHAR" property="CODG_USU_REGISTRO"/>
+    <result column="FECH_REGISTRO" jdbcType="TIMESTAMP" property="FECH_REGISTRO"/>
+    <result column="CODG_USU_ULT_MODI" jdbcType="CHAR" property="CODG_USU_ULT_MODI"/>
+    <result column="FECH_ULT_MODI" jdbcType="TIMESTAMP" property="FECH_ULT_MODI"/>
+    <result column="DESC_FEC_USU_MODI" jdbcType="VARCHAR" property="DESC_FEC_USU_MODI"/>
+    <result column="CODG_USU_ACTUAL" jdbcType="CHAR" property="CODG_USU_ACTUAL"/>
+    <result column="NUMR_NUEVO_BOLETIN" jdbcType="NUMERIC" property="NUMR_NUEVO_BOLETIN"/>
+    <result column="INDC_REHABILITADO" jdbcType="CHAR" property="INDC_REHABILITADO"/>
+    <result column="OBSE_BOLETN2" jdbcType="VARCHAR" property="OBSE_BOLETN2"/>
+    <result column="l_migrado" jdbcType="CHAR" property="l_migrado"/>
+    <result column="f_migrado" jdbcType="TIMESTAMP" property="f_migrado"/>
+    <result column="c_cod_origen" jdbcType="VARCHAR" property="c_cod_origen"/>
+    <result column="c_bol_origen" jdbcType="VARCHAR" property="c_bol_origen"/>
+    <result column="CODG_DISTRITO_JUDICIAL" jdbcType="CHAR" property="CODG_DISTRITO_JUDICIAL"/>
+    <result column="NUMR_JUZGADO_JPAZ" jdbcType="SMALLINT" property="NUMR_JUZGADO_JPAZ"/>
+    <result column="CODG_LUGAR_JPAZ" jdbcType="CHAR" property="CODG_LUGAR_JPAZ"/>
+    <result column="FECH_SENTENCIA_JPAZ" jdbcType="TIMESTAMP" property="FECH_SENTENCIA_JPAZ"/>
+    <result column="NUMR_JUZGADO_JINST" jdbcType="SMALLINT" property="NUMR_JUZGADO_JINST"/>
+    <result column="CODG_LUGAR_JINST" jdbcType="CHAR" property="CODG_LUGAR_JINST"/>
+    <result column="FECH_SENTENCIA_JINST" jdbcType="TIMESTAMP" property="FECH_SENTENCIA_JINST"/>
+    <result column="NUMR_SALA_CSUPERIOR" jdbcType="SMALLINT" property="NUMR_SALA_CSUPERIOR"/>
+    <result column="CODG_LUGAR_CSUPERIOR" jdbcType="CHAR" property="CODG_LUGAR_CSUPERIOR"/>
+    <result column="FECH_SENTENCIA_CSUPERIOR" jdbcType="TIMESTAMP" property="FECH_SENTENCIA_CSUPERIOR"/>
+    <result column="FECH_SENTENCIA_CSUPREMA" jdbcType="TIMESTAMP" property="FECH_SENTENCIA_CSUPREMA"/>
+    <result column="INDC_TIENE_ALIAS" jdbcType="CHAR" property="INDC_TIENE_ALIAS"/>
+    <result column="DESC_ARTICULOS_APLICADOS" jdbcType="VARCHAR" property="DESC_ARTICULOS_APLICADOS"/>
+    <result column="CODG_BOLETIN_borrar" jdbcType="CHAR" property="CODG_BOLETIN_borrar"/>
+    <result column="CODG_BOLETIN" jdbcType="CHAR" property="CODG_BOLETIN"/>
+    <result column="NUMR_OFICIO" jdbcType="INTEGER" property="NUMR_OFICIO"/>
+    <result column="ANIO_OFICIO" jdbcType="SMALLINT" property="ANIO_OFICIO"/>
+    <result column="NUMR_EXPEDIENTE" jdbcType="INTEGER" property="NUMR_EXPEDIENTE"/>
+    <result column="ANIO_EXPEDIENTE" jdbcType="SMALLINT" property="ANIO_EXPEDIENTE"/>
+    <result column="FECH_ANULACION" jdbcType="TIMESTAMP" property="FECH_ANULACION"/>
+    <result column="DESC_ANULACION" jdbcType="VARCHAR" property="DESC_ANULACION"/>
+    <result column="INDC_SOLIDARIO" jdbcType="CHAR" property="INDC_SOLIDARIO"/>
+    <result column="DESC_TIEMPO_SUSPENSION" jdbcType="VARCHAR" property="DESC_TIEMPO_SUSPENSION"/>
+    <result column="TIPO_PRONU_JINST" jdbcType="CHAR" property="TIPO_PRONU_JINST"/>
+    <result column="X_APLL_PATER_BOLETN" jdbcType="VARCHAR" property="x_APLL_PATER_BOLETN"/>
+    <result column="X_APLL_MATER_BOLETN" jdbcType="VARCHAR" property="x_APLL_MATER_BOLETN"/>
+    <result column="X_NOMB_BOLETN" jdbcType="VARCHAR" property="X_NOMB_BOLETN"/>
+    <result column="X_APLL_PATER_BOLETN_2" jdbcType="VARCHAR" property="X_APLL_PATER_BOLETN_2"/>
+    <result column="X_APLL_MATER_BOLETN_2" jdbcType="VARCHAR" property="X_APLL_MATER_BOLETN_2"/>
+    <result column="X_NOMB_BOLETN_2" jdbcType="VARCHAR" property="X_NOMB_BOLETN_2"/>
+    <result column="X_JORNADAS" jdbcType="NUMERIC" property="X_JORNADAS"/>
+    <result column="X_DIAS_MULTA" jdbcType="NUMERIC" property="X_DIAS_MULTA"/>
+    <result column="X_INHABILITACION" jdbcType="NUMERIC" property="X_INHABILITACION"/>
+    <result column="X_INHABILITACION2" jdbcType="VARCHAR" property="X_INHABILITACION2"/>
+    <result column="X_PERIODO_SUSP" jdbcType="VARCHAR" property="X_PERIODO_SUSP"/>
+    <result column="X_NUMR_INSTA_BOLETN_2" jdbcType="CHAR" property="X_NUMR_INSTA_BOLETN_2"/>
+    <result column="X_TIPO_PRONU_2" jdbcType="CHAR" property="X_TIPO_PRONU_2"/>
+    <result column="X_CODG_LUGAR_2" jdbcType="CHAR" property="X_CODG_LUGAR_2"/>
+    <result column="X_NUMR_INSTA_BOLETN_3" jdbcType="CHAR" property="X_NUMR_INSTA_BOLETN_3"/>
+    <result column="X_TIPO_PRONU_3" jdbcType="CHAR" property="X_TIPO_PRONU_3"/>
+    <result column="X_CODG_LUGAR_3" jdbcType="CHAR" property="X_CODG_LUGAR_3"/>
+    <result column="X_FECH_PRONU_BOLETN_2" jdbcType="CHAR" property="X_FECH_PRONU_BOLETN_2"/>
+    <result column="X_FECH_PRONU_BOLETN_3" jdbcType="TIMESTAMP" property="X_FECH_PRONU_BOLETN_3"/>
+    <result column="X_ANNO_PENA_BOLETN" jdbcType="NUMERIC" property="X_ANNO_PENA_BOLETN"/>
+    <result column="X_MESS_PENA_BOLETN" jdbcType="NUMERIC" property="X_MESS_PENA_BOLETN"/>
+    <result column="f_aud" jdbcType="TIMESTAMP" property="f_aud"/>
+    <result column="____b_aud" jdbcType="CHAR" property="____b_aud"/>
+    <result column="c_aud_uid" jdbcType="VARCHAR" property="c_aud_uid"/>
+    <result column="c_aud_pc" jdbcType="VARCHAR" property="c_aud_pc"/>
+    <result column="n_aud_ip" jdbcType="VARCHAR" property="n_aud_ip"/>
+    <result column="c_aud_mcaddr" jdbcType="VARCHAR" property="c_aud_mcaddr"/>
+    <result column="c_aud_lgnred" jdbcType="VARCHAR" property="c_aud_lgnred"/>
+    <result column="sexo" jdbcType="CHAR" property="sexo"/>
+    <result column="USUARIO_ANULO" jdbcType="VARCHAR" property="USUARIO_ANULO"/>
+    <result column="tipo_inhabilitacion" jdbcType="CHAR" property="tipo_inhabilitacion"/>
+    <result column="INDC_MAS_DELITOS" jdbcType="CHAR" property="INDC_MAS_DELITOS"/>
+    <result column="OBSERVADO_OFI" jdbcType="CHAR" property="OBSERVADO_OFI"/>
+    <result column="INDC_MAS_INHABILIT" jdbcType="CHAR" property="INDC_MAS_INHABILIT"/>
+    <result column="C_CODG_BOLETIN" jdbcType="VARCHAR" property="C_CODG_BOLETIN"/>
+    <result column="NUMR_INSTA_REHAB" jdbcType="CHAR" property="NUMR_INSTA_REHAB"/>
+    <result column="TIPO_PRONU_REHAB" jdbcType="CHAR" property="TIPO_PRONU_REHAB"/>
+    <result column="CODG_LUGAR_REHAB" jdbcType="CHAR" property="CODG_LUGAR_REHAB"/>
+    <result column="FECH_REHAB" jdbcType="TIMESTAMP" property="FECH_REHAB"/>
+    <result column="FECH_INSC_REHAB" jdbcType="TIMESTAMP" property="FECH_INSC_REHAB"/>
+    <result column="NUME_EXPDTE_REHAB" jdbcType="VARCHAR" property="NUME_EXPDTE_REHAB"/>
+    <result column="OBSE_REHAB" jdbcType="VARCHAR" property="OBSE_REHAB"/>
+    <result column="N_NUM_ACT_REHAB" jdbcType="SMALLINT" property="N_NUM_ACT_REHAB"/>
+    <result column="L_BLOQUEO_REHAB" jdbcType="CHAR" property="L_BLOQUEO_REHAB"/>
+    <result column="C_CODG_MOTIVO" jdbcType="CHAR" property="C_CODG_MOTIVO"/>
+    <result column="C_USUAR_UBIC_ACT" jdbcType="CHAR" property="C_USUAR_UBIC_ACT"/>
+    <result column="F_UBIC_ACT" jdbcType="TIMESTAMP" property="F_UBIC_ACT"/>
+    <result column="L_SENTENCIA" jdbcType="CHAR" property="L_SENTENCIA"/>
+    <result column="C_USUAR_IMPRESION" jdbcType="CHAR" property="C_USUAR_IMPRESION"/>
+    <result column="F_IMPRESION" jdbcType="TIMESTAMP" property="F_IMPRESION"/>
+    <result column="F_REGISTRO_INV" jdbcType="TIMESTAMP" property="F_REGISTRO_INV"/>
+    <result column="l_autoriza" jdbcType="CHAR" property="l_autoriza"/>
+    <result column="l_usuar_aut" jdbcType="CHAR" property="l_usuar_aut"/>
+    <result column="fech_aut" jdbcType="TIMESTAMP" property="fech_aut"/>
+  </resultMap>
+  <sql id="abatorgenerated_Example_Where_Clause">
+    <iterate conjunction="or" prepend="where" property="oredCriteria" removeFirstPrepend="iterate">
+      (
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithoutValue">
+        $oredCriteria[].criteriaWithoutValue[]$
+      </iterate>
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithSingleValue">
+        $oredCriteria[].criteriaWithSingleValue[].condition$
+          #oredCriteria[].criteriaWithSingleValue[].value#
+      </iterate>
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithListValue">
+        $oredCriteria[].criteriaWithListValue[].condition$
+        <iterate close=")" conjunction="," open="(" property="oredCriteria[].criteriaWithListValue[].values">
+          #oredCriteria[].criteriaWithListValue[].values[]#
+        </iterate>
+      </iterate>
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithBetweenValue">
+        $oredCriteria[].criteriaWithBetweenValue[].condition$
+        #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+        #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+      </iterate>
+      )
+    </iterate>
+  </sql>
+  <select id="abatorgenerated_selectByPrimaryKey" parameterClass="pe.gob.pj.rnc.model.Boletin" resultMap="abatorgenerated_BoletinResult">
+    select NUMR_BOLETN, APLL_PATER_BOLETN, APLL_MATER_BOLETN, NOMB_BOLETN, NOMB_PADRE_BOLETN,
+      NOMB_MADRE_BOLETN, FECH_NACIM_BOLETN, NUMR_INSTA_BOLETN, TIPO_PRONU, CODG_LUGAR,
+      FECH_PRONU_BOLETN, CODG_DELIT, CODG_PENA, ANNO_PENA_BOLETN, MESS_PENA_BOLETN,
+      DIAA_PENA_BOLETN, TIPO_REHAB_BOLETN, CODG_USUAR, CODG_USUAR_MODIF, MONT_REPAR_BOLETN,
+      NUME_EXPTE_BOLETN, FECH_DIGIT_BOLETN, INDC_ANULD_BOLETN, OBSE_BOLETN, MONED_REPAR_BOLETN,
+      FECH_INICI_CONDEN, FECH_FIN_CONDEN, AGRAV_BOLETN, OBSE_JUZGDO, CODG_LUGAR_NACIM,
+      DOCU_IDENT_SOLIC, NUME_IDENT_SOLIC, CODG_PROFE, CODG_ASPEC, CODG_ESTAD, ESTATURA_BOLETN,
+      NUME_HIJOS_BOLETN, CODG_DELIT2, CODG_DELIT3, CODG_DELIT4, CODG_DELIT5, DESC_DELIT_ANTIG,
+      OBSERVADO, ANN0, CODG_ESTADO_BOLETIN, CODG_USU_REGISTRO, FECH_REGISTRO, CODG_USU_ULT_MODI,
+      FECH_ULT_MODI, DESC_FEC_USU_MODI, CODG_USU_ACTUAL, NUMR_NUEVO_BOLETIN, INDC_REHABILITADO,
+      OBSE_BOLETN2, l_migrado, f_migrado, c_cod_origen, c_bol_origen, CODG_DISTRITO_JUDICIAL,
+      NUMR_JUZGADO_JPAZ, CODG_LUGAR_JPAZ, FECH_SENTENCIA_JPAZ, NUMR_JUZGADO_JINST, CODG_LUGAR_JINST,
+      FECH_SENTENCIA_JINST, NUMR_SALA_CSUPERIOR, CODG_LUGAR_CSUPERIOR, FECH_SENTENCIA_CSUPERIOR,
+      FECH_SENTENCIA_CSUPREMA, INDC_TIENE_ALIAS, DESC_ARTICULOS_APLICADOS, CODG_BOLETIN_borrar,
+      CODG_BOLETIN, NUMR_OFICIO, ANIO_OFICIO, NUMR_EXPEDIENTE, ANIO_EXPEDIENTE, FECH_ANULACION,
+      DESC_ANULACION, INDC_SOLIDARIO, DESC_TIEMPO_SUSPENSION, TIPO_PRONU_JINST, X_APLL_PATER_BOLETN,
+      X_APLL_MATER_BOLETN, X_NOMB_BOLETN, X_APLL_PATER_BOLETN_2, X_APLL_MATER_BOLETN_2,
+      X_NOMB_BOLETN_2, X_JORNADAS, X_DIAS_MULTA, X_INHABILITACION, X_INHABILITACION2,
+      X_PERIODO_SUSP, X_NUMR_INSTA_BOLETN_2, X_TIPO_PRONU_2, X_CODG_LUGAR_2, X_NUMR_INSTA_BOLETN_3,
+      X_TIPO_PRONU_3, X_CODG_LUGAR_3, X_FECH_PRONU_BOLETN_2, X_FECH_PRONU_BOLETN_3,
+      X_ANNO_PENA_BOLETN, X_MESS_PENA_BOLETN, f_aud, ____b_aud, c_aud_uid, c_aud_pc, n_aud_ip,
+      c_aud_mcaddr, c_aud_lgnred, sexo, USUARIO_ANULO, tipo_inhabilitacion, INDC_MAS_DELITOS,
+      OBSERVADO_OFI, INDC_MAS_INHABILIT, C_CODG_BOLETIN, NUMR_INSTA_REHAB, TIPO_PRONU_REHAB,
+      CODG_LUGAR_REHAB, FECH_REHAB, FECH_INSC_REHAB, NUME_EXPDTE_REHAB, OBSE_REHAB, N_NUM_ACT_REHAB,
+      L_BLOQUEO_REHAB, C_CODG_MOTIVO, C_USUAR_UBIC_ACT, F_UBIC_ACT, L_SENTENCIA, C_USUAR_IMPRESION,
+      F_IMPRESION, F_REGISTRO_INV, l_autoriza, l_usuar_aut, fech_aut
+    from BOLETIN
+    where NUMR_BOLETN = #NUMR_BOLETN:NUMERIC#
+  </select>
+  <select id="abatorgenerated_selectByExample" parameterClass="pe.gob.pj.rnc.model.BoletinExample" resultMap="abatorgenerated_BoletinResult">
+    select NUMR_BOLETN, APLL_PATER_BOLETN, APLL_MATER_BOLETN, NOMB_BOLETN, NOMB_PADRE_BOLETN,
+      NOMB_MADRE_BOLETN, FECH_NACIM_BOLETN, NUMR_INSTA_BOLETN, TIPO_PRONU, CODG_LUGAR,
+      FECH_PRONU_BOLETN, CODG_DELIT, CODG_PENA, ANNO_PENA_BOLETN, MESS_PENA_BOLETN,
+      DIAA_PENA_BOLETN, TIPO_REHAB_BOLETN, CODG_USUAR, CODG_USUAR_MODIF, MONT_REPAR_BOLETN,
+      NUME_EXPTE_BOLETN, FECH_DIGIT_BOLETN, INDC_ANULD_BOLETN, OBSE_BOLETN, MONED_REPAR_BOLETN,
+      FECH_INICI_CONDEN, FECH_FIN_CONDEN, AGRAV_BOLETN, OBSE_JUZGDO, CODG_LUGAR_NACIM,
+      DOCU_IDENT_SOLIC, NUME_IDENT_SOLIC, CODG_PROFE, CODG_ASPEC, CODG_ESTAD, ESTATURA_BOLETN,
+      NUME_HIJOS_BOLETN, CODG_DELIT2, CODG_DELIT3, CODG_DELIT4, CODG_DELIT5, DESC_DELIT_ANTIG,
+      OBSERVADO, ANN0, CODG_ESTADO_BOLETIN, CODG_USU_REGISTRO, FECH_REGISTRO, CODG_USU_ULT_MODI,
+      FECH_ULT_MODI, DESC_FEC_USU_MODI, CODG_USU_ACTUAL, NUMR_NUEVO_BOLETIN, INDC_REHABILITADO,
+      OBSE_BOLETN2, l_migrado, f_migrado, c_cod_origen, c_bol_origen, CODG_DISTRITO_JUDICIAL,
+      NUMR_JUZGADO_JPAZ, CODG_LUGAR_JPAZ, FECH_SENTENCIA_JPAZ, NUMR_JUZGADO_JINST, CODG_LUGAR_JINST,
+      FECH_SENTENCIA_JINST, NUMR_SALA_CSUPERIOR, CODG_LUGAR_CSUPERIOR, FECH_SENTENCIA_CSUPERIOR,
+      FECH_SENTENCIA_CSUPREMA, INDC_TIENE_ALIAS, DESC_ARTICULOS_APLICADOS, CODG_BOLETIN_borrar,
+      CODG_BOLETIN, NUMR_OFICIO, ANIO_OFICIO, NUMR_EXPEDIENTE, ANIO_EXPEDIENTE, FECH_ANULACION,
+      DESC_ANULACION, INDC_SOLIDARIO, DESC_TIEMPO_SUSPENSION, TIPO_PRONU_JINST, X_APLL_PATER_BOLETN,
+      X_APLL_MATER_BOLETN, X_NOMB_BOLETN, X_APLL_PATER_BOLETN_2, X_APLL_MATER_BOLETN_2,
+      X_NOMB_BOLETN_2, X_JORNADAS, X_DIAS_MULTA, X_INHABILITACION, X_INHABILITACION2,
+      X_PERIODO_SUSP, X_NUMR_INSTA_BOLETN_2, X_TIPO_PRONU_2, X_CODG_LUGAR_2, X_NUMR_INSTA_BOLETN_3,
+      X_TIPO_PRONU_3, X_CODG_LUGAR_3, X_FECH_PRONU_BOLETN_2, X_FECH_PRONU_BOLETN_3,
+      X_ANNO_PENA_BOLETN, X_MESS_PENA_BOLETN, f_aud, ____b_aud, c_aud_uid, c_aud_pc, n_aud_ip,
+      c_aud_mcaddr, c_aud_lgnred, sexo, USUARIO_ANULO, tipo_inhabilitacion, INDC_MAS_DELITOS,
+      OBSERVADO_OFI, INDC_MAS_INHABILIT, C_CODG_BOLETIN, NUMR_INSTA_REHAB, TIPO_PRONU_REHAB,
+      CODG_LUGAR_REHAB, FECH_REHAB, FECH_INSC_REHAB, NUME_EXPDTE_REHAB, OBSE_REHAB, N_NUM_ACT_REHAB,
+      L_BLOQUEO_REHAB, C_CODG_MOTIVO, C_USUAR_UBIC_ACT, F_UBIC_ACT, L_SENTENCIA, C_USUAR_IMPRESION,
+      F_IMPRESION, F_REGISTRO_INV, l_autoriza, l_usuar_aut, fech_aut
+    from BOLETIN
+    <isParameterPresent>
+      <include refid="BOLETIN.abatorgenerated_Example_Where_Clause"/>
+      <isNotNull property="orderByClause">
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <delete id="abatorgenerated_deleteByPrimaryKey" parameterClass="pe.gob.pj.rnc.model.Boletin">
+    delete from BOLETIN
+    where NUMR_BOLETN = #NUMR_BOLETN:NUMERIC#
+  </delete>
+  <delete id="abatorgenerated_deleteByExample" parameterClass="pe.gob.pj.rnc.model.BoletinExample">
+    delete from BOLETIN
+    <include refid="BOLETIN.abatorgenerated_Example_Where_Clause"/>
+  </delete>
+  <insert id="abatorgenerated_insert" parameterClass="pe.gob.pj.rnc.model.Boletin">
+    insert into BOLETIN (NUMR_BOLETN, APLL_PATER_BOLETN, APLL_MATER_BOLETN, NOMB_BOLETN,
+      NOMB_PADRE_BOLETN, NOMB_MADRE_BOLETN, FECH_NACIM_BOLETN, NUMR_INSTA_BOLETN, TIPO_PRONU,
+      CODG_LUGAR, FECH_PRONU_BOLETN, CODG_DELIT, CODG_PENA, ANNO_PENA_BOLETN, MESS_PENA_BOLETN,
+      DIAA_PENA_BOLETN, TIPO_REHAB_BOLETN, CODG_USUAR, CODG_USUAR_MODIF, MONT_REPAR_BOLETN,
+      NUME_EXPTE_BOLETN, FECH_DIGIT_BOLETN, INDC_ANULD_BOLETN, OBSE_BOLETN, MONED_REPAR_BOLETN,
+      FECH_INICI_CONDEN, FECH_FIN_CONDEN, AGRAV_BOLETN, OBSE_JUZGDO, CODG_LUGAR_NACIM,
+      DOCU_IDENT_SOLIC, NUME_IDENT_SOLIC, CODG_PROFE, CODG_ASPEC, CODG_ESTAD, ESTATURA_BOLETN,
+      NUME_HIJOS_BOLETN, CODG_DELIT2, CODG_DELIT3, CODG_DELIT4, CODG_DELIT5, DESC_DELIT_ANTIG,
+      OBSERVADO, ANN0, CODG_ESTADO_BOLETIN, CODG_USU_REGISTRO, FECH_REGISTRO, CODG_USU_ULT_MODI,
+      FECH_ULT_MODI, DESC_FEC_USU_MODI, CODG_USU_ACTUAL, NUMR_NUEVO_BOLETIN, INDC_REHABILITADO,
+      OBSE_BOLETN2, l_migrado, f_migrado, c_cod_origen, c_bol_origen, CODG_DISTRITO_JUDICIAL,
+      NUMR_JUZGADO_JPAZ, CODG_LUGAR_JPAZ, FECH_SENTENCIA_JPAZ, NUMR_JUZGADO_JINST, CODG_LUGAR_JINST,
+      FECH_SENTENCIA_JINST, NUMR_SALA_CSUPERIOR, CODG_LUGAR_CSUPERIOR, FECH_SENTENCIA_CSUPERIOR,
+      FECH_SENTENCIA_CSUPREMA, INDC_TIENE_ALIAS, DESC_ARTICULOS_APLICADOS, CODG_BOLETIN_borrar,
+      CODG_BOLETIN, NUMR_OFICIO, ANIO_OFICIO, NUMR_EXPEDIENTE, ANIO_EXPEDIENTE, FECH_ANULACION,
+      DESC_ANULACION, INDC_SOLIDARIO, DESC_TIEMPO_SUSPENSION, TIPO_PRONU_JINST, X_APLL_PATER_BOLETN,
+      X_APLL_MATER_BOLETN, X_NOMB_BOLETN, X_APLL_PATER_BOLETN_2, X_APLL_MATER_BOLETN_2,
+      X_NOMB_BOLETN_2, X_JORNADAS, X_DIAS_MULTA, X_INHABILITACION, X_INHABILITACION2,
+      X_PERIODO_SUSP, X_NUMR_INSTA_BOLETN_2, X_TIPO_PRONU_2, X_CODG_LUGAR_2, X_NUMR_INSTA_BOLETN_3,
+      X_TIPO_PRONU_3, X_CODG_LUGAR_3, X_FECH_PRONU_BOLETN_2, X_FECH_PRONU_BOLETN_3,
+      X_ANNO_PENA_BOLETN, X_MESS_PENA_BOLETN, f_aud, ____b_aud, c_aud_uid, c_aud_pc, n_aud_ip,
+      c_aud_mcaddr, c_aud_lgnred, sexo, USUARIO_ANULO, tipo_inhabilitacion, INDC_MAS_DELITOS,
+      OBSERVADO_OFI, INDC_MAS_INHABILIT, C_CODG_BOLETIN, NUMR_INSTA_REHAB, TIPO_PRONU_REHAB,
+      CODG_LUGAR_REHAB, FECH_REHAB, FECH_INSC_REHAB, NUME_EXPDTE_REHAB, OBSE_REHAB, N_NUM_ACT_REHAB,
+      L_BLOQUEO_REHAB, C_CODG_MOTIVO, C_USUAR_UBIC_ACT, F_UBIC_ACT, L_SENTENCIA, C_USUAR_IMPRESION,
+      F_IMPRESION, F_REGISTRO_INV, l_autoriza, l_usuar_aut, fech_aut)
+    values (#NUMR_BOLETN:NUMERIC#, #APLL_PATER_BOLETN:VARCHAR#, #APLL_MATER_BOLETN:VARCHAR#,
+      #NOMB_BOLETN:VARCHAR#, #NOMB_PADRE_BOLETN:VARCHAR#, #NOMB_MADRE_BOLETN:VARCHAR#,
+      #FECH_NACIM_BOLETN:CHAR#, #NUMR_INSTA_BOLETN:CHAR#, #TIPO_PRONU:CHAR#, #CODG_LUGAR:CHAR#,
+      #FECH_PRONU_BOLETN:CHAR#, #CODG_DELIT:CHAR#, #CODG_PENA:NUMERIC#, #ANNO_PENA_BOLETN:NUMERIC#,
+      #MESS_PENA_BOLETN:NUMERIC#, #DIAA_PENA_BOLETN:NUMERIC#, #TIPO_REHAB_BOLETN:CHAR#,
+      #CODG_USUAR:VARCHAR#, #CODG_USUAR_MODIF:VARCHAR#, #MONT_REPAR_BOLETN:NUMERIC#,
+      #NUME_EXPTE_BOLETN:VARCHAR#, #FECH_DIGIT_BOLETN:TIMESTAMP#, #INDC_ANULD_BOLETN:CHAR#,
+      #OBSE_BOLETN:VARCHAR#, #MONED_REPAR_BOLETN:CHAR#, #FECH_INICI_CONDEN:TIMESTAMP#,
+      #FECH_FIN_CONDEN:TIMESTAMP#, #AGRAV_BOLETN:VARCHAR#, #OBSE_JUZGDO:VARCHAR#,
+      #CODG_LUGAR_NACIM:CHAR#, #DOCU_IDENT_SOLIC:CHAR#, #NUME_IDENT_SOLIC:VARCHAR#,
+      #CODG_PROFE:CHAR#, #CODG_ASPEC:CHAR#, #CODG_ESTAD:CHAR#, #ESTATURA_BOLETN:NUMERIC#,
+      #NUME_HIJOS_BOLETN:NUMERIC#, #CODG_DELIT2:CHAR#, #CODG_DELIT3:CHAR#, #CODG_DELIT4:CHAR#,
+      #CODG_DELIT5:CHAR#, #DESC_DELIT_ANTIG:VARCHAR#, #OBSERVADO:CHAR#, #ANN0:CHAR#,
+      #CODG_ESTADO_BOLETIN:CHAR#, #CODG_USU_REGISTRO:CHAR#, #FECH_REGISTRO:TIMESTAMP#,
+      #CODG_USU_ULT_MODI:CHAR#, #FECH_ULT_MODI:TIMESTAMP#, #DESC_FEC_USU_MODI:VARCHAR#,
+      #CODG_USU_ACTUAL:CHAR#, #NUMR_NUEVO_BOLETIN:NUMERIC#, #INDC_REHABILITADO:CHAR#,
+      #OBSE_BOLETN2:VARCHAR#, #l_migrado:CHAR#, #f_migrado:TIMESTAMP#, #c_cod_origen:VARCHAR#,
+      #c_bol_origen:VARCHAR#, #CODG_DISTRITO_JUDICIAL:CHAR#, #NUMR_JUZGADO_JPAZ:SMALLINT#,
+      #CODG_LUGAR_JPAZ:CHAR#, #FECH_SENTENCIA_JPAZ:TIMESTAMP#, #NUMR_JUZGADO_JINST:SMALLINT#,
+      #CODG_LUGAR_JINST:CHAR#, #FECH_SENTENCIA_JINST:TIMESTAMP#, #NUMR_SALA_CSUPERIOR:SMALLINT#,
+      #CODG_LUGAR_CSUPERIOR:CHAR#, #FECH_SENTENCIA_CSUPERIOR:TIMESTAMP#,
+      #FECH_SENTENCIA_CSUPREMA:TIMESTAMP#, #INDC_TIENE_ALIAS:CHAR#,
+      #DESC_ARTICULOS_APLICADOS:VARCHAR#, #CODG_BOLETIN_borrar:CHAR#, #CODG_BOLETIN:CHAR#,
+      #NUMR_OFICIO:INTEGER#, #ANIO_OFICIO:SMALLINT#, #NUMR_EXPEDIENTE:INTEGER#,
+      #ANIO_EXPEDIENTE:SMALLINT#, #FECH_ANULACION:TIMESTAMP#, #DESC_ANULACION:VARCHAR#,
+      #INDC_SOLIDARIO:CHAR#, #DESC_TIEMPO_SUSPENSION:VARCHAR#, #TIPO_PRONU_JINST:CHAR#,
+      #X_APLL_PATER_BOLETN:VARCHAR#, #X_APLL_MATER_BOLETN:VARCHAR#, #X_NOMB_BOLETN:VARCHAR#,
+      #X_APLL_PATER_BOLETN_2:VARCHAR#, #X_APLL_MATER_BOLETN_2:VARCHAR#, #X_NOMB_BOLETN_2:VARCHAR#,
+      #X_JORNADAS:NUMERIC#, #X_DIAS_MULTA:NUMERIC#, #X_INHABILITACION:NUMERIC#,
+      #X_INHABILITACION2:VARCHAR#, #X_PERIODO_SUSP:VARCHAR#, #X_NUMR_INSTA_BOLETN_2:CHAR#,
+      #X_TIPO_PRONU_2:CHAR#, #X_CODG_LUGAR_2:CHAR#, #X_NUMR_INSTA_BOLETN_3:CHAR#,
+      #X_TIPO_PRONU_3:CHAR#, #X_CODG_LUGAR_3:CHAR#, #X_FECH_PRONU_BOLETN_2:CHAR#,
+      #X_FECH_PRONU_BOLETN_3:TIMESTAMP#, #X_ANNO_PENA_BOLETN:NUMERIC#, #X_MESS_PENA_BOLETN:NUMERIC#,
+      #f_aud:TIMESTAMP#, #____b_aud:CHAR#, #c_aud_uid:VARCHAR#, #c_aud_pc:VARCHAR#,
+      #n_aud_ip:VARCHAR#, #c_aud_mcaddr:VARCHAR#, #c_aud_lgnred:VARCHAR#, #sexo:CHAR#,
+      #USUARIO_ANULO:VARCHAR#, #tipo_inhabilitacion:CHAR#, #INDC_MAS_DELITOS:CHAR#,
+      #OBSERVADO_OFI:CHAR#, #INDC_MAS_INHABILIT:CHAR#, #C_CODG_BOLETIN:VARCHAR#,
+      #NUMR_INSTA_REHAB:CHAR#, #TIPO_PRONU_REHAB:CHAR#, #CODG_LUGAR_REHAB:CHAR#,
+      #FECH_REHAB:TIMESTAMP#, #FECH_INSC_REHAB:TIMESTAMP#, #NUME_EXPDTE_REHAB:VARCHAR#,
+      #OBSE_REHAB:VARCHAR#, #N_NUM_ACT_REHAB:SMALLINT#, #L_BLOQUEO_REHAB:CHAR#,
+      #C_CODG_MOTIVO:CHAR#, #C_USUAR_UBIC_ACT:CHAR#, #F_UBIC_ACT:TIMESTAMP#, #L_SENTENCIA:CHAR#,
+      #C_USUAR_IMPRESION:CHAR#, #F_IMPRESION:TIMESTAMP#, #F_REGISTRO_INV:TIMESTAMP#,
+      #l_autoriza:CHAR#, #l_usuar_aut:CHAR#, #fech_aut:TIMESTAMP#)
+  </insert>
+  <update id="abatorgenerated_updateByPrimaryKey" parameterClass="pe.gob.pj.rnc.model.Boletin">
+    update BOLETIN
+    set APLL_PATER_BOLETN = #APLL_PATER_BOLETN:VARCHAR#,
+      APLL_MATER_BOLETN = #APLL_MATER_BOLETN:VARCHAR#,
+      NOMB_BOLETN = #NOMB_BOLETN:VARCHAR#,
+      NOMB_PADRE_BOLETN = #NOMB_PADRE_BOLETN:VARCHAR#,
+      NOMB_MADRE_BOLETN = #NOMB_MADRE_BOLETN:VARCHAR#,
+      FECH_NACIM_BOLETN = #FECH_NACIM_BOLETN:CHAR#,
+      NUMR_INSTA_BOLETN = #NUMR_INSTA_BOLETN:CHAR#,
+      TIPO_PRONU = #TIPO_PRONU:CHAR#,
+      CODG_LUGAR = #CODG_LUGAR:CHAR#,
+      FECH_PRONU_BOLETN = #FECH_PRONU_BOLETN:CHAR#,
+      CODG_DELIT = #CODG_DELIT:CHAR#,
+      CODG_PENA = #CODG_PENA:NUMERIC#,
+      ANNO_PENA_BOLETN = #ANNO_PENA_BOLETN:NUMERIC#,
+      MESS_PENA_BOLETN = #MESS_PENA_BOLETN:NUMERIC#,
+      DIAA_PENA_BOLETN = #DIAA_PENA_BOLETN:NUMERIC#,
+      TIPO_REHAB_BOLETN = #TIPO_REHAB_BOLETN:CHAR#,
+      CODG_USUAR = #CODG_USUAR:VARCHAR#,
+      CODG_USUAR_MODIF = #CODG_USUAR_MODIF:VARCHAR#,
+      MONT_REPAR_BOLETN = #MONT_REPAR_BOLETN:NUMERIC#,
+      NUME_EXPTE_BOLETN = #NUME_EXPTE_BOLETN:VARCHAR#,
+      FECH_DIGIT_BOLETN = #FECH_DIGIT_BOLETN:TIMESTAMP#,
+      INDC_ANULD_BOLETN = #INDC_ANULD_BOLETN:CHAR#,
+      OBSE_BOLETN = #OBSE_BOLETN:VARCHAR#,
+      MONED_REPAR_BOLETN = #MONED_REPAR_BOLETN:CHAR#,
+      FECH_INICI_CONDEN = #FECH_INICI_CONDEN:TIMESTAMP#,
+      FECH_FIN_CONDEN = #FECH_FIN_CONDEN:TIMESTAMP#,
+      AGRAV_BOLETN = #AGRAV_BOLETN:VARCHAR#,
+      OBSE_JUZGDO = #OBSE_JUZGDO:VARCHAR#,
+      CODG_LUGAR_NACIM = #CODG_LUGAR_NACIM:CHAR#,
+      DOCU_IDENT_SOLIC = #DOCU_IDENT_SOLIC:CHAR#,
+      NUME_IDENT_SOLIC = #NUME_IDENT_SOLIC:VARCHAR#,
+      CODG_PROFE = #CODG_PROFE:CHAR#,
+      CODG_ASPEC = #CODG_ASPEC:CHAR#,
+      CODG_ESTAD = #CODG_ESTAD:CHAR#,
+      ESTATURA_BOLETN = #ESTATURA_BOLETN:NUMERIC#,
+      NUME_HIJOS_BOLETN = #NUME_HIJOS_BOLETN:NUMERIC#,
+      CODG_DELIT2 = #CODG_DELIT2:CHAR#,
+      CODG_DELIT3 = #CODG_DELIT3:CHAR#,
+      CODG_DELIT4 = #CODG_DELIT4:CHAR#,
+      CODG_DELIT5 = #CODG_DELIT5:CHAR#,
+      DESC_DELIT_ANTIG = #DESC_DELIT_ANTIG:VARCHAR#,
+      OBSERVADO = #OBSERVADO:CHAR#,
+      ANN0 = #ANN0:CHAR#,
+      CODG_ESTADO_BOLETIN = #CODG_ESTADO_BOLETIN:CHAR#,
+      CODG_USU_REGISTRO = #CODG_USU_REGISTRO:CHAR#,
+      FECH_REGISTRO = #FECH_REGISTRO:TIMESTAMP#,
+      CODG_USU_ULT_MODI = #CODG_USU_ULT_MODI:CHAR#,
+      FECH_ULT_MODI = #FECH_ULT_MODI:TIMESTAMP#,
+      DESC_FEC_USU_MODI = #DESC_FEC_USU_MODI:VARCHAR#,
+      CODG_USU_ACTUAL = #CODG_USU_ACTUAL:CHAR#,
+      NUMR_NUEVO_BOLETIN = #NUMR_NUEVO_BOLETIN:NUMERIC#,
+      INDC_REHABILITADO = #INDC_REHABILITADO:CHAR#,
+      OBSE_BOLETN2 = #OBSE_BOLETN2:VARCHAR#,
+      l_migrado = #l_migrado:CHAR#,
+      f_migrado = #f_migrado:TIMESTAMP#,
+      c_cod_origen = #c_cod_origen:VARCHAR#,
+      c_bol_origen = #c_bol_origen:VARCHAR#,
+      CODG_DISTRITO_JUDICIAL = #CODG_DISTRITO_JUDICIAL:CHAR#,
+      NUMR_JUZGADO_JPAZ = #NUMR_JUZGADO_JPAZ:SMALLINT#,
+      CODG_LUGAR_JPAZ = #CODG_LUGAR_JPAZ:CHAR#,
+      FECH_SENTENCIA_JPAZ = #FECH_SENTENCIA_JPAZ:TIMESTAMP#,
+      NUMR_JUZGADO_JINST = #NUMR_JUZGADO_JINST:SMALLINT#,
+      CODG_LUGAR_JINST = #CODG_LUGAR_JINST:CHAR#,
+      FECH_SENTENCIA_JINST = #FECH_SENTENCIA_JINST:TIMESTAMP#,
+      NUMR_SALA_CSUPERIOR = #NUMR_SALA_CSUPERIOR:SMALLINT#,
+      CODG_LUGAR_CSUPERIOR = #CODG_LUGAR_CSUPERIOR:CHAR#,
+      FECH_SENTENCIA_CSUPERIOR = #FECH_SENTENCIA_CSUPERIOR:TIMESTAMP#,
+      FECH_SENTENCIA_CSUPREMA = #FECH_SENTENCIA_CSUPREMA:TIMESTAMP#,
+      INDC_TIENE_ALIAS = #INDC_TIENE_ALIAS:CHAR#,
+      DESC_ARTICULOS_APLICADOS = #DESC_ARTICULOS_APLICADOS:VARCHAR#,
+      CODG_BOLETIN_borrar = #CODG_BOLETIN_borrar:CHAR#,
+      CODG_BOLETIN = #CODG_BOLETIN:CHAR#,
+      NUMR_OFICIO = #NUMR_OFICIO:INTEGER#,
+      ANIO_OFICIO = #ANIO_OFICIO:SMALLINT#,
+      NUMR_EXPEDIENTE = #NUMR_EXPEDIENTE:INTEGER#,
+      ANIO_EXPEDIENTE = #ANIO_EXPEDIENTE:SMALLINT#,
+      FECH_ANULACION = #FECH_ANULACION:TIMESTAMP#,
+      DESC_ANULACION = #DESC_ANULACION:VARCHAR#,
+      INDC_SOLIDARIO = #INDC_SOLIDARIO:CHAR#,
+      DESC_TIEMPO_SUSPENSION = #DESC_TIEMPO_SUSPENSION:VARCHAR#,
+      TIPO_PRONU_JINST = #TIPO_PRONU_JINST:CHAR#,
+      X_APLL_PATER_BOLETN = #X_APLL_PATER_BOLETN:VARCHAR#,
+      X_APLL_MATER_BOLETN = #X_APLL_MATER_BOLETN:VARCHAR#,
+      X_NOMB_BOLETN = #X_NOMB_BOLETN:VARCHAR#,
+      X_APLL_PATER_BOLETN_2 = #X_APLL_PATER_BOLETN_2:VARCHAR#,
+      X_APLL_MATER_BOLETN_2 = #X_APLL_MATER_BOLETN_2:VARCHAR#,
+      X_NOMB_BOLETN_2 = #X_NOMB_BOLETN_2:VARCHAR#,
+      X_JORNADAS = #X_JORNADAS:NUMERIC#,
+      X_DIAS_MULTA = #X_DIAS_MULTA:NUMERIC#,
+      X_INHABILITACION = #X_INHABILITACION:NUMERIC#,
+      X_INHABILITACION2 = #X_INHABILITACION2:VARCHAR#,
+      X_PERIODO_SUSP = #X_PERIODO_SUSP:VARCHAR#,
+      X_NUMR_INSTA_BOLETN_2 = #X_NUMR_INSTA_BOLETN_2:CHAR#,
+      X_TIPO_PRONU_2 = #X_TIPO_PRONU_2:CHAR#,
+      X_CODG_LUGAR_2 = #X_CODG_LUGAR_2:CHAR#,
+      X_NUMR_INSTA_BOLETN_3 = #X_NUMR_INSTA_BOLETN_3:CHAR#,
+      X_TIPO_PRONU_3 = #X_TIPO_PRONU_3:CHAR#,
+      X_CODG_LUGAR_3 = #X_CODG_LUGAR_3:CHAR#,
+      X_FECH_PRONU_BOLETN_2 = #X_FECH_PRONU_BOLETN_2:CHAR#,
+      X_FECH_PRONU_BOLETN_3 = #X_FECH_PRONU_BOLETN_3:TIMESTAMP#,
+      X_ANNO_PENA_BOLETN = #X_ANNO_PENA_BOLETN:NUMERIC#,
+      X_MESS_PENA_BOLETN = #X_MESS_PENA_BOLETN:NUMERIC#,
+      f_aud = #f_aud:TIMESTAMP#,
+      ____b_aud = #____b_aud:CHAR#,
+      c_aud_uid = #c_aud_uid:VARCHAR#,
+      c_aud_pc = #c_aud_pc:VARCHAR#,
+      n_aud_ip = #n_aud_ip:VARCHAR#,
+      c_aud_mcaddr = #c_aud_mcaddr:VARCHAR#,
+      c_aud_lgnred = #c_aud_lgnred:VARCHAR#,
+      sexo = #sexo:CHAR#,
+      USUARIO_ANULO = #USUARIO_ANULO:VARCHAR#,
+      tipo_inhabilitacion = #tipo_inhabilitacion:CHAR#,
+      INDC_MAS_DELITOS = #INDC_MAS_DELITOS:CHAR#,
+      OBSERVADO_OFI = #OBSERVADO_OFI:CHAR#,
+      INDC_MAS_INHABILIT = #INDC_MAS_INHABILIT:CHAR#,
+      C_CODG_BOLETIN = #C_CODG_BOLETIN:VARCHAR#,
+      NUMR_INSTA_REHAB = #NUMR_INSTA_REHAB:CHAR#,
+      TIPO_PRONU_REHAB = #TIPO_PRONU_REHAB:CHAR#,
+      CODG_LUGAR_REHAB = #CODG_LUGAR_REHAB:CHAR#,
+      FECH_REHAB = #FECH_REHAB:TIMESTAMP#,
+      FECH_INSC_REHAB = #FECH_INSC_REHAB:TIMESTAMP#,
+      NUME_EXPDTE_REHAB = #NUME_EXPDTE_REHAB:VARCHAR#,
+      OBSE_REHAB = #OBSE_REHAB:VARCHAR#,
+      N_NUM_ACT_REHAB = #N_NUM_ACT_REHAB:SMALLINT#,
+      L_BLOQUEO_REHAB = #L_BLOQUEO_REHAB:CHAR#,
+      C_CODG_MOTIVO = #C_CODG_MOTIVO:CHAR#,
+      C_USUAR_UBIC_ACT = #C_USUAR_UBIC_ACT:CHAR#,
+      F_UBIC_ACT = #F_UBIC_ACT:TIMESTAMP#,
+      L_SENTENCIA = #L_SENTENCIA:CHAR#,
+      C_USUAR_IMPRESION = #C_USUAR_IMPRESION:CHAR#,
+      F_IMPRESION = #F_IMPRESION:TIMESTAMP#,
+      F_REGISTRO_INV = #F_REGISTRO_INV:TIMESTAMP#,
+      l_autoriza = #l_autoriza:CHAR#,
+      l_usuar_aut = #l_usuar_aut:CHAR#,
+      fech_aut = #fech_aut:TIMESTAMP#
+    where NUMR_BOLETN = #NUMR_BOLETN:NUMERIC#
+  </update>
+  <update id="abatorgenerated_updateByPrimaryKeySelective" parameterClass="pe.gob.pj.rnc.model.Boletin">
+    update BOLETIN
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="APLL_PATER_BOLETN">
+        APLL_PATER_BOLETN = #APLL_PATER_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="APLL_MATER_BOLETN">
+        APLL_MATER_BOLETN = #APLL_MATER_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NOMB_BOLETN">
+        NOMB_BOLETN = #NOMB_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NOMB_PADRE_BOLETN">
+        NOMB_PADRE_BOLETN = #NOMB_PADRE_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NOMB_MADRE_BOLETN">
+        NOMB_MADRE_BOLETN = #NOMB_MADRE_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_NACIM_BOLETN">
+        FECH_NACIM_BOLETN = #FECH_NACIM_BOLETN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_INSTA_BOLETN">
+        NUMR_INSTA_BOLETN = #NUMR_INSTA_BOLETN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="TIPO_PRONU">
+        TIPO_PRONU = #TIPO_PRONU:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_LUGAR">
+        CODG_LUGAR = #CODG_LUGAR:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_PRONU_BOLETN">
+        FECH_PRONU_BOLETN = #FECH_PRONU_BOLETN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DELIT">
+        CODG_DELIT = #CODG_DELIT:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_PENA">
+        CODG_PENA = #CODG_PENA:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="ANNO_PENA_BOLETN">
+        ANNO_PENA_BOLETN = #ANNO_PENA_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="MESS_PENA_BOLETN">
+        MESS_PENA_BOLETN = #MESS_PENA_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="DIAA_PENA_BOLETN">
+        DIAA_PENA_BOLETN = #DIAA_PENA_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="TIPO_REHAB_BOLETN">
+        TIPO_REHAB_BOLETN = #TIPO_REHAB_BOLETN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_USUAR">
+        CODG_USUAR = #CODG_USUAR:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_USUAR_MODIF">
+        CODG_USUAR_MODIF = #CODG_USUAR_MODIF:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="MONT_REPAR_BOLETN">
+        MONT_REPAR_BOLETN = #MONT_REPAR_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="NUME_EXPTE_BOLETN">
+        NUME_EXPTE_BOLETN = #NUME_EXPTE_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_DIGIT_BOLETN">
+        FECH_DIGIT_BOLETN = #FECH_DIGIT_BOLETN:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="INDC_ANULD_BOLETN">
+        INDC_ANULD_BOLETN = #INDC_ANULD_BOLETN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="OBSE_BOLETN">
+        OBSE_BOLETN = #OBSE_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="MONED_REPAR_BOLETN">
+        MONED_REPAR_BOLETN = #MONED_REPAR_BOLETN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_INICI_CONDEN">
+        FECH_INICI_CONDEN = #FECH_INICI_CONDEN:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_FIN_CONDEN">
+        FECH_FIN_CONDEN = #FECH_FIN_CONDEN:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="AGRAV_BOLETN">
+        AGRAV_BOLETN = #AGRAV_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="OBSE_JUZGDO">
+        OBSE_JUZGDO = #OBSE_JUZGDO:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_LUGAR_NACIM">
+        CODG_LUGAR_NACIM = #CODG_LUGAR_NACIM:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="DOCU_IDENT_SOLIC">
+        DOCU_IDENT_SOLIC = #DOCU_IDENT_SOLIC:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUME_IDENT_SOLIC">
+        NUME_IDENT_SOLIC = #NUME_IDENT_SOLIC:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_PROFE">
+        CODG_PROFE = #CODG_PROFE:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_ASPEC">
+        CODG_ASPEC = #CODG_ASPEC:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_ESTAD">
+        CODG_ESTAD = #CODG_ESTAD:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="ESTATURA_BOLETN">
+        ESTATURA_BOLETN = #ESTATURA_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="NUME_HIJOS_BOLETN">
+        NUME_HIJOS_BOLETN = #NUME_HIJOS_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DELIT2">
+        CODG_DELIT2 = #CODG_DELIT2:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DELIT3">
+        CODG_DELIT3 = #CODG_DELIT3:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DELIT4">
+        CODG_DELIT4 = #CODG_DELIT4:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DELIT5">
+        CODG_DELIT5 = #CODG_DELIT5:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_DELIT_ANTIG">
+        DESC_DELIT_ANTIG = #DESC_DELIT_ANTIG:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="OBSERVADO">
+        OBSERVADO = #OBSERVADO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="ANN0">
+        ANN0 = #ANN0:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_ESTADO_BOLETIN">
+        CODG_ESTADO_BOLETIN = #CODG_ESTADO_BOLETIN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_USU_REGISTRO">
+        CODG_USU_REGISTRO = #CODG_USU_REGISTRO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_REGISTRO">
+        FECH_REGISTRO = #FECH_REGISTRO:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_USU_ULT_MODI">
+        CODG_USU_ULT_MODI = #CODG_USU_ULT_MODI:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_ULT_MODI">
+        FECH_ULT_MODI = #FECH_ULT_MODI:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_FEC_USU_MODI">
+        DESC_FEC_USU_MODI = #DESC_FEC_USU_MODI:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_USU_ACTUAL">
+        CODG_USU_ACTUAL = #CODG_USU_ACTUAL:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_NUEVO_BOLETIN">
+        NUMR_NUEVO_BOLETIN = #NUMR_NUEVO_BOLETIN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="INDC_REHABILITADO">
+        INDC_REHABILITADO = #INDC_REHABILITADO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="OBSE_BOLETN2">
+        OBSE_BOLETN2 = #OBSE_BOLETN2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="l_migrado">
+        l_migrado = #l_migrado:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="f_migrado">
+        f_migrado = #f_migrado:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="c_cod_origen">
+        c_cod_origen = #c_cod_origen:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="c_bol_origen">
+        c_bol_origen = #c_bol_origen:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DISTRITO_JUDICIAL">
+        CODG_DISTRITO_JUDICIAL = #CODG_DISTRITO_JUDICIAL:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_JUZGADO_JPAZ">
+        NUMR_JUZGADO_JPAZ = #NUMR_JUZGADO_JPAZ:SMALLINT#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_LUGAR_JPAZ">
+        CODG_LUGAR_JPAZ = #CODG_LUGAR_JPAZ:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_SENTENCIA_JPAZ">
+        FECH_SENTENCIA_JPAZ = #FECH_SENTENCIA_JPAZ:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_JUZGADO_JINST">
+        NUMR_JUZGADO_JINST = #NUMR_JUZGADO_JINST:SMALLINT#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_LUGAR_JINST">
+        CODG_LUGAR_JINST = #CODG_LUGAR_JINST:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_SENTENCIA_JINST">
+        FECH_SENTENCIA_JINST = #FECH_SENTENCIA_JINST:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_SALA_CSUPERIOR">
+        NUMR_SALA_CSUPERIOR = #NUMR_SALA_CSUPERIOR:SMALLINT#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_LUGAR_CSUPERIOR">
+        CODG_LUGAR_CSUPERIOR = #CODG_LUGAR_CSUPERIOR:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_SENTENCIA_CSUPERIOR">
+        FECH_SENTENCIA_CSUPERIOR = #FECH_SENTENCIA_CSUPERIOR:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_SENTENCIA_CSUPREMA">
+        FECH_SENTENCIA_CSUPREMA = #FECH_SENTENCIA_CSUPREMA:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="INDC_TIENE_ALIAS">
+        INDC_TIENE_ALIAS = #INDC_TIENE_ALIAS:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_ARTICULOS_APLICADOS">
+        DESC_ARTICULOS_APLICADOS = #DESC_ARTICULOS_APLICADOS:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_BOLETIN_borrar">
+        CODG_BOLETIN_borrar = #CODG_BOLETIN_borrar:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_BOLETIN">
+        CODG_BOLETIN = #CODG_BOLETIN:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_OFICIO">
+        NUMR_OFICIO = #NUMR_OFICIO:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="ANIO_OFICIO">
+        ANIO_OFICIO = #ANIO_OFICIO:SMALLINT#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_EXPEDIENTE">
+        NUMR_EXPEDIENTE = #NUMR_EXPEDIENTE:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="ANIO_EXPEDIENTE">
+        ANIO_EXPEDIENTE = #ANIO_EXPEDIENTE:SMALLINT#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_ANULACION">
+        FECH_ANULACION = #FECH_ANULACION:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_ANULACION">
+        DESC_ANULACION = #DESC_ANULACION:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="INDC_SOLIDARIO">
+        INDC_SOLIDARIO = #INDC_SOLIDARIO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_TIEMPO_SUSPENSION">
+        DESC_TIEMPO_SUSPENSION = #DESC_TIEMPO_SUSPENSION:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="TIPO_PRONU_JINST">
+        TIPO_PRONU_JINST = #TIPO_PRONU_JINST:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_APLL_PATER_BOLETN">
+        X_APLL_PATER_BOLETN = #X_APLL_PATER_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_APLL_MATER_BOLETN">
+        X_APLL_MATER_BOLETN = #X_APLL_MATER_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_NOMB_BOLETN">
+        X_NOMB_BOLETN = #X_NOMB_BOLETN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_APLL_PATER_BOLETN_2">
+        X_APLL_PATER_BOLETN_2 = #X_APLL_PATER_BOLETN_2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_APLL_MATER_BOLETN_2">
+        X_APLL_MATER_BOLETN_2 = #X_APLL_MATER_BOLETN_2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_NOMB_BOLETN_2">
+        X_NOMB_BOLETN_2 = #X_NOMB_BOLETN_2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_JORNADAS">
+        X_JORNADAS = #X_JORNADAS:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="X_DIAS_MULTA">
+        X_DIAS_MULTA = #X_DIAS_MULTA:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="X_INHABILITACION">
+        X_INHABILITACION = #X_INHABILITACION:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="X_INHABILITACION2">
+        X_INHABILITACION2 = #X_INHABILITACION2:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_PERIODO_SUSP">
+        X_PERIODO_SUSP = #X_PERIODO_SUSP:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_NUMR_INSTA_BOLETN_2">
+        X_NUMR_INSTA_BOLETN_2 = #X_NUMR_INSTA_BOLETN_2:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_TIPO_PRONU_2">
+        X_TIPO_PRONU_2 = #X_TIPO_PRONU_2:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_CODG_LUGAR_2">
+        X_CODG_LUGAR_2 = #X_CODG_LUGAR_2:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_NUMR_INSTA_BOLETN_3">
+        X_NUMR_INSTA_BOLETN_3 = #X_NUMR_INSTA_BOLETN_3:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_TIPO_PRONU_3">
+        X_TIPO_PRONU_3 = #X_TIPO_PRONU_3:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_CODG_LUGAR_3">
+        X_CODG_LUGAR_3 = #X_CODG_LUGAR_3:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_FECH_PRONU_BOLETN_2">
+        X_FECH_PRONU_BOLETN_2 = #X_FECH_PRONU_BOLETN_2:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="X_FECH_PRONU_BOLETN_3">
+        X_FECH_PRONU_BOLETN_3 = #X_FECH_PRONU_BOLETN_3:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="X_ANNO_PENA_BOLETN">
+        X_ANNO_PENA_BOLETN = #X_ANNO_PENA_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="X_MESS_PENA_BOLETN">
+        X_MESS_PENA_BOLETN = #X_MESS_PENA_BOLETN:NUMERIC#
+      </isNotNull>
+      <isNotNull prepend="," property="f_aud">
+        f_aud = #f_aud:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="____b_aud">
+        ____b_aud = #____b_aud:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="c_aud_uid">
+        c_aud_uid = #c_aud_uid:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="c_aud_pc">
+        c_aud_pc = #c_aud_pc:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="n_aud_ip">
+        n_aud_ip = #n_aud_ip:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="c_aud_mcaddr">
+        c_aud_mcaddr = #c_aud_mcaddr:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="c_aud_lgnred">
+        c_aud_lgnred = #c_aud_lgnred:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sexo">
+        sexo = #sexo:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="USUARIO_ANULO">
+        USUARIO_ANULO = #USUARIO_ANULO:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="tipo_inhabilitacion">
+        tipo_inhabilitacion = #tipo_inhabilitacion:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="INDC_MAS_DELITOS">
+        INDC_MAS_DELITOS = #INDC_MAS_DELITOS:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="OBSERVADO_OFI">
+        OBSERVADO_OFI = #OBSERVADO_OFI:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="INDC_MAS_INHABILIT">
+        INDC_MAS_INHABILIT = #INDC_MAS_INHABILIT:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="C_CODG_BOLETIN">
+        C_CODG_BOLETIN = #C_CODG_BOLETIN:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_INSTA_REHAB">
+        NUMR_INSTA_REHAB = #NUMR_INSTA_REHAB:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="TIPO_PRONU_REHAB">
+        TIPO_PRONU_REHAB = #TIPO_PRONU_REHAB:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_LUGAR_REHAB">
+        CODG_LUGAR_REHAB = #CODG_LUGAR_REHAB:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_REHAB">
+        FECH_REHAB = #FECH_REHAB:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_INSC_REHAB">
+        FECH_INSC_REHAB = #FECH_INSC_REHAB:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="NUME_EXPDTE_REHAB">
+        NUME_EXPDTE_REHAB = #NUME_EXPDTE_REHAB:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="OBSE_REHAB">
+        OBSE_REHAB = #OBSE_REHAB:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="N_NUM_ACT_REHAB">
+        N_NUM_ACT_REHAB = #N_NUM_ACT_REHAB:SMALLINT#
+      </isNotNull>
+      <isNotNull prepend="," property="L_BLOQUEO_REHAB">
+        L_BLOQUEO_REHAB = #L_BLOQUEO_REHAB:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="C_CODG_MOTIVO">
+        C_CODG_MOTIVO = #C_CODG_MOTIVO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="C_USUAR_UBIC_ACT">
+        C_USUAR_UBIC_ACT = #C_USUAR_UBIC_ACT:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="F_UBIC_ACT">
+        F_UBIC_ACT = #F_UBIC_ACT:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="L_SENTENCIA">
+        L_SENTENCIA = #L_SENTENCIA:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="C_USUAR_IMPRESION">
+        C_USUAR_IMPRESION = #C_USUAR_IMPRESION:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="F_IMPRESION">
+        F_IMPRESION = #F_IMPRESION:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="F_REGISTRO_INV">
+        F_REGISTRO_INV = #F_REGISTRO_INV:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="l_autoriza">
+        l_autoriza = #l_autoriza:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="l_usuar_aut">
+        l_usuar_aut = #l_usuar_aut:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="fech_aut">
+        fech_aut = #fech_aut:TIMESTAMP#
+      </isNotNull>
+    </dynamic>
+    where NUMR_BOLETN = #NUMR_BOLETN#
+  </update>-->
+
+  <resultMap class="pe.gob.pj.rnc.model.BoletinReporte" id="resultMapBoletin">
+    <result column="NUMR_BOLETN" jdbcType="NUMERIC" property="numr_boletn"/>
+    <result column="NUME_EXPTE_BOLETN" jdbcType="VARCHAR" property="nume_expte_boletn"/>
+    <result column="FECH_PRONU_BOLETN" jdbcType="CHAR" property="fech_pronu_boletn"/>
+    <result column="INDC_REHABILITADO" jdbcType="CHAR" property="indc_rehabilitado"/>
+    <result column="DELITO1" jdbcType="VARCHAR" property="delito1"/>
+    <result column="DELITO2" jdbcType="VARCHAR" property="delito2"/>
+    <result column="DELITO3" jdbcType="VARCHAR" property="delito3"/>
+    <result column="DELITO4" jdbcType="VARCHAR" property="delito4"/>
+    <result column="DELITO5" jdbcType="VARCHAR" property="delito5"/>
+    <result column="ANNO_PENA_BOLETN" jdbcType="NUMERIC" property="anno_pena_boletn"/>
+    <result column="MESS_PENA_BOLETN" jdbcType="NUMERIC" property="mess_pena_boletn"/>
+    <result column="DIAA_PENA_BOLETN" jdbcType="NUMERIC" property="diaa_pena_boletn"/>
+	<result column="FECH_FIN_CONDEN" jdbcType="TIMESTAMP" property="fech_fin_conden"/>
+	<result column="DESC_PENA" jdbcType="VARCHAR" property="desc_pena"/>
+	<result column="NUMR_BOLETN_REHAB" jdbcType="NUMERIC" property="numr_boletn_rehab"/>
+	<result column="NUMR_INSTA_REHAB" jdbcType="CHAR" property="numr_insta_rehab"/>
+    <result column="FECH_REHAB" jdbcType="CHAR" property="fech_rehab"/>
+    <result column="instancia_rehab" jdbcType="VARCHAR" property="instancia_rehab"/>
+    <result column="lugar_rehab" jdbcType="VARCHAR" property="lugar_rehab"/>
+    <result column="NUMR_INSTA_BOLETN" jdbcType="CHAR" property="numr_insta_boletn"/>
+    <result column="instancia_boletin" jdbcType="VARCHAR" property="instancia_boletin"/>
+    <result column="lugar_boletin" jdbcType="VARCHAR" property="lugar_boletin"/>
+    <result column="tipo" jdbcType="VARCHAR" property="tipo"/>
+  </resultMap>
+
+  <select id="getBoletin" parameterClass="String" resultMap="resultMapBoletin">
+  	(
+  	SELECT	bol.NUMR_BOLETN, bol.NUME_EXPTE_BOLETN, isnull(rtrim(bol.FECH_PRONU_BOLETN),'') as FECH_PRONU_BOLETN, bol.INDC_REHABILITADO,
+	(SELECT lower(DELITO.DESC_DELIT) FROM DELITO WHERE DELITO.CODG_DELIT=bol.CODG_DELIT) AS DELITO1,
+	(SELECT lower(DELITO.DESC_DELIT) FROM DELITO WHERE DELITO.CODG_DELIT=bol.CODG_DELIT2) AS DELITO2,
+	(SELECT lower(DELITO.DESC_DELIT) FROM DELITO WHERE DELITO.CODG_DELIT=bol.CODG_DELIT3) AS DELITO3,
+	(SELECT lower(DELITO.DESC_DELIT) FROM DELITO WHERE DELITO.CODG_DELIT=bol.CODG_DELIT4) AS DELITO4,
+	(SELECT lower(DELITO.DESC_DELIT) FROM DELITO WHERE DELITO.CODG_DELIT=bol.CODG_DELIT5) AS DELITO5,
+    bol.ANNO_PENA_BOLETN, bol.MESS_PENA_BOLETN, bol.DIAA_PENA_BOLETN, bol.FECH_FIN_CONDEN, bol.NUMR_INSTA_BOLETN,
+    upper((SELECT RTRIM(T.DESC_TIPO_PRONU) FROM TIPO_PRONUNCIAMIENTO T WHERE T.TIPO_PRONU = bol.TIPO_PRONU)) instancia_boletin,
+    upper((SELECT D.DESC_LUGAR FROM DEPARTAMENTO D WHERE D.CODG_LUGAR = bol.CODG_LUGAR)) lugar_boletin,
+	(SELECT DESC_PENA FROM PENA WHERE CODG_PENA = bol.CODG_PENA) AS DESC_PENA,
+	r.NUMR_BOLETN_REHAB, r.NUMR_INSTA_REHAB, r.FECH_REHAB,
+	upper((SELECT T.DESC_TIPO_PRONU FROM TIPO_PRONUNCIAMIENTO T WHERE T.TIPO_PRONU = r.TIPO_PRONU)) instancia_rehab,
+	upper((SELECT DT.DESC_LUGAR FROM DEPARTAMENTO DT WHERE DT.CODG_LUGAR = r.CODG_LUGAR)) lugar_rehab,
+	'F' as tipo
+	FROM BOLETIN bol
+	INNER JOIN CERTIFICADO_BOLETIN cb ON cb.NUMR_BOLETN = bol.NUMR_BOLETN
+	LEFT JOIN REHABILITADOS r ON bol.INDC_REHABILITADO='S' AND bol.NUMR_BOLETN = r.NUMR_BOLETN_REHAB
+	WHERE cb.CODG_CERTI = #value# AND cb.CODG_CORRESP_BOLETIN = 'S' 
+	) UNION (
+    SELECT CB.NUMR_BOLETN, rtrim(convert(CHAR,BE.n_expediente))+' - '+convert(CHAR,BE.n_ano_expe) as NUME_EXPTE_BOLETN, 
+	convert(CHAR(8), BI.f_sentencia,112) as FECH_PRONU_BOLETN, isnull(BE.l_rehabilitado,'N') as INDC_REHABILITADO, 
+    '' as delito1, ''  as delito2, '' as delito3, '' as delito4, '' as delito5, 
+    convert(INT,BP.n_ano_condena) as ANNO_PENA_BOLETN, convert(INT,BP.n_mes_condena) as MESS_PENA_BOLETN, 
+    convert(INT,BP.n_dias_condena) as DIAA_PENA_BOLETN, BP.f_termino as FECH_FIN_CONDEN, 
+    BI.c_instancia as NUMR_INSTA_BOLETN, MI1.x_nom_instancia as instancia_boletin, MP1.x_nom_provincia as lugar_boletin,
+    isnull((SELECT MaePenas.x_tipo_pena FROM MaePenas WHERE MaePenas.c_tipopena = BP.c_tipopena ),'') as DESC_PENA,
+    case when BE.l_rehabilitado='S' then BE.n_boletin else null end as NUMR_BOLETN_REHAB, 
+    case when BE.l_rehabilitado='S' then BE.c_instancia else null end as NUMR_INSTA_REHAB, 
+    case when BE.l_rehabilitado='S' then convert(CHAR(8), BE.f_modificacion,112) else null end as FECH_REHAB, 
+    case when BE.l_rehabilitado='S' then MI2.x_nom_instancia else null end as instancia_rehab, 
+    case when BE.l_rehabilitado='S' then MP2.x_nom_provincia else null end as lugar_rehab,
+    'E' as tipo 
+    FROM CERTIFICADO_BOLETIN CB JOIN BoletinElectronico BE ON BE.n_boletin = CB.NUMR_BOLETN
+    JOIN BoletinInstancias BI ON BI.n_boletin = BE.n_boletin AND BI.n_secuencial = 1  
+    LEFT OUTER JOIN BoletinPenas BP ON BP.n_boletin = BE.n_boletin AND BP.n_secuencial = 1  
+    LEFT OUTER JOIN  MaeInstancias MI1 ON MI1.c_distrito = BI.c_distrito 
+    AND MI1.c_provincia = BI.c_provincia AND MI1.c_instancia = BI.c_instancia 
+    LEFT OUTER JOIN  MaeProvincias MP1 ON MP1.c_distrito = BI.c_distrito AND MP1.c_provincia = BI.c_provincia 
+    LEFT OUTER JOIN  MaeInstancias MI2 ON MI2.c_distrito = BE.c_distrito 
+    AND MI2.c_provincia = BE.c_provincia AND MI2.c_instancia = BE.c_instancia 
+    LEFT OUTER JOIN  MaeProvincias MP2 ON MP2.c_distrito = BE.c_distrito AND MP2.c_provincia = BE.c_provincia 
+    WHERE CB.CODG_CERTI = #value# AND CB.CODG_CORRESP_BOLETIN = 'S' 
+	)
+  </select>
+  
+    <resultMap class="pe.gob.pj.rnc.model.Delito" id="resConsultarDelitoPorBoletinE">
+	    <result column="DESC_DELIT" jdbcType="VARCHAR" property="DESC_DELIT"/>
+    </resultMap>
+	<select id="consultarDelitoPorBoletinE" parameterClass="Integer" resultMap="resConsultarDelitoPorBoletinE">
+		select da.x_desc_articulo +' ('+ da.x_n_articulo + ')' as DESC_DELIT 
+		from BoletinDelitos bd 
+		inner join MaeDelitoArticulo da on da.c_delito = bd.c_delito AND da.c_item = bd.c_item AND da.c_distrito = bd.c_distrito
+		where bd.n_boletin = #value# 
+	</select>  
+
+</sqlMap>

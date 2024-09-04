@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="USUARIO">
+
+  <cacheModel id="opciones-menu-cache" type="LRU">
+	<flushInterval hours="24"/>
+	<property name="size" value="1000"/>
+  </cacheModel>
+	<!-- <result column="C_CLAVE" jdbcType="VARCHAR" property="c_CLAVE"/> -->
+  <resultMap class="pe.gob.pj.rnc.model.Usuario" id="abatorgenerated_UsuarioResult">
+    <result column="CODG_USUAR" jdbcType="VARCHAR" property="CODG_USUAR"/>
+    <result column="CODG_TIPO" jdbcType="CHAR" property="CODG_TIPO"/>
+    <result column="NOMB_USUAR" jdbcType="VARCHAR" property="NOMB_USUAR"/>
+    <result column="APLL_USUAR" jdbcType="VARCHAR" property="APLL_USUAR"/>
+    <result column="ESTD_USUAR" jdbcType="CHAR" property="ESTD_USUAR"/>
+    <result column="PREF_USUAR" jdbcType="CHAR" property="PREF_USUAR"/>
+    <result column="CONE_USUAR" jdbcType="CHAR" property="CONE_USUAR"/>
+    <result column="C_PERFIL" jdbcType="CHAR" property="COD_PERFIL"/>
+    <result column="L_DENTRY" jdbcType="CHAR" property="l_DENTRY"/>
+    <result column="C_DISTRITO" jdbcType="CHAR" property="c_DISTRITO"/>
+    <result column="L_TIP_CERTIF" jdbcType="VARCHAR" property="l_TIP_CERTIF"/>
+    <result column="CODG_DISTRITO_JUDICIAL" jdbcType="CHAR" property="CODG_DISTRITO_JUDICIAL"/>
+    <result column="FECH_NACIMIENTO" jdbcType="TIMESTAMP" property="FECH_NACIMIENTO"/>
+    <result column="DESC_DIRECCION" jdbcType="VARCHAR" property="DESC_DIRECCION"/>
+    <result column="NUMR_TELEFONO" jdbcType="VARCHAR" property="NUMR_TELEFONO"/>
+    <result column="NUMR_CELULAR" jdbcType="VARCHAR" property="NUMR_CELULAR"/>
+    <result column="DESC_COREEO" jdbcType="VARCHAR" property="DESC_COREEO"/>
+    <result column="DESC_OBSERVACIONES" jdbcType="VARCHAR" property="DESC_OBSERVACIONES"/>
+    <result column="L_INGRESO" jdbcType="CHAR" property="l_INGRESO"/>
+    <result column="CODG_ENTIDAD_EXTERNA" jdbcType="INTEGER" property="CODG_ENTIDAD_EXTERNA"/>
+    <result column="DESC_TITULO" jdbcType="VARCHAR" property="DESC_TITULO"/>
+    <result column="AUD_CODG_USUAR" jdbcType="VARCHAR" property="AUD_CODG_USUAR"/>
+    <result column="CODG_JUZGAD" jdbcType="VARCHAR" property="CODG_JUZGAD"/>
+    <result column="NUME_JUZGA" jdbcType="VARCHAR" property="NUME_JUZGA"/>
+    <result column="CODG_LUGAR" jdbcType="CHAR" property="CODG_LUGAR"/>
+    <result column="COD_APLICACION" jdbcType="CHAR" property="COD_APLICACION"/>
+    <result column="FECH_VENCI" jdbcType="TIMESTAMP" property="FECH_VENCI"/>
+    <result column="C_NUMDOCIDT" jdbcType="VARCHAR" property="c_NUMDOCIDT"/>
+    <result column="TIPO_DOC_IDENT" jdbcType="VARCHAR" property="TIPO_DOC_IDENT"/>
+    <result column="l_ACEPTA_TERMINOS" jdbcType="CHAR" property="indicadorAceptaTerminos"/>
+    <result column="F_ACEPTA_TERMINOS" jdbcType="TIMESTAMP" property="fechaAceptaTerminos"/>
+  </resultMap>
+
+  <resultMap class="pe.gob.pj.rnc.model.Usuario" id="usuarioResultPwdChange">
+    <result column="CODG_USUAR" jdbcType="VARCHAR" property="CODG_USUAR"/>
+    <result column="CODG_TIPO" jdbcType="CHAR" property="CODG_TIPO"/>
+    <result column="NOMB_USUAR" jdbcType="VARCHAR" property="NOMB_USUAR"/>
+    <result column="APLL_USUAR" jdbcType="VARCHAR" property="APLL_USUAR"/>
+    <result column="ESTD_USUAR" jdbcType="CHAR" property="ESTD_USUAR"/>
+    <result column="PREF_USUAR" jdbcType="CHAR" property="PREF_USUAR"/>
+    <result column="CONE_USUAR" jdbcType="CHAR" property="CONE_USUAR"/>
+    <result column="C_PERFIL" jdbcType="CHAR" property="COD_PERFIL"/>
+    <result column="L_DENTRY" jdbcType="CHAR" property="l_DENTRY"/>
+    <result column="C_DISTRITO" jdbcType="CHAR" property="c_DISTRITO"/>
+    <result column="L_TIP_CERTIF" jdbcType="VARCHAR" property="l_TIP_CERTIF"/>
+    <result column="CODG_DISTRITO_JUDICIAL" jdbcType="CHAR" property="CODG_DISTRITO_JUDICIAL"/>
+    <result column="FECH_NACIMIENTO" jdbcType="TIMESTAMP" property="FECH_NACIMIENTO"/>
+    <result column="DESC_DIRECCION" jdbcType="VARCHAR" property="DESC_DIRECCION"/>
+    <result column="NUMR_TELEFONO" jdbcType="VARCHAR" property="NUMR_TELEFONO"/>
+    <result column="NUMR_CELULAR" jdbcType="VARCHAR" property="NUMR_CELULAR"/>
+    <result column="DESC_COREEO" jdbcType="VARCHAR" property="DESC_COREEO"/>
+    <result column="DESC_OBSERVACIONES" jdbcType="VARCHAR" property="DESC_OBSERVACIONES"/>
+    <result column="L_INGRESO" jdbcType="CHAR" property="l_INGRESO"/>
+    <result column="CODG_ENTIDAD_EXTERNA" jdbcType="INTEGER" property="CODG_ENTIDAD_EXTERNA"/>
+    <result column="DESC_TITULO" jdbcType="VARCHAR" property="DESC_TITULO"/>
+    <result column="AUD_CODG_USUAR" jdbcType="VARCHAR" property="AUD_CODG_USUAR"/>
+    <result column="CODG_JUZGAD" jdbcType="VARCHAR" property="CODG_JUZGAD"/>
+    <result column="NUME_JUZGA" jdbcType="VARCHAR" property="NUME_JUZGA"/>
+    <result column="CODG_LUGAR" jdbcType="CHAR" property="CODG_LUGAR"/>
+    <result column="COD_APLICACION" jdbcType="CHAR" property="COD_APLICACION"/>
+    <result column="FECH_VENCI" jdbcType="TIMESTAMP" property="FECH_VENCI"/>
+	<!-- Inicio erodriguezbu -->
+	<result column="COD_USU_ENCRIPTADO" jdbcType="VARCHAR" property="codUsuEncriptado" />
+	<result column="TOKEN" jdbcType="VARCHAR" property="toquen"/>
+	<result column="F_RECUPERACION_CLAVE" jdbcType="TIMESTAMP" property="fechaRecuperacion"/>
+	<result column="F_CAMBIO_CLAVE" jdbcType="TIMESTAMP" property="fechaCambio"/>
+	<result column="F_ACTUAL" jdbcType="TIMESTAMP" property="fechaActual"/>
+	<!-- Fin erodriguezbu -->
+  </resultMap>
+
+  <resultMap class="pe.gob.pj.rnc.model.PerfilMenuOpcion" id="opcionesMenuResult">
+    <result column="CODIGO_PERFIL" jdbcType="VARCHAR" property="CODIGO_PERFIL"/>
+    <result column="CODIGO_MENU" jdbcType="NUMERIC" property="CODIGO_MENU"/>
+    <result column="ABREV_MENU" jdbcType="VARCHAR" property="ABREV_MENU"/>
+    <result column="CODIGO_OPCION" jdbcType="NUMERIC" property="CODIGO_OPCION"/>
+    <result column="ABREV_OPCION" jdbcType="VARCHAR" property="ABREV_OPCION"/>
+    <result column="PAGINA_JSP" jdbcType="VARCHAR" property="PAGINA_JSP"/>
+  </resultMap>
+
+  <sql id="abatorgenerated_Example_Where_Clause">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    <iterate conjunction="or" prepend="where" property="oredCriteria" removeFirstPrepend="iterate">
+      (
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithoutValue">
+        $oredCriteria[].criteriaWithoutValue[]$
+      </iterate>
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithSingleValue">
+        $oredCriteria[].criteriaWithSingleValue[].condition$
+          #oredCriteria[].criteriaWithSingleValue[].value#
+      </iterate>
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithListValue">
+        $oredCriteria[].criteriaWithListValue[].condition$
+        <iterate close=")" conjunction="," open="(" property="oredCriteria[].criteriaWithListValue[].values">
+          #oredCriteria[].criteriaWithListValue[].values[]#
+        </iterate>
+      </iterate>
+      <iterate conjunction="and" prepend="and" property="oredCriteria[].criteriaWithBetweenValue">
+        $oredCriteria[].criteriaWithBetweenValue[].condition$
+        #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+        #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+      </iterate>
+      )
+    </iterate>
+  </sql>
+  <select id="abatorgenerated_selectByPrimaryKey" parameterClass="pe.gob.pj.rnc.model.Usuario" resultMap="abatorgenerated_UsuarioResult">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    select CODG_USUAR, CODG_TIPO, NOMB_USUAR, APLL_USUAR, ESTD_USUAR, PREF_USUAR, CONE_USUAR,
+      C_PERFIL, L_DENTRY, C_DISTRITO, L_TIP_CERTIF, CODG_DISTRITO_JUDICIAL,
+      FECH_NACIMIENTO, DESC_DIRECCION, NUMR_TELEFONO, NUMR_CELULAR, DESC_COREEO, DESC_OBSERVACIONES,
+      L_INGRESO, CODG_ENTIDAD_EXTERNA, DESC_TITULO,AUD_CODG_USUAR,CODG_JUZGAD,NUME_JUZGA,CODG_LUGAR,COD_APLICACION,
+      FECH_VENCI,C_NUMDOCIDT, TIPO_DOC_IDENT, L_ACEPTA_TERMINOS, F_ACEPTA_TERMINOS
+    from USUARIO
+    where CODG_USUAR = #CODG_USUAR:VARCHAR#
+  </select>
+  <select id="abatorgenerated_selectByExample" parameterClass="pe.gob.pj.rnc.model.UsuarioExample" resultMap="abatorgenerated_UsuarioResult">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    select CODG_USUAR, CODG_TIPO, NOMB_USUAR, APLL_USUAR, ESTD_USUAR, PREF_USUAR, CONE_USUAR,
+      C_PERFIL, L_DENTRY, C_DISTRITO, L_TIP_CERTIF, CODG_DISTRITO_JUDICIAL,
+      FECH_NACIMIENTO, DESC_DIRECCION, NUMR_TELEFONO, NUMR_CELULAR, DESC_COREEO, DESC_OBSERVACIONES,
+      L_INGRESO, CODG_ENTIDAD_EXTERNA, DESC_TITULO,AUD_CODG_USUAR,CODG_JUZGAD,NUME_JUZGA,CODG_LUGAR,COD_APLICACION,FECH_VENCI,
+      C_NUMDOCIDT, TIPO_DOC_IDENT,L_ACEPTA_TERMINOS, F_ACEPTA_TERMINOS
+    from USUARIO
+    <isParameterPresent>
+      <include refid="USUARIO.abatorgenerated_Example_Where_Clause"/>
+      <isNotNull property="orderByClause">
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <delete id="abatorgenerated_deleteByPrimaryKey" parameterClass="pe.gob.pj.rnc.model.Usuario">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    delete from USUARIO
+    where CODG_USUAR = #CODG_USUAR:VARCHAR#
+  </delete>
+  <delete id="abatorgenerated_deleteByExample" parameterClass="pe.gob.pj.rnc.model.UsuarioExample">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    delete from USUARIO
+    <include refid="USUARIO.abatorgenerated_Example_Where_Clause"/>
+  </delete>
+  <insert id="abatorgenerated_insert" parameterClass="pe.gob.pj.rnc.model.Usuario">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    insert into USUARIO (CODG_USUAR, CODG_TIPO, NOMB_USUAR, APLL_USUAR, ESTD_USUAR, PREF_USUAR,
+      CONE_USUAR, C_PERFIL, C_CLAVE, L_DENTRY, C_DISTRITO, L_TIP_CERTIF, CODG_DISTRITO_JUDICIAL,
+      FECH_NACIMIENTO, DESC_DIRECCION, NUMR_TELEFONO, NUMR_CELULAR, DESC_COREEO, DESC_OBSERVACIONES,
+      L_INGRESO, CODG_ENTIDAD_EXTERNA, DESC_TITULO,AUD_CODG_USUAR,CODG_JUZGAD,NUME_JUZGA,CODG_LUGAR,
+      COD_APLICACION,FECH_VENCI,C_NUMDOCIDT, TIPO_DOC_IDENT)
+    values (#CODG_USUAR:VARCHAR#, #CODG_TIPO:CHAR#, #NOMB_USUAR:VARCHAR#, #APLL_USUAR:VARCHAR#,
+      #ESTD_USUAR:CHAR#, #PREF_USUAR:CHAR#, #CONE_USUAR:CHAR#, #COD_PERFIL:CHAR#, #c_CLAVE:VARCHAR#,
+      #l_DENTRY:CHAR#, #c_DISTRITO:CHAR#, #l_TIP_CERTIF:VARCHAR#, #CODG_DISTRITO_JUDICIAL:CHAR#,
+      #FECH_NACIMIENTO:TIMESTAMP#, #DESC_DIRECCION:VARCHAR#, #NUMR_TELEFONO:VARCHAR#,
+      #NUMR_CELULAR:VARCHAR#, #DESC_COREEO:VARCHAR#, #DESC_OBSERVACIONES:VARCHAR#, #l_INGRESO:CHAR#,
+      #CODG_ENTIDAD_EXTERNA:INTEGER#, #DESC_TITULO:VARCHAR#,#AUD_CODG_USUAR:VARCHAR#,#CODG_JUZGAD:VARCHAR#,
+      #NUME_JUZGA:VARCHAR#,#CODG_LUGAR:CHAR#,#COD_APLICACION:CHAR#,#FECH_VENCI:TIMESTAMP#,#c_NUMDOCIDT:VARCHAR#, #TIPO_DOC_IDENT:CHAR#)
+  </insert>
+  <update id="abatorgenerated_updateByPrimaryKey" parameterClass="pe.gob.pj.rnc.model.Usuario">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    update USUARIO
+    set CODG_TIPO = #CODG_TIPO:CHAR#,
+      NOMB_USUAR = #NOMB_USUAR:VARCHAR#,
+      APLL_USUAR = #APLL_USUAR:VARCHAR#,
+      ESTD_USUAR = #ESTD_USUAR:CHAR#,
+      PREF_USUAR = #PREF_USUAR:CHAR#,
+      CONE_USUAR = #CONE_USUAR:CHAR#,
+      C_NUMDOCIDT = #c_NUMDOCIDT:VARCHAR#,
+      C_PERFIL = #COD_PERFIL:CHAR#,
+      C_CLAVE = #c_CLAVE:VARCHAR#,
+      L_DENTRY = #l_DENTRY:CHAR#,
+      C_DISTRITO = #c_DISTRITO:CHAR#,
+      L_TIP_CERTIF = #l_TIP_CERTIF:VARCHAR#,
+      CODG_DISTRITO_JUDICIAL = #CODG_DISTRITO_JUDICIAL:CHAR#,
+      FECH_NACIMIENTO = #FECH_NACIMIENTO:TIMESTAMP#,
+      DESC_DIRECCION = #DESC_DIRECCION:VARCHAR#,
+      NUMR_TELEFONO = #NUMR_TELEFONO:VARCHAR#,
+      NUMR_CELULAR = #NUMR_CELULAR:VARCHAR#,
+      DESC_COREEO = #DESC_COREEO:VARCHAR#,
+      DESC_OBSERVACIONES = #DESC_OBSERVACIONES:VARCHAR#,
+      L_INGRESO = #l_INGRESO:CHAR#,
+      CODG_ENTIDAD_EXTERNA = #CODG_ENTIDAD_EXTERNA:INTEGER#,
+      DESC_TITULO = #DESC_TITULO:VARCHAR#,
+      AUD_CODG_USUAR = #AUD_CODG_USUAR:VARCHAR#,
+      CODG_JUZGAD = #CODG_JUZGAD:VARCHAR#,
+       NUME_JUZGA=#NUME_JUZGA:VARCHAR#,
+       CODG_LUGAR = #CODG_LUGAR:CHAR#,
+       COD_APLICACION = #COD_APLICACION:CHAR#,
+      FECH_VENCI = #FECH_VENCI:TIMESTAMP#
+    where CODG_USUAR = #CODG_USUAR:VARCHAR#
+  </update>
+  <update id="abatorgenerated_updateByPrimaryKeySelective" parameterClass="pe.gob.pj.rnc.model.Usuario">
+    <!--
+      WARNING - This element is automatically generated by Abator for iBATIS, do not modify.
+      This element was generated on Wed Jul 25 12:27:22 COT 2007.
+    -->
+    update USUARIO
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="CODG_TIPO">
+        CODG_TIPO = #CODG_TIPO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NOMB_USUAR">
+        NOMB_USUAR = #NOMB_USUAR:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="APLL_USUAR">
+        APLL_USUAR = #APLL_USUAR:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="ESTD_USUAR">
+        ESTD_USUAR = #ESTD_USUAR:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="PREF_USUAR">
+        PREF_USUAR = #PREF_USUAR:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CONE_USUAR">
+        CONE_USUAR = #CONE_USUAR:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="COD_PERFIL">
+        C_PERFIL = #COD_PERFIL:CHAR#
+      </isNotNull>
+      <isNotEmpty prepend="," property="c_CLAVE">
+        C_CLAVE = #c_CLAVE:VARCHAR#
+      </isNotEmpty>
+      <isNotNull prepend="," property="l_DENTRY">
+        L_DENTRY = #l_DENTRY:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="c_DISTRITO">
+        C_DISTRITO = #c_DISTRITO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="l_TIP_CERTIF">
+        L_TIP_CERTIF = #l_TIP_CERTIF:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_DISTRITO_JUDICIAL">
+        CODG_DISTRITO_JUDICIAL = #CODG_DISTRITO_JUDICIAL:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="FECH_NACIMIENTO">
+        FECH_NACIMIENTO = #FECH_NACIMIENTO:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_DIRECCION">
+        DESC_DIRECCION = #DESC_DIRECCION:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_TELEFONO">
+        NUMR_TELEFONO = #NUMR_TELEFONO:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUMR_CELULAR">
+        NUMR_CELULAR = #NUMR_CELULAR:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_COREEO">
+        DESC_COREEO = #DESC_COREEO:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_OBSERVACIONES">
+        DESC_OBSERVACIONES = #DESC_OBSERVACIONES:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="l_INGRESO">
+        L_INGRESO = #l_INGRESO:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_ENTIDAD_EXTERNA">
+        CODG_ENTIDAD_EXTERNA = #CODG_ENTIDAD_EXTERNA:INTEGER#
+      </isNotNull>
+      <isNotNull prepend="," property="DESC_TITULO">
+        DESC_TITULO = #DESC_TITULO:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="AUD_CODG_USUAR">
+        AUD_CODG_USUAR = #AUD_CODG_USUAR:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="CODG_JUZGAD">
+        CODG_JUZGAD = #CODG_JUZGAD:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="NUME_JUZGA">
+        NUME_JUZGA = #NUME_JUZGA:VARCHAR#
+      </isNotNull>
+	  <isNotNull prepend="," property="CODG_LUGAR">
+        CODG_LUGAR = #CODG_LUGAR:CHAR#
+      </isNotNull>
+   	  <isNotNull prepend="," property="COD_APLICACION">
+        COD_APLICACION = #COD_APLICACION:CHAR#
+      </isNotNull>
+   	  <isNotNull prepend="," property="FECH_VENCI">
+        FECH_VENCI = #FECH_VENCI:TIMESTAMP#
+      </isNotNull>
+      <!-- Inicio erodriguezbu -->
+      <isNotNull prepend="," property="codUsuEncriptado">
+        COD_USU_ENCRIPTADO = #codUsuEncriptado:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="toquen">
+        TOKEN = #toquen:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="fechaCambio">
+        F_CAMBIO_CLAVE = #fechaCambio:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="fechaRecuperacion">
+        F_RECUPERACION_CLAVE = #fechaRecuperacion:TIMESTAMP#
+      </isNotNull>
+	  <isNotEmpty prepend="," property="c_NUMDOCIDT">
+        C_NUMDOCIDT = #c_NUMDOCIDT:VARCHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="c_NUMDOCIDT">
+        TIPO_DOC_IDENT = #TIPO_DOC_IDENT:VARCHAR#
+      </isNotEmpty>
+      <!-- Fin erodriguezbu -->
+    </dynamic>
+    where CODG_USUAR = #CODG_USUAR#
+  </update>
+
+  <!-- Inicio erodriguezbu -->
+  <select id="selectByEncriptedId" parameterClass="pe.gob.pj.rnc.model.Usuario" resultMap="usuarioResultPwdChange">
+    select CODG_USUAR, CODG_TIPO, NOMB_USUAR, APLL_USUAR, ESTD_USUAR, PREF_USUAR, CONE_USUAR,
+      C_PERFIL, L_DENTRY, C_DISTRITO, L_TIP_CERTIF, CODG_DISTRITO_JUDICIAL,
+      FECH_NACIMIENTO, DESC_DIRECCION, NUMR_TELEFONO, NUMR_CELULAR, DESC_COREEO, DESC_OBSERVACIONES,
+      L_INGRESO, CODG_ENTIDAD_EXTERNA, DESC_TITULO,AUD_CODG_USUAR,CODG_JUZGAD,NUME_JUZGA,CODG_LUGAR,COD_APLICACION,FECH_VENCI,
+      COD_USU_ENCRIPTADO, TOKEN, F_CAMBIO_CLAVE, F_RECUPERACION_CLAVE, getdate() F_ACTUAL
+    from USUARIO
+    where COD_USU_ENCRIPTADO = #codUsuEncriptado:VARCHAR#
+  </select>
+
+  <update id="updateUsuarioByPrimaryKeySelective" parameterClass="pe.gob.pj.rnc.model.Usuario">
+    update USUARIO
+    <dynamic prepend="set">
+      <isNotEmpty prepend="," property="codUsuEncriptado">
+        COD_USU_ENCRIPTADO = #codUsuEncriptado:VARCHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="toquen">
+        TOKEN = #toquen:VARCHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="fechaCambio">
+        F_CAMBIO_CLAVE = #fechaCambio:TIMESTAMP#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="fechaRecuperacion">
+        F_RECUPERACION_CLAVE = #fechaRecuperacion:TIMESTAMP#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="c_CLAVE">
+        C_CLAVE = #c_CLAVE:VARCHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="FECH_VENCI">
+        FECH_VENCI = #FECH_VENCI:TIMESTAMP#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="ESTD_USUAR">
+        ESTD_USUAR = #ESTD_USUAR:CHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="DESC_COREEO">
+      	DESC_COREEO = #DESC_COREEO:VARCHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="fechaAceptaTerminos">
+      	L_ACEPTA_TERMINOS = #indicadorAceptaTerminos:CHAR#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="fechaAceptaTerminos">
+      	F_ACEPTA_TERMINOS = #fechaAceptaTerminos:TIMESTAMP#
+      </isNotEmpty>      
+    </dynamic>
+    where CODG_USUAR = #CODG_USUAR#
+  </update>
+
+  <select id="checkAuthEmail"  parameterClass="java.lang.String" resultClass="java.lang.String">
+    select codigo from pwd_change_email_domain
+	where  UPPER(dominio) = #value# and estado = '1'
+  </select>
+  <!-- Fin erodriguezbu -->
+
+  <select id="getOpcionesMenu" parameterClass="pe.gob.pj.rnc.model.Usuario"
+  	resultMap="opcionesMenuResult" cacheModel="opciones-menu-cache">
+  	SELECT M.CODIGO_PERFIL, M.CODIGO_MENU,
+	W.ABREV_MENU,M.CODIGO_OPCION,O.ABREV_OPCION,O.PAGINA_JSP
+	FROM MENU_USUARIO_WEB M JOIN MENU_WEB W
+		ON (M.CODIGO_MENU= W.CODIGO_MENU AND W.COD_APLICACION = #COD_APLICACION:VARCHAR#)
+	INNER JOIN OPCION_WEB O ON (M.CODIGO_OPCION=O.CODIGO_OPCION AND M.CODIGO_MENU= O.CODIGO_MENU)
+	WHERE M.CODIGO_PERFIL= #COD_PERFIL:VARCHAR#
+	AND M.ESTADO='A'
+	ORDER BY W.POSICION_MENU, O.CODIGO_MENU, O.POSICION_OPCION
+  </select>
+
+  <procedure id="insertAuditoriaProcedure" parameterClass="pe.gob.pj.rnc.model.AudAntecPenWs">
+	{ call usp_insert_aud_antec_pen_ws
+	   (#ps_paterno#,#ps_materno#,#ps_nom3:VARCHAR#,#ps_nom2#,#ps_nom1#,#ps_aud_pc#,#ps_aud_ip#,
+	 	#ps_aud_mcaddr#,#pi_aud_cod_entidad:INTEGER:0#,#x_resp_ws#,#ps_aud_dni#,#ps_aud_cod_usuario#)
+	}
+  </procedure>
+
+ <parameterMap id="swapParameters" class="map" >
+	<parameter property="clave1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	<parameter property="clave2" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+ </parameterMap>
+
+ <procedure id="encriptarCadena" parameterMap="swapParameters" >
+	{call usp_general_encriptar_cadena (?, ?)}
+ </procedure>
+
+  <select id="consultarUsuarios" parameterClass="pe.gob.pj.rnc.model.Usuario" resultMap="abatorgenerated_UsuarioResult">
+    select CODG_USUAR, CODG_TIPO, NOMB_USUAR, APLL_USUAR, ESTD_USUAR, PREF_USUAR, CONE_USUAR,
+      C_PERFIL, L_DENTRY, C_DISTRITO, L_TIP_CERTIF, CODG_DISTRITO_JUDICIAL,
+      FECH_NACIMIENTO, DESC_DIRECCION, NUMR_TELEFONO, NUMR_CELULAR, DESC_COREEO, DESC_OBSERVACIONES,
+      L_INGRESO, CODG_ENTIDAD_EXTERNA, DESC_TITULO,AUD_CODG_USUAR,CODG_JUZGAD,NUME_JUZGA,CODG_LUGAR,COD_APLICACION,
+      FECH_VENCI,C_NUMDOCIDT, TIPO_DOC_IDENT, L_ACEPTA_TERMINOS, F_ACEPTA_TERMINOS
+    from USUARIO
+    <dynamic prepend="WHERE">
+    	PREF_USUAR='WEB' AND ESTD_USUAR='A' AND CODG_ENTIDAD_EXTERNA = #CODG_ENTIDAD_EXTERNA:INTEGER#    	
+      <isNotNull prepend="AND" property="CODG_USUAR">
+        CODG_USUAR = #CODG_USUAR:VARCHAR#
+      </isNotNull>
+    </dynamic>
+  </select> 
+</sqlMap>

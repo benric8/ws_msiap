@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE daoConfig PUBLIC "-//ibatis.apache.org//DTD DAO Configuration 2.0//EN" "http://ibatis.apache.org/dtd/dao-2.dtd">
+<daoConfig>
+
+	<context id="jndi">
+
+		<transactionManager type="SQLMAP">
+			<property name="SqlMapConfigResource" value="pe/gob/pj/rnc/resources/rncMAP.xml" />
+		</transactionManager>
+
+		<!--
+			<dao
+			interface="pe.gob.pj.rnc.dao.CertificadoBoletinDAO"
+			implementation="pe.gob.pj.rnc.dao.CertificadoBoletinDAOImpl" /> <dao
+			interface="pe.gob.pj.rnc.dao.DistritoJudicialDAO"
+			implementation="pe.gob.pj.rnc.dao.DistritoJudicialDAOImpl" />  <dao
+			interface="pe.gob.pj.rnc.dao.JuzgadoDAO"
+			implementation="pe.gob.pj.rnc.dao.JuzgadoDAOImpl" /
+		-->
+
+		<!-- dao interface="pe.gob.pj.rnc.dao.AudAntecPenWsDAO"
+			implementation="pe.gob.pj.rnc.dao.AudAntecPenWsDAOImpl" /-->
+
+		<dao interface="pe.gob.pj.rnc.dao.BoletinDAO"
+			implementation="pe.gob.pj.rnc.dao.BoletinDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.MotivoSolicitudCertificadoDAO"
+			implementation="pe.gob.pj.rnc.dao.MotivoSolicitudCertificadoDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.JuzgadoDAO" implementation="pe.gob.pj.rnc.dao.JuzgadoDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.DistritoJudicialDAO"
+			implementation="pe.gob.pj.rnc.dao.DistritoJudicialDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.DepartamentoDAO" implementation="pe.gob.pj.rnc.dao.DepartamentoDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.SecuenciaSolicitudDAO"
+			implementation="pe.gob.pj.rnc.dao.SecuenciaSolicitudDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.SolicitudDAO" implementation="pe.gob.pj.rnc.dao.SolicitudDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.SolicitudExternaDAO"
+			implementation="pe.gob.pj.rnc.dao.SolicitudExternaDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.EntidadExternaDAO"
+			implementation="pe.gob.pj.rnc.dao.EntidadExternaDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.SolicitudExternaAuditoriaDAO"
+			implementation="pe.gob.pj.rnc.dao.SolicitudExternaAuditoriaDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.SolicitudExternaItemDAO"
+			implementation="pe.gob.pj.rnc.dao.SolicitudExternaItemDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.ContadorWebDAO" implementation="pe.gob.pj.rnc.dao.ContadorWebDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.UsuarioDAO" implementation="pe.gob.pj.rnc.dao.UsuarioDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.EstadoSolicitudCertificadoDAO"
+			implementation="pe.gob.pj.rnc.dao.EstadoSolicitudCertificadoDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.FirmaAutorizadaDAO"
+			implementation="pe.gob.pj.rnc.dao.FirmaAutorizadaDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.TipoDocumentoIdentidadDAO"
+			implementation="pe.gob.pj.rnc.dao.TipoDocumentoIdentidadDAOImpl" />
+
+		<dao interface="pe.gob.pj.rnc.dao.TipoUsuarioDAO"
+			implementation="pe.gob.pj.rnc.dao.TipoUsuarioDAOImpl" />
+			
+		<dao interface="pe.gob.pj.rnc.dao.AuditoriaMsiapDAO"
+			implementation="pe.gob.pj.rnc.dao.AuditoriaMsiapDAOImpl" />
+	</context>
+
+<!-- 	<context id="jdbc"> -->
+<!-- 		<transactionManager type="JDBC"> -->
+<!-- 			<property name="DataSource" value="JNDI" /> -->
+<!-- 			<property name="DBJndiContext" value="java:jboss/datasources/msiap" /> -->
+<!-- 		</transactionManager> -->
+<!-- 		<dao interface="pe.gob.pj.rnc.dao.VerificaRegistroDAO" -->
+<!-- 			implementation="pe.gob.pj.rnc.dao.VerificaRegistroDAOImpl" /> -->
+<!-- 	</context> -->
+
+</daoConfig>

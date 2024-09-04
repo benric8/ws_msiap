@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempurl.org" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempurl.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempurl.org">
+      <s:element name="f_criterio_busq_minedu">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ps_paterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_materno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trama" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_mineduResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="f_criterio_busq_mineduResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ps_paterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_materno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trama" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busqResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="f_criterio_busqResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_jur">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ps_paterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_materno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trama" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_jurResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="f_criterio_busq_jurResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_suc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ps_paterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_materno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trama" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_sucResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="f_criterio_busq_sucResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_jne">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ps_paterno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_materno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_nom3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_aud_dni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_aud_pc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_aud_ip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_aud_cod_usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_aud_mcaddr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pi_aud_cod_entidad" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="f_criterio_busq_jneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="f_criterio_busq_jneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="f_criterio_busq_mineduSoapIn">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_minedu" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_mineduSoapOut">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_mineduResponse" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busqSoapIn">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busqSoapOut">
+    <wsdl:part name="parameters" element="tns:f_criterio_busqResponse" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_jurSoapIn">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_jur" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_jurSoapOut">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_jurResponse" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_sucSoapIn">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_suc" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_sucSoapOut">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_sucResponse" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_jneSoapIn">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_jne" />
+  </wsdl:message>
+  <wsdl:message name="f_criterio_busq_jneSoapOut">
+    <wsdl:part name="parameters" element="tns:f_criterio_busq_jneResponse" />
+  </wsdl:message>
+  <wsdl:portType name="us_cotejoSoap">
+    <wsdl:operation name="f_criterio_busq_minedu">
+      <wsdl:input message="tns:f_criterio_busq_mineduSoapIn" />
+      <wsdl:output message="tns:f_criterio_busq_mineduSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq">
+      <wsdl:input message="tns:f_criterio_busqSoapIn" />
+      <wsdl:output message="tns:f_criterio_busqSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_jur">
+      <wsdl:input message="tns:f_criterio_busq_jurSoapIn" />
+      <wsdl:output message="tns:f_criterio_busq_jurSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_suc">
+      <wsdl:input message="tns:f_criterio_busq_sucSoapIn" />
+      <wsdl:output message="tns:f_criterio_busq_sucSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_jne">
+      <wsdl:input message="tns:f_criterio_busq_jneSoapIn" />
+      <wsdl:output message="tns:f_criterio_busq_jneSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="us_cotejoSoap" type="tns:us_cotejoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="f_criterio_busq_minedu">
+      <soap:operation soapAction="http://tempurl.org/f_criterio_busq_minedu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq">
+      <soap:operation soapAction="http://tempurl.org/f_criterio_busq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_jur">
+      <soap:operation soapAction="http://tempurl.org/f_criterio_busq_jur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_suc">
+      <soap:operation soapAction="http://tempurl.org/f_criterio_busq_suc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_jne">
+      <soap:operation soapAction="http://tempurl.org/f_criterio_busq_jne" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="us_cotejoSoap12" type="tns:us_cotejoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="f_criterio_busq_minedu">
+      <soap12:operation soapAction="http://tempurl.org/f_criterio_busq_minedu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq">
+      <soap12:operation soapAction="http://tempurl.org/f_criterio_busq" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_jur">
+      <soap12:operation soapAction="http://tempurl.org/f_criterio_busq_jur" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_suc">
+      <soap12:operation soapAction="http://tempurl.org/f_criterio_busq_suc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="f_criterio_busq_jne">
+      <soap12:operation soapAction="http://tempurl.org/f_criterio_busq_jne" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="us_cotejo">
+    <wsdl:port name="us_cotejoSoap" binding="tns:us_cotejoSoap">
+      <soap:address location="http://172.33.14.94/cotejo_webservice/us_cotejo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="us_cotejoSoap12" binding="tns:us_cotejoSoap12">
+      <soap12:address location="http://172.33.14.94/cotejo_webservice/us_cotejo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

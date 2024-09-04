@@ -1,0 +1,45 @@
+@CHARSET "ISO-8859-1";
+
+.fondoMenu{
+	background-color: #770303;
+}
+A:link{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 11px;
+	font-family: "Verdana", "Helvetica", "sans-serif"
+}
+
+A:visited{
+	color: #FAFAFA;
+	text-decoration: none;
+	font-size: 11px;
+	font-family: "Verdana", "Helvetica", "sans-serif"
+}
+
+A:hover{
+	color: #EFEBEB;
+	text-decoration: yes;
+	font-size: 11px;
+	font-family: "Verdana", "Helvetica", "sans-serif"
+}
+
+A:active{
+
+}
+
+.Navegabilidad{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #C0C0C0;
+	font-size: 9px;
+	font-style: normal;
+	text-transform: uppercase;
+	background-position: center;
+}
+
+.piepagina{
+	font-family:Verdana, Helvetica, sans-serif;
+	font-size:11px;
+	color:#B7B7B7;
+	text-decoration:none;
+}

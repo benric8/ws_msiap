@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root version="1.2" xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:ui="http://www.sun.com/web/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<jsp:useBean class="pe.gob.pj.util.Mensaje" id="mensaje"/>
+	<ui:link  id="link1" url="/resources/css/menu/menu.css" />
+
+		<table id= "menu" border="0" cellpadding="0" cellspacing="0" width="776px" style="width: 776px">	
+
+		<c:if test="${tipoAcceso ne 'P'}">
+			<tr>
+				<td colspan="2" width="776px" style="height: 61px; width: 776px; background-repeat: no-repeat"  background="${pageContext.request.contextPath}/images/cabecera-MSIAP.gif">										
+				</td>
+			</tr>
+		</c:if>		
+		 <tr style="height: 28px" >
+			<td width="700px" style="height: 28px; font-weight: bold;width: 700px;background: #770303 ">
+			<ul id="dropdownmenu"  style="margin-top: 0px; margin-bottom: 0px; padding-left: 0px; padding-right: 0px;margin-left:0px; marker-offset: 0px">
+				<c:forEach var="opcionesMenu" items="${SessionBean1.lstPerfilMenuOpcion}" varStatus="rowCounter">
+        			<li><a  href="${pageContext.request.contextPath}${opcionesMenu.PAGINA_JSP}">${opcionesMenu.ABREV_MENU}</a>	   					
+					<c:if test="${opcionesMenu.subMenu!=null}">
+						<ul style="padding-left: 2px; padding-right: 2px; margin-left: 0px;">					
+						<c:forEach var="opcionesSubMenu" items="${opcionesMenu.subMenu}" varStatus="rowCounter">        			
+   							<li> <a  href="${pageContext.request.contextPath}${opcionesSubMenu.PAGINA_JSP}">${opcionesSubMenu.ABREV_OPCION}</a>	   							
+   							</li>
+   	  			    	</c:forEach>    	            
+    	            	</ul>
+    	  			</c:if>    
+    	  			
+        			</li>        			
+      			</c:forEach>
+				<c:if test="${tipoAcceso ne 'P'}">
+					<li><ui:imageHyperlink action="#{SessionBean1.killSession}"
+						id="ihCerrarSesion" immediate="true" text="::Cerrar Sesion" /></li>
+				</c:if>		
+			</ul>
+			</td>
+			<!-- erodriguezbu migración: ayuda presente en mag. -->
+			<td width="76px" align="center" style="width: 76px; background: #770303;">		
+			<c:if test="${SessionBean1.usuario.COD_PERFIL ne '22'}">
+			<strong><a target="_blank" style="font-family:Verdana, Arial, Helvetica, sans-serif;color:#FFF;font-size: 10px" 	href="Referencia_rap_MSIAP_Magistrados.pdf">Ayuda</a></strong>
+			</c:if>
+			</td>
+		</tr>
+	
+		<tr style="height: 15px; font-weight: bold; font:Verdana; font-size: 8px" align="left" bgcolor="#F7F7F7">
+			<td colspan="2" width="776px" align="left" style="width: 776px; font:Verdana; font-size: 8px;">
+				<table width="776px" cellpadding="0px" cellspacing="0px" style="margin:0px;width: 776px" border="0px">
+					<tr>
+						<td style="height: 15px; font-weight: bold; font:Verdana; font-size: 8px;width: 200px" align="left">
+						<!--<c:out value="MSIAP V.1.2.1.1"></c:out>-->
+						<c:out value="${SessionBean1.version}"></c:out>
+						<!--<c:out value="${mensaje.version}"></c:out>-->
+						<!--<jsp:getProperty name="mensaje" property="version" />-->
+						</td>
+						<td></td>
+						<td align="right" style="height: 15px; font-weight: bold; font:Verdana; font-size: 8px;">
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='20'}"><c:out value="Operador Judicial: "></c:out></c:if>
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='30'}"><c:out value="Magistrado: "></c:out></c:if>
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='25'}"><c:out value="Administrador: "></c:out></c:if>
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='26'}"><c:out value="Supervisor: "></c:out></c:if>
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='27'}"><c:out value="Operador: "></c:out></c:if>
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='22'}"><c:out value="Adm de Usuario: "></c:out></c:if>
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='23'}"><c:out value="Consulta RENAJU: "></c:out></c:if>
+							<ui:staticText id="stUsuario" style="font-size: 8px;" text=" #{SessionBean1.usuario.NOMB_USUAR} #{SessionBean1.usuario.APLL_USUAR}" />
+							<c:if test="${SessionBean1.usuario.COD_PERFIL=='20'}"> <c:out value=" del Org. Juris ${SessionBean1.juzgadoUser}"></c:out></c:if>
+							<ui:staticText id="stCorreo" style="font-size: 8px;" text=" - #{SessionBean1.usuario.DESC_COREEO}" />
+						</td>
+					</tr>
+				</table>				
+			</td>
+		</tr>	
+	</table>
+	</jsp:root>

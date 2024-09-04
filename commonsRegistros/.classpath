@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/appbase.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/client-caso-fiscal-1.0.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/common-annotations.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-dbutils-1.1.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-discovery-0.2.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/dataprovider.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/defaulttheme.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/errorhandler.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/ibatis-common-2.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/ibatis-dao-2.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/ibatis-sqlmap-2.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/iText-2.1.0.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jasperreports-3.7.1.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jasperreports-extensions-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jcommon-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jfreechart-1.0.12.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jsf-api-1.2_07.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jsf-impl-1.2_07.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jsfcl.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/jxl-2.6.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/mail-1.4.7.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/poi-3.5-FINAL.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/quartz-all-1.6.0.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/rowset.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/simplecaptcha-20050925.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/sqlx.jar"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/webui.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="/msiap/WebContent/WEB-INF/lib/client-reniec-ws-1.0.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

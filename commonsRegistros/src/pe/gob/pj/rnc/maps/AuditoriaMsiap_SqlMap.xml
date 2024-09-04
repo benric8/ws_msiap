@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AuditoriaMsiap" >
+  
+	<insert id="insert" parameterClass="pe.gob.pj.rnc.model.AuditoriaMsiap" >
+		INSERT INTO sij_003.dbo.AuditoriaMsiap (x_datosEnviados, x_datosRecibidos, l_error,
+		x_ip, f_registro, x_perfil, x_usuario, x_mac, x_nombrePc)	
+		VALUES (#x_datosEnviados:VARCHAR#, #x_datosRecibidos:VARCHAR#, #l_error:VARCHAR#, #x_ip:VARCHAR#,
+		#f_registro:TIMESTAMP#, #x_perfil:VARCHAR#, #x_usuario:VARCHAR#, #x_mac:VARCHAR#, #x_nombrePc:VARCHAR#)
+	</insert>
+
+	<resultMap class="pe.gob.pj.rnc.model.AuditoriaUsuario" id="resultadoAuditoriaUsuario">
+		<result column="fecha_auditoria" jdbcType="TIMESTAMP" property="fecha_auditoria"/>
+		<result column="c_usuario" jdbcType="VARCHAR" property="c_usuario"/>
+		<result column="nombre_usuario" jdbcType="VARCHAR" property="nombre_usuario"/>
+		<result column="distrito_judicial" jdbcType="VARCHAR" property="distrito_judicial"/>
+		<result column="accion" jdbcType="VARCHAR" property="accion"/>
+		<result column="motivo" jdbcType="VARCHAR" property="motivo"/>
+		<result column="campo_modificado" jdbcType="VARCHAR" property="campo_modificado"/>
+		<result column="valor_anterior" jdbcType="VARCHAR" property="valor_anterior"/>
+		<result column="c_usuario_red" jdbcType="VARCHAR" property="c_usuario_red"/>
+		<result column="c_ipaddr" jdbcType="VARCHAR" property="c_ipaddr"/>
+		<result column="c_pcname" jdbcType="VARCHAR" property="c_pcname"/>
+		<result column="c_mcaddr" jdbcType="VARCHAR" property="c_mcaddr"/>
+		<result column="cod_registro" jdbcType="VARCHAR" property="cod_registro"/>
+	</resultMap>
+  
+  	<select id="consultaAuditoriaUsuario" parameterClass="java.lang.String" resultMap="resultadoAuditoriaUsuario">	
+  	<![CDATA[
+		SELECT CAB.fecha_aud as fecha_auditoria, CAB.c_usuario, 
+	    USU.NOMB_USUAR + '' + USU.APLL_USUAR as nombre_usuario,   
+	    DIS.DESC_DISTRITO_JUDICIAL as distrito_judicial,
+	    case when CAB.c_accion='A' then 'Actualiza' when CAB.c_accion='R' then 'Lectura' else 'Crea' end accion, 
+	    CAB.motivo, DET.campo_modificado, DET.valor_anterior,
+	    CAB.c_usuario_red, CAB.c_ipaddr, CAB.c_pcname, CAB.c_mcaddr, CAB.cod_registro 
+		FROM aud_usuario_tablas_cab CAB
+		LEFT OUTER JOIN aud_usuario_tablas_det DET ON DET.cod_registro=CAB.cod_registro   
+		LEFT OUTER JOIN USUARIO USU ON USU.CODG_USUAR=CAB.c_usuario     
+		LEFT OUTER JOIN DISTRITO_JUDICIAL DIS ON DIS.CODG_DISTRITO_JUDICIAL=USU.CODG_DISTRITO_JUDICIAL                          
+		WHERE CAB.c_tabla='USUARIO' AND CAB.c_accion <> 'C'
+		AND CAB.cod_modificado=#value#
+		ORDER BY CAB.fecha_aud
+	]]>		
+	</select>
+
+
+</sqlMap>

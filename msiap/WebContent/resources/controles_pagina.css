@@ -1,0 +1,92 @@
+@CHARSET "ISO-8859-1";
+
+.labelTitulo{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #171717;
+	font-weight: bold;
+	background-position: center center;
+	padding-right: 8px;
+	padding-left: 0px;
+}
+
+.labelCheck {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border: 1px solid #666666;
+	width: 30px;
+	margin: 0px;
+	padding: 0px
+}
+
+.labelError
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: red;
+}
+
+.button {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #ffffff;
+	background-color:#770303;
+	border: 1px solid;
+	font-weight: bold;
+	background-position: center center;
+	height:21px; 	
+}
+
+label{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #000000;
+	font-weight: bold;
+	background-position: center center;
+	padding-right: 8px;
+	padding-left: 0px;
+}
+span{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #000000;
+	font-weight: bold;
+	background-position: center center;
+	padding-right: 8px;
+	padding-left: 0px;
+}
+input{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	border: 1px solid #666666;
+	background-position: center center;
+	padding-right: 8px;
+	padding-left: 8px;
+}
+
+
+select{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #000000;
+	background-position: center center;
+	padding-left: 8px;
+	display: list-item;
+	border: 1px solid #666666;
+}
+
+textarea
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	border: 1px solid #666666;
+	width: 30px;
+	margin: 0px;
+	padding: 0px;
+}
+

@@ -1,0 +1,99 @@
+/* Style rules to make data tables look better */
+
+.list-header {
+  background-color: #eeeeee;
+  font-size: larger;
+  font-weight: bold;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.list-paging-header {
+  background-color: white;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.list-paging-footer {
+  background-color: white;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.list-row-even { 
+}
+
+.list-row-odd { 
+  background-color: #eeeeee;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* Style rules for message severity levels */
+
+.infoMessage {
+  color: black;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.warnMessage {
+  color: orange;
+  font-weight: bold;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.fatalMessage {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+caption.TblTtlTxt {
+   background-image:url(../resources/images/table/table_titlebar_gradient.jpg);	   
+   color : white;
+   font-family: Verdana, Arial, Helvetica, sans-serif;    
+}
+
+table.Tbl td.TblActTd{
+    background-color: #f3f2f3;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+table.Tbl{
+    color: #000000;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+body, th, td, p, div, span, input, button, select, textarea, form, b, strong, i, u, h1, h2, h3, h4, h5, h6, dl, dd, dt, ul, li, ol, option, optgroup, a {
+    font-size:11px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+table.Tbl th.TblColHdr {
+    background-color:#F3F2F3;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+input.error, select.error {padding-right: 16px; border: 1px solid red; background-color: #FFFCE2; background-image: url(images/warning_obj.gif); background-position: right; background-repeat: no-repeat;}
+
+.strErrorClass {padding-right: 16px; border: 1px solid red; background-color: #FFFCE2; background-image: url(images/warning_obj.gif); background-position: right; background-repeat: no-repeat;}
+
+input, select{
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.Btn1Mni, .Btn1MniHov, .Btn1MniDis, .Btn2Mni, .Btn2MniHov, .Btn2MniDis {
+    font-size:10px;
+    padding:0px 5px;
+    text-transform: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.txtPJ{
+font-weight: bold;
+color: #770303;
+font-size: 11px;
+font-family: sans-serif;
+}

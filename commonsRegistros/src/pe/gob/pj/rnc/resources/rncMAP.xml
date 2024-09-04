@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings
+		maxRequests="256"
+		maxSessions="64"
+		maxTransactions="16"
+		useStatementNamespaces="true"
+		lazyLoadingEnabled="false" />
+
+	<transactionManager type="JDBC">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:jboss/datasources/msiap" />
+			<!-- <property name="DBJndiContext" value="java:jboss/datasources/Sij003DS" />-->
+			<!--<property name="DataSource" value="jdbc/msiapmagistrado" />-->
+		</dataSource>
+	</transactionManager>
+
+	<!-- <sqlMap resource="pe/gob/pj/rnc/maps/CERTIFICADO_BOLETIN_SqlMap.xml" />
+		<sqlMap resource="pe/gob/pj/rnc/maps/DISTRITO_JUDICIAL_SqlMap.xml" />
+		<sqlMap resource="pe/gob/pj/rnc/maps/JUZGADO_SqlMap.xml" /-->
+	<sqlMap resource="pe/gob/pj/rnc/maps/BOLETIN_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/motivos_solicitud_certificados_SqlMap.xml"/>
+	<sqlMap resource="pe/gob/pj/rnc/maps/JUZGADO_SqlMap.xml"/>
+	<sqlMap resource="pe/gob/pj/rnc/maps/DISTRITO_JUDICIAL_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/DEPARTAMENTO_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/SECUENCIA_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/SOLICITUD_EXTERNA_ITEM_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/SOLICITUD_EXTERNA_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/ENTIDAD_EXTERNA_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/SOLICITUDES_PROVINCIA_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/SOLICITUD_EXTERNA_AUDITORIA_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/CONTADOR_WEB_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/USUARIO_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/ESTADO_SOLICITUD_CERTIFICADO_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/FIRMA_AUTORIZADA_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/documentos_de_identidad_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/TIPO_USUARIO_SqlMap.xml" />
+	<sqlMap resource="pe/gob/pj/rnc/maps/AuditoriaMsiap_SqlMap.xml" />
+	<!--sqlMap resource="pe/gob/pj/rnc/maps/motivos_solicitud_certificados_SqlMap.xml" />
+		<sqlMap resource="pe/gob/pj/rnc/maps/documentos_de_identidad_SqlMap.xml" / -->
+</sqlMapConfig>

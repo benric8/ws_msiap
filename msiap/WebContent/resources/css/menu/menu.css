@@ -1,0 +1,67 @@
+<style type="text/css" media="screen">
+
+	body, ul, li { 
+		margin:0;
+		padding:0;
+	}
+
+	#menu ul {
+		list-style:none;
+		display:inline-block;
+	}
+	
+	#menu ul li {
+		float:left;
+	}
+	/*erodriguezbu migración: width 776px in msiap*/
+	#menu ul#dropdownmenu {
+		margin:none;
+		list-style:none;
+		height:28px;
+		width:700px;
+		background:#770303;
+	}
+	
+	#menu ul#dropdownmenu li {
+		height:28px;
+	}
+	
+	#menu ul#dropdownmenu li a {
+		display:block;
+		padding:10px;
+		height:8px;
+		color:#FFF;
+		font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:11px;
+		text-decoration:none;
+	}
+	#menu ul#dropdownmenu li a:hover {
+		background:#CCC;
+	}
+	
+	#menu ul#dropdownmenu li ul {
+		display:none;
+	}
+	
+	#menu ul#dropdownmenu li:hover ul {
+		display:block;
+		background:#770303;
+		position:absolute;
+	}
+	
+	#menu ul#dropdownmenu li:hover ul li {
+		float:none;
+		background:#770303;
+	}
+	
+	#menu ul#dropdownmenu li ul li ul, ul#dropdownmenu li:hover ul li ul {
+		display:none;
+	}
+	
+	#menu ul#dropdownmenu li:hover ul li:hover ul {
+		display:block;
+		top:0;
+		left:100%;
+	}
+
+</style>
