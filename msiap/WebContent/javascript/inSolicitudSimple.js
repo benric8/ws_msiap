@@ -107,10 +107,10 @@ function validateAll() {
 	var nombre1 = document.getElementById('form1:txtNombre1');
 	var nombre2 = document.getElementById('form1:txtNombre2');
 	var nombre3 = document.getElementById('form1:txtNombre3');
-	var nomPadre = document.getElementById('form1:txtNomPadre');
-	var nomMadre = document.getElementById('form1:txtNomMadre');
-	var lugar = document.getElementById('form1:ddLugar');
-	var fechNacimiento = document.getElementById('form1:calFechNacimiento_field');
+//	var nomPadre = document.getElementById('form1:txtNomPadre');
+//	var nomMadre = document.getElementById('form1:txtNomMadre');
+//	var lugar = document.getElementById('form1:ddLugar');
+//	var fechNacimiento = document.getElementById('form1:calFechNacimiento_field');
 	//console.log("1");
 	if (motivo.selectedIndex<0 || motivo.value == null || motivo.value == "" || trimAll(motivo.value) == ""){
 		alert('\u00BB Seleccione el motivo de solicitud');
@@ -132,11 +132,11 @@ function validateAll() {
 	var nombre1R = '';
 	var nombre2R = '';
 	var nombre3R = '';
-	var nomPadreR = '';
-	var nomMadreR = '';
+//	var nomPadreR = '';
+//	var nomMadreR = '';
 	cont1 = 0; // apellidos
 	cont2 = 0; // nombres
-	cont3 = 0;// padres
+//	cont3 = 0;// padres
 
 	if ((trimAll(apePaterno.value) != null && trimAll(apePaterno.value) != "")|| trimAll(apePaterno.value) == '***') {
 		apePaternoR = trimAll(apePaterno.value);
@@ -196,7 +196,7 @@ function validateAll() {
 		// message = message + 'Los campos de nombres que han sido dejados en
 		// blanco v\n';
 	}
-
+/*
 	if (lugar.selectedIndex<1 || lugar.value == null || lugar.value == "" || trimAll(lugar.value) == ""){
 		alert('\u00BB Seleccione el lugar de nacimiento');
 		lugar.focus();
@@ -226,10 +226,11 @@ function validateAll() {
 			nomPadre.focus();
 		}else{
 			nomMadre.focus();
-		}*/
+		}*//*
 		trimAll(nomPadre.value) == ""?nomPadre.focus():nomMadre.focus();
 		return false;
 	}
+	*/
 	/*
 	if (cont1 == 0 && cont2 <= 2 && cont3 == 0) {
 		if (fechNacimiento.value == null || fechNacimiento.value == "" || trimAll(fechNacimiento.value) == "") {

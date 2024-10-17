@@ -118,13 +118,13 @@ public class ReniecService {
 		Auditoria auditoriaPer=getAuditoriaMacEstatica();
 		auditoriaPer.setUsuarioSis(codUsuarioLogin);//@02
 		//auditoriaPer.setCuo(cuo);
-		RequestConsultaReniecRest requestConsultaReniec = new RequestConsultaReniecRest();
-		requestConsultaReniec.setConsultante(Constantes.CONFIG_WS_RENIEC_DNI_AUTH);
-		DatosConsultaReniec datosConsultaReniec = new DatosConsultaReniec();
-		datosConsultaReniec.setTipoConsulta(Constantes.TIPO_CONSULTA_POR_NUMERO_DNI);
-		datosConsultaReniec.setNroDocumentoIdentidad(dni);
-		requestConsultaReniec.setPersonaConsultada(datosConsultaReniec);
-		ResponseConsultaReniecRest respuestaReniec = consultaReniecRest(auditoriaPer,requestConsultaReniec);
+//		RequestConsultaReniecRest requestConsultaReniec = new RequestConsultaReniecRest();
+//		requestConsultaReniec.setConsultante(Constantes.CONFIG_WS_RENIEC_DNI_AUTH);
+//		DatosConsultaReniec datosConsultaReniec = new DatosConsultaReniec();
+//		datosConsultaReniec.setTipoConsulta(Constantes.TIPO_CONSULTA_POR_NUMERO_DNI);
+//		datosConsultaReniec.setNroDocumentoIdentidad(dni);
+//		requestConsultaReniec.setPersonaConsultada(datosConsultaReniec);
+		ResponseConsultaReniecRest respuestaReniec = consultaReniecRest(auditoriaPer,dni);
 		//fin @01
 		
 		/*
@@ -146,36 +146,36 @@ public class ReniecService {
 	//@01
 	private DatosReniec agregarDatosReniec(String dni, ResponseConsultaReniecRest respuestaReniec) {
 		DatosReniec datos = null;
-		if(dni.equals(respuestaReniec.getData().getNroDocumentoIdentidad())) {
+//		if(dni.equals(respuestaReniec.getData().getNroDocumentoIdentidad())) {
 			datos = new DatosReniec();
-			datos.setDni(respuestaReniec.getData().getNroDocumentoIdentidad());
-			datos.setDigitoVerificacion(respuestaReniec.getData().getCodigoVerificacion());
-			datos.setApellidoPaterno(respuestaReniec.getData().getApellidoPaterno());
-			datos.setApellidoMaterno(respuestaReniec.getData().getApellidoMaterno());
-			datos.setApellidoCasada(respuestaReniec.getData().getApellidoCasado());
+			datos.setDni(dni);
+//			datos.setDigitoVerificacion(respuestaReniec.getData().getCodigoVerificacion());
+			datos.setApellidoPaterno(respuestaReniec.getData().getPrimerApellido());
+			datos.setApellidoMaterno(respuestaReniec.getData().getSegundoApellido());
+//			datos.setApellidoCasada(respuestaReniec.getData().getApellidoCasado());
 			datos.setNombres(respuestaReniec.getData().getNombres());
-			datos.setSexo(respuestaReniec.getData().getSexo());
-			datos.setCodDepartamentoNac(respuestaReniec.getData().getCodigoUbigeoDepartamentoNacimiento());
-			datos.setCodProvinciaNac(respuestaReniec.getData().getCodigoUbigeoProvinciaNacimiento());
-			datos.setCodDistritoNac(respuestaReniec.getData().getCodigoUbigeoDistritoNacimiento());
-			datos.setDepartamentoNac(respuestaReniec.getData().getDepartamentoNacimiento());
-			datos.setProvinciaNac(respuestaReniec.getData().getProvinciaNacimiento());
-			datos.setDistritoNac(respuestaReniec.getData().getDistritoNacimiento());
-			try {
-				datos.setFechaNacimiento(sdf.parse(respuestaReniec.getData().getFechaNacimiento()));
-			} catch (ParseException e) {
-				System.out.println("Error al obtener fecha de nacimiento: " + respuestaReniec.getData().getFechaNacimiento());
-				e.printStackTrace();
-			}			
-			datos.setNombrePadre(respuestaReniec.getData().getNombrePadre());
-			datos.setNombreMadre(respuestaReniec.getData().getNombreMadre());
-			datos.setLongitudFoto(Integer.valueOf(respuestaReniec.getData().getLongitudFoto()));
+//			datos.setSexo(respuestaReniec.getData().getSexo());
+//			datos.setCodDepartamentoNac(respuestaReniec.getData().getCodigoUbigeoDepartamentoNacimiento());
+//			datos.setCodProvinciaNac(respuestaReniec.getData().getCodigoUbigeoProvinciaNacimiento());
+//			datos.setCodDistritoNac(respuestaReniec.getData().getCodigoUbigeoDistritoNacimiento());
+//			datos.setDepartamentoNac(respuestaReniec.getData().getDepartamentoNacimiento());
+//			datos.setProvinciaNac(respuestaReniec.getData().getProvinciaNacimiento());
+//			datos.setDistritoNac(respuestaReniec.getData().getDistritoNacimiento());
+//			try {
+//				datos.setFechaNacimiento(sdf.parse(respuestaReniec.getData().getFechaNacimiento()));
+//			} catch (ParseException e) {
+//				System.out.println("Error al obtener fecha de nacimiento: " + respuestaReniec.getData().getFechaNacimiento());
+//				e.printStackTrace();
+//			}			
+//			datos.setNombrePadre(respuestaReniec.getData().getNombrePadre());
+//			datos.setNombreMadre(respuestaReniec.getData().getNombreMadre());
+//			datos.setLongitudFoto(Integer.valueOf(respuestaReniec.getData().getLongitudFoto()));
 			datos.setFechaProceso(new Date());
 			//datos.setFoto(respuestaReniec.getData().getFoto().getBytes());
-			datos.setFoto(Base64.decodeBase64(respuestaReniec.getData().getFoto().getBytes()));
+//			datos.setFoto(Base64.decodeBase64(respuestaReniec.getData().getFoto().getBytes()));
 			
-		}
-		return datos;
+//		}
+			return datos;
 	}
 	
 	private DatosReniec agregarDatosReniec(String dni, String[] array, byte[] foto) {
@@ -211,7 +211,7 @@ public class ReniecService {
 	}
 	
 	//01:	
-	public ResponseConsultaReniecRest consultaReniecRest(Auditoria auditoria, RequestConsultaReniecRest requestConsultaReniec)
+	public ResponseConsultaReniecRest consultaReniecRest(Auditoria auditoria, String dni)
 			throws Exception {
 		
 		ResponseConsultaReniecRest response=new ResponseConsultaReniecRest();	
@@ -241,12 +241,11 @@ public class ReniecService {
 			    Map<String, Object> requestEnvio=new HashMap<>();
 			    
 			    
-			    requestEnvio.put(Constantes.KEY_AUDITORIA_RENIEC, auditoriaReniec);
 			    requestEnvio.put(Constantes.KEY_FORMATO_RESPUESTA_RENIEC, Constantes.VALUE_FORMATO_RESPUESTA_RENIEC);
-			    requestEnvio.put(Constantes.KEY_CONSULTANTE_RENIEC, requestConsultaReniec.getConsultante());
+			    requestEnvio.put(Constantes.KEY_PERSONA_CONSULTADA_RENIEC, dni);
 			    requestEnvio.put(Constantes.KEY_MOTIVO_RENIEC, Constantes.VALUE_MOTIVO_RENIEC);
-			    requestEnvio.put(Constantes.KEY_PAGINATION_RENIEC, paginacionReniec);
-			    requestEnvio.put(Constantes.KEY_PERSONA_CONSULTADA_RENIEC, requestConsultaReniec.getPersonaConsultada());
+			    requestEnvio.put(Constantes.KEY_CODIGO_APLICATIVO, Constantes.VALUE_CODIGO_APLICATIVO);
+			    requestEnvio.put(Constantes.KEY_AUDITORIA_RENIEC, auditoriaReniec);
 			    
 			    
 			    ObjectMapper mapper = new ObjectMapper();

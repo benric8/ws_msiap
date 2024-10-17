@@ -7,9 +7,12 @@
 package uif;
 
 import java.lang.reflect.Array; //import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
@@ -23,7 +26,14 @@ import javax.faces.validator.ValidatorException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import pe.gob.pj.rnc.log.MyLogger; //import pe.gob.pj.rnc.model.AudAntecPenWs;
 import pe.gob.pj.rnc.model.AudAntecPenWs;
@@ -37,6 +47,7 @@ import pe.gob.pj.rnc.model.Perfil;
 import pe.gob.pj.rnc.model.PerfilMenuOpcion;
 import pe.gob.pj.rnc.model.SolicitudExterna;
 import pe.gob.pj.rnc.model.Usuario;
+import pe.gob.pj.rnc.msiap.util.CaptchaValid;
 import pe.gob.pj.rnc.msiap.util.Constantes;
 import pe.gob.pj.rnc.msiap.util.SendMail;
 //import pe.gob.pj.rnc.model.UsuarioCamposAud; //import pe.gob.pj.rnc.service.Aud_usuario_tablas_cab_detManager;
@@ -69,6 +80,11 @@ public class login extends AbstractPageBean {
 	// "HTTP_X_CLUSTER_CLIENT_IP", "HTTP_CLIENT_IP", "HTTP_FORWARDED_FOR", "HTTP_FORWARDED", "HTTP_VIA", "REMOTE_ADDR" };
 	static MyLogger	logger	= new MyLogger(login.class.getName());
 	private String	version	= "";
+	private String captchaApiKeyWeb = pe.gob.pj.util.Constantes.CONFIG_CAPTCHA_WEB_KEY;
+	
+	public final String getCaptchaApiKeyWeb() {
+		return captchaApiKeyWeb;
+	}
 
 	public String getVersion() {
 		version = Mensaje.getString("msiap.version.numero");
@@ -172,6 +188,16 @@ public class login extends AbstractPageBean {
 
 	public void setTxtUsuario(HtmlInputText hit) {
 		this.txtUsuario = hit;
+	}
+	
+	private HtmlInputText txtToken = new HtmlInputText();
+	
+	public HtmlInputText getTxtToken() {
+		return txtToken;
+	}
+	
+	public void setTxtToken(HtmlInputText hit) {
+		this.txtToken = hit;
 	}
 
 	private HtmlMessages messageList1 = new HtmlMessages();
@@ -319,6 +345,22 @@ public class login extends AbstractPageBean {
 		FirmaAutorizadaManager servicioFirmaAutorizada = null;
 		DepartamentoManager servicioDepartamento = null;
 
+		// Obtener el valor del token de reCAPTCHA desde el request
+        FacesContext context = FacesContext.getCurrentInstance();
+        String gRecaptchaResponse = context.getExternalContext().getRequestParameterMap().get("form1:txtToken");
+        if (gRecaptchaResponse.length()==0) {
+        	info("el captcha es obligatorio");
+        	return null;
+        }
+        // Validar reCAPTCHA
+        boolean captchaValid = validateRecaptcha(gRecaptchaResponse);
+
+        if (!captchaValid) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "reCAPTCHA no válido.");
+            context.addMessage(null, message);
+            return null; // Retorna a la misma página si el captcha es inválido
+        }
+		
 		if (2 < z) {
 			this.renderCaptcha = true;
 			this.getTextField1().setRendered(true);
@@ -361,30 +403,7 @@ public class login extends AbstractPageBean {
 				
 				info("Usuario o Contraseña errónea");
 				return navigateTo;
-				//String[] usuarioTemporal = null;
-				//usuarioTemporal = contarIntentoLogin(getSessionBean1().getLoginsUsuario(), codigoUsuario);
-				//int contadorUsuario = Integer.parseInt(usuarioTemporal[1]);
-
-				//if (3 < contadorUsuario && usuario == null) { se cambió el valor contadorUsuario por z
-					
-					
-					
-					//Usuario userTemp = new Usuario();
-					//userTemp.setCODG_USUAR(codigoUsuario);
-					//userTemp.setESTD_USUAR(Usuario.ESTADO_INACTIVO);
-					//if (servicioUsuario.updateUsuarioSelective(userTemp) == 1) {
-					//String msg = "La cuenta de usuario ha sido desactivada por motivos de seguridad después de 4 intentos fallidos";
-					//Aud_usuario_tablas_cab_det audCD = new Aud_usuario_tablas_cab_det();
-					//audCD.setMotivo(msg);
-					//audCD.setC_usuario(userTemp.getCODG_USUAR());
-					//UsuarioCamposAud cau = new UsuarioCamposAud();
-					//cau.setESTD_USUAR("A");
-					//audCD.setCamposAudit(cau);
-					//audCD.setC_accion(audCD.ACTUALIZA);
-					//userTemp.auditoria(null, audCD);
-					//}else logger.error("Error al dar de baja usuario por intentos de login fallidos. Usuario "+userTemp.getCODG_USUAR());
-				//} else if (contadorUsuario == 3) {
-				//	info("Es el cuarto intento, si se equivoca otra vez su cuenta va a ser desactivada.");
+				
 			} else if (Usuario.ESTADO_INACTIVO.equals(usuario.getESTD_USUAR())){
 				info("La cuenta de usuario se encuentra inactiva.");
 				enviarCorreo(codigoUsuario + " (Inactivo)",z);
@@ -644,11 +663,7 @@ public class login extends AbstractPageBean {
 		return null;
 	}
 
-//	public void secContrasenha_validate(FacesContext context, UIComponent component, Object value) {
-//		String s = String.valueOf(value);
-//		if (s.matches("\\S")) { throw new ValidatorException(new FacesMessage(
-//				"El campo contraseña contiene caracteres inválidos y debe estar en el rango desde 8 hasta 15 caracteres")); }
-//	}
+
 
 	public void txtUsuario_validate(FacesContext context, UIComponent component, Object value) {
 		String s = String.valueOf(value);
@@ -673,36 +688,6 @@ public class login extends AbstractPageBean {
 		return (fraHeader) getBean("fraHeader");
 	}
 
-	// Se comenta método de conteo de intentos 20171017
-//	private String[] contarIntentoLogin(ArrayList<String[]> usuariosIntentaron, String codigoUsuario) {
-//		boolean found = false;
-//		String temp[] = null;
-//		if (usuariosIntentaron != null && !usuariosIntentaron.isEmpty()) {
-//
-//			for (String[] usuario : usuariosIntentaron) {
-//				if (codigoUsuario.equals(usuario[0])) {
-//					int intentos;
-//					intentos = Integer.parseInt(usuario[1]);
-//					usuario[1] = String.valueOf(++intentos);
-//					found = true;
-//					temp = usuario;
-//					break;
-//				}
-//			}
-//		} else {
-//			usuariosIntentaron = new ArrayList<String[]>();
-//		}
-//
-//		if (!found) {
-//			temp = (String[]) Array.newInstance(String.class, 2);
-//			temp[0] = codigoUsuario;
-//			temp[1] = "1";
-//			usuariosIntentaron.add(temp);
-//		}
-//		getSessionBean1().setLoginsUsuario(usuariosIntentaron);
-//		return temp;
-//	}
-
 	private boolean renderCaptcha = false;
 
 	public boolean isRenderCaptcha() {
@@ -712,5 +697,45 @@ public class login extends AbstractPageBean {
 	public void setRenderCaptcha(boolean renderCaptcha) {
 		this.renderCaptcha = renderCaptcha;
 	}
-	
+	public RestTemplate restTemplateWithProxy() {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        
+        // Configurar el proxy
+        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("proxyggeneral01.pj.gob.pe", 3128));
+        requestFactory.setProxy(proxy);
+        
+        // Retornar un RestTemplate con el proxy configurado
+        return new RestTemplate(requestFactory);
+    }
+	private boolean validateRecaptcha(String gRecaptchaResponse) {
+        String url = pe.gob.pj.util.Constantes.CONFIG_CAPTCHA_URL;
+        RestTemplate restTemplate =  restTemplateWithProxy();
+
+        // Parámetros del request
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+                .queryParam("secret",pe.gob.pj.util.Constantes.CONFIG_CAPTCHA_SECRET_KEY)
+                .queryParam("response", gRecaptchaResponse);
+
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//        HttpEntity<?> entity = new HttpEntity<>(headers);
+//
+//        // Hacer la solicitud
+//        ResponseEntity<Map> response = restTemplate.exchange(
+//                builder.toUriString(),
+//                HttpMethod.POST,
+//                entity,
+//                Map.class);
+        
+        CaptchaValid resultado = restTemplate.postForObject(
+              builder.toUriString(),          
+              null,
+              CaptchaValid.class);
+
+        // Validar la respuesta
+       
+        boolean success = resultado.getSuccess();
+
+        return success;
+    }
 }

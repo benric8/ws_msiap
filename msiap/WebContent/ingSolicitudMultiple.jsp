@@ -206,21 +206,21 @@
 										sort="APLL_PATER_SOLIC">
 										<ui:staticText binding="#{ingSolicitudMultiple.staticText3}"
 											id="staticText3"
-											text="#{currentRow.value['APLL_PATER_SOLIC']}" />
+											text="#{ingSolicitudMultiple.ofuscarDatos(currentRow.value['APLL_PATER_SOLIC'])}" />
 									</ui:tableColumn>
 									<ui:tableColumn binding="#{ingSolicitudMultiple.tableColumn2}"
 										headerText="AP.MATERNO" id="tableColumn2" style="width:10px"
 										sort="APLL_MATER_SOLIC">
 										<ui:staticText binding="#{ingSolicitudMultiple.staticText2}"
 											id="staticText2"
-											text="#{currentRow.value['APLL_MATER_SOLIC']}" />
+											text="#{ingSolicitudMultiple.ofuscarDatos(currentRow.value['APLL_MATER_SOLIC'])}" />
 									</ui:tableColumn>
 									<ui:tableColumn binding="#{ingSolicitudMultiple.tableColumn4}"
 										style="width:10px" headerText="NOMBRES" id="tableColumn4"
 										sort="NOM1_SOLIC">
 										<ui:staticText binding="#{ingSolicitudMultiple.staticText4}"
 											id="staticText4"
-											text="#{currentRow.value['NOM1_SOLIC']} #{currentRow.value['NOM2_SOLIC']} #{currentRow.value['NOM3_SOLIC']}" />
+											text="#{ingSolicitudMultiple.ofuscarDatos(currentRow.value['NOM1_SOLIC'])} #{ingSolicitudMultiple.ofuscarDatos(currentRow.value['NOM2_SOLIC'])} #{ingSolicitudMultiple.ofuscarDatos(currentRow.value['NOM3_SOLIC'])}" />
 									</ui:tableColumn>
 									<ui:tableColumn binding="#{ingSolicitudMultiple.tableColumn7}"
 										style="width:10px" headerText="NOM.MADRE" id="tableColumn7"

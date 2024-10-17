@@ -277,108 +277,6 @@
 									<tr style="height: 10px">
 										<td colspan="5"></td>
 									</tr>
-									<tr style="height: 23px">
-										<td colspan="5" style="font-weight: bold;">
-											<h:outputText binding="#{ingSolicitudSimple.outputText9}" id="outputText9" value="Datos de  Nacimiento:" />
-										</td>
-									</tr>
-									<tr style="height: 23px">						
-										<td align="left" colspan="5">
-											<h:outputText value="Nacido en el extrajero"/>
-											<h:selectBooleanCheckbox id="nacidoEnElExtrajero" binding="#{ingSolicitudSimple.checkNacidoEnExtrajero}"
-												value="#{SessionBean1.solicitudUnitaria.flagNacidoExterior}" valueChangeListener="#{ingSolicitudSimple.nacidoEnExtranjero}" onchange="submit()" immediate="true"/>
-										</td>
-									</tr>
-									<tr style="height: 23px">
-										<td ><h:outputText
-												binding="#{ingSolicitudSimple.outputText10}"
-												id="outputText10" value="(*)Lugar de nacimiento:" /></td>
-										<td><h:selectOneMenu
-												binding="#{ingSolicitudSimple.ddLugar}" id="ddLugar"
-												required="true" style="width: 190px" tabindex="13"
-												value="#{SessionBean1.solicitudUnitaria.x_CODG_LUGAR_NAC}" rendered="#{!ingSolicitudSimple.verTxtLugarNacimiento}">
-												<f:selectItem itemLabel="--- Seleccione ---" itemValue="-1" />
-												<f:selectItems
-													binding="#{ingSolicitudSimple.dropdown2SelectItems}"
-													id="dropdown2SelectItems"
-													value="#{SessionBean1.departamentos}" />
-											</h:selectOneMenu>
-											<h:inputText alt="Ingrese lugar de nacimiento" rendered="#{ingSolicitudSimple.verTxtLugarNacimiento}"
-												id="txtLugarNacimiento" maxlength="50" required="true" style="width: 190px" binding="#{ingSolicitudSimple.txtLugarNacimiento}"
-												tabindex="13" value="#{SessionBean1.solicitudUnitaria.lugarNacimiento}" />
-										</td>
-										<td style="width: 30px;" />
-										<td ><h:outputText
-												binding="#{ingSolicitudSimple.outputText11}"
-												id="outputText11" value="(*)Fecha:" /></td>
-										<td><ui:calendar dateFormatPatternHelp="dd/mm/aaaa"
-												binding="#{ingSolicitudSimple.calFechNacimiento}"
-												dateFormatPattern="dd/MM/yyyy" id="calFechNacimiento"
-												tabIndex="14" columns="10" required="false"
-												selectedDate="#{SessionBean1.solicitudUnitaria.FECH_NACIM_SOLIC}"
-												onClick="seleccionRango(this);"
-												onBlur="return validarFecha(this);"
-												onKeyPress="return formatearFecha(this,event);" /></td>
-									</tr>
-									<tr>
-										<td ></td>
-										<td colspan="2"><h:message
-												binding="#{ingSolicitudSimple.inlineMessage8}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="ddLugar" id="inlineMessage8" infoClass="infoMessage"
-												showDetail="false" showSummary="true"
-												warnClass="warnMessage" />
-											<h:message
-												binding="#{ingSolicitudSimple.inlineMessage14}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="txtLugarNacimiento" id="inlineMessage14" infoClass="infoMessage"
-												showDetail="false" showSummary="true"
-												warnClass="warnMessage" />
-										</td>
-										<td colspan="2"><h:message
-												binding="#{ingSolicitudSimple.inlineMessage12}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="calFechNacimiento" id="inlineMessage12"
-												infoClass="infoMessage" showDetail="false"
-												showSummary="true" warnClass="warnMessage" /></td>
-									</tr>
-									<tr style="height: 23px">
-										<td ><h:outputText
-												binding="#{ingSolicitudSimple.outputText12}"
-												id="outputText12" value="(**)Nombre Padre:" /></td>
-										<td><h:inputText alt="Nombre Padre"
-												binding="#{ingSolicitudSimple.txtNomPadre}" id="txtNomPadre"
-												maxlength="30" required="true" style="width: 190px"
-												tabindex="15"
-												validator="#{ingSolicitudSimple.txtApellidoPaterno_validate}"
-												value="#{SessionBean1.solicitudUnitaria.NOM_PADRE}" /></td>
-										<td style="width: 30px;" />
-										<td ><h:outputText
-												binding="#{ingSolicitudSimple.outputText13}"
-												id="outputText13" value="(**)Nombre Madre:" /></td>
-										<td><h:inputText alt="Nombre Madre"
-												binding="#{ingSolicitudSimple.txtNomMadre}" id="txtNomMadre"
-												maxlength="30" required="true" style="width: 190px"
-												tabindex="16"
-												validator="#{ingSolicitudSimple.txtApellidoPaterno_validate}"
-												value="#{SessionBean1.solicitudUnitaria.NOM_MADRE}" /></td>
-									</tr>
-
-									<tr>
-										<td ></td>
-										<td colspan="2"><h:message
-												binding="#{ingSolicitudSimple.inlineMessage9}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="txtNomPadre" id="inlineMessage9"
-												infoClass="infoMessage" showDetail="false"
-												showSummary="true" warnClass="warnMessage" /></td>
-										<td colspan="2"><h:message
-												binding="#{ingSolicitudSimple.inlineMessage10}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="txtNomMadre" id="inlineMessage10"
-												infoClass="infoMessage" showDetail="false"
-												showSummary="true" warnClass="warnMessage" /></td>
-									</tr>
 									<tr style="height: 35px">
 										<td ><h:outputText
 												binding="#{ingSolicitudSimple.outputText14}"
@@ -415,9 +313,7 @@
 												immediate="true" /></td>
 									</tr>
 									<tr style="height: 23px">
-										<td colspan="4"><h:outputText
-												binding="#{ingSolicitudSimple.outputText2}" id="outputText2"
-												value="(**) Si se desconoce esta información especificar SE DESCONOCE" /></td>
+										
 										<td align="right"><ui:staticText
 												binding="#{ingSolicitudSimple.staticText1}" id="staticText1"
 												style="text-align: right"
@@ -478,7 +374,7 @@
 														<ui:staticText
 															binding="#{ingSolicitudMultiple.staticText3}"
 															id="staticText3"
-															text="#{currentRow.value['APLL_PATER_SOLIC']}" />
+															text="#{ingSolicitudMultiple.ofuscarDatos(currentRow.value['APLL_PATER_SOLIC'])}" />
 													</ui:tableColumn>
 													<ui:tableColumn
 														binding="#{ingSolicitudMultiple.tableColumn2}"
@@ -487,7 +383,7 @@
 														<ui:staticText
 															binding="#{ingSolicitudMultiple.staticText2}"
 															id="staticText2"
-															text="#{currentRow.value['APLL_MATER_SOLIC']}" />
+															text="#{ingSolicitudMultiple.ofuscarDatos(currentRow.value['APLL_MATER_SOLIC'])}" />
 													</ui:tableColumn>
 													<ui:tableColumn
 														binding="#{ingSolicitudMultiple.tableColumn4}"
@@ -496,23 +392,7 @@
 														<ui:staticText
 															binding="#{ingSolicitudMultiple.staticText4}"
 															id="staticText4"
-															text="#{currentRow.value['NOM1_SOLIC']} #{currentRow.value['NOM2_SOLIC']} #{currentRow.value['NOM3_SOLIC']}" />
-													</ui:tableColumn>
-													<ui:tableColumn
-														binding="#{ingSolicitudMultiple.tableColumn7}"
-														style="width:100px" headerText="NOM.MADRE"
-														id="tableColumn7">
-														<ui:staticText
-															binding="#{ingSolicitudMultiple.staticText7}"
-															id="staticText7" text="#{currentRow.value['NOM_MADRE']}" />
-													</ui:tableColumn>
-													<ui:tableColumn
-														binding="#{ingSolicitudMultiple.tableColumn8}"
-														style="width:100px;" headerText="NOM.PADRE"
-														id="tableColumn8">
-														<ui:staticText
-															binding="#{ingSolicitudMultiple.staticText8}"
-															id="staticText8" text="#{currentRow.value['NOM_PADRE']}" />
+															text="#{ingSolicitudMultiple.ofuscarDatos(currentRow.value['NOM1_SOLIC'])} #{ingSolicitudMultiple.ofuscarDatos(currentRow.value['NOM2_SOLIC'])} #{ingSolicitudMultiple.ofuscarDatos(currentRow.value['NOM3_SOLIC'])}" />
 													</ui:tableColumn>
 												</ui:tableRowGroup>
 											</ui:table></td>

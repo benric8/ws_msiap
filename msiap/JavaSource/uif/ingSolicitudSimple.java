@@ -40,6 +40,7 @@ import pe.gob.pj.rnc.service.TipoDocumentoIdentidadManager;
 import pe.gob.pj.rnc.tipo.Texto;
 import pe.gob.pj.rnc.web.service.MineduService;
 import pe.gob.pj.rnc.web.service.SuneduService;
+import pe.gob.pj.util.CommonsUtilities;
 import pe.gob.pj.ws.client.sunedu.Codigo;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
@@ -832,30 +833,31 @@ public class ingSolicitudSimple extends AbstractPageBean {
 				String completo = beanPersona.getNombres().replace("-", "");
 				String[] nombresR = StringUtil.separarNombresReniec(completo);
 
-				txtApellidoPaterno.setSubmittedValue(beanPersona.getApellidoPaterno());
-				StringBuffer reniecSegundoApellido = new StringBuffer();
-				reniecSegundoApellido.append(beanPersona.getApellidoMaterno().toUpperCase()).append(" ")
-						.append(beanPersona.getApellidoCasada().toUpperCase().trim());
-				txtApellidoMaterno.setSubmittedValue(reniecSegundoApellido.toString().trim());
-				txtNombre1.setSubmittedValue(nombresR[0]);
-				txtNombre2.setSubmittedValue(nombresR.length > 1 && nombresR[1] != null ? nombresR[1] : "");
-				txtNombre3.setSubmittedValue(nombresR.length > 2 && nombresR[2] != null ? nombresR[2] : "");
-				txtNomPadre.setSubmittedValue(beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARA")
-						|| beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARADO") ? "" : beanPersona.getNombrePadre());
-				txtNomMadre.setSubmittedValue(beanPersona.getNombreMadre());
-				if("00".equals(beanPersona.getCodDistritoNac()) && "00".equals(beanPersona.getCodProvinciaNac())){
-					txtLugarNacimiento.setSubmittedValue(beanPersona.getDepartamentoNac());
-				}				
-
-				try {
-					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-					calFechNacimiento.setSubmittedValue(sdf.format(beanPersona.getFechaNacimiento()));
-				} catch (Exception e) {
-					logger.error("Error al obtener fecha de nacimiento.", e);
-				}
+				txtApellidoPaterno.setSubmittedValue(CommonsUtilities.ofuscarDatos(beanPersona.getApellidoPaterno()));
+//				StringBuffer reniecSegundoApellido = new StringBuffer();
+//				reniecSegundoApellido.append(beanPersona.getApellidoMaterno().toUpperCase()).append(" ")
+//						.append(beanPersona.getApellidoCasada().toUpperCase().trim());
+//				txtApellidoMaterno.setSubmittedValue(reniecSegundoApellido.toString().trim());
+				txtApellidoMaterno.setSubmittedValue(CommonsUtilities.ofuscarDatos(beanPersona.getApellidoMaterno()));
+				txtNombre1.setSubmittedValue(CommonsUtilities.ofuscarDatos(nombresR[0]));
+				txtNombre2.setSubmittedValue(CommonsUtilities.ofuscarDatos(nombresR.length > 1 && nombresR[1] != null ? nombresR[1] : ""));
+				txtNombre3.setSubmittedValue(CommonsUtilities.ofuscarDatos(nombresR.length > 2 && nombresR[2] != null ? nombresR[2] : ""));
+//				txtNomPadre.setSubmittedValue(beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARA")
+//						|| beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARADO") ? "" : beanPersona.getNombrePadre());
+//				txtNomMadre.setSubmittedValue(beanPersona.getNombreMadre());
+//				if("00".equals(beanPersona.getCodDistritoNac()) && "00".equals(beanPersona.getCodProvinciaNac())){
+//					txtLugarNacimiento.setSubmittedValue(beanPersona.getDepartamentoNac());
+//				}				
+//
+//				try {
+//					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//					calFechNacimiento.setSubmittedValue(sdf.format(beanPersona.getFechaNacimiento()));
+//				} catch (Exception e) {
+//					logger.error("Error al obtener fecha de nacimiento.", e);
+//				}
 				request.getSession().setAttribute("PERSONA_RENIEC_BEAN", beanPersona);
 				
-				seleccionarDepartamento(beanPersona.getDistritoNac(), beanPersona.getProvinciaNac(), beanPersona.getDepartamentoNac());
+//				seleccionarDepartamento(beanPersona.getDistritoNac(), beanPersona.getProvinciaNac(), beanPersona.getDepartamentoNac());
 
 			} catch (Exception e) {
 				// Resetear valores
@@ -864,9 +866,9 @@ public class ingSolicitudSimple extends AbstractPageBean {
 				txtNombre1.resetValue();
 				txtNombre2.resetValue();
 				txtNombre3.resetValue();
-				txtNomPadre.resetValue();
-				txtNomMadre.resetValue();
-				txtLugarNacimiento.resetValue();
+//				txtNomPadre.resetValue();
+//				txtNomMadre.resetValue();
+//				txtLugarNacimiento.resetValue();
 				error("Problema con el servicio de consulta datos del DNI, por favor intente otra vez. De persistir comuníquese con el área de Help Desk del RENIEC.");
 				//info("Ocurrió un error al obtener datos del Documento Nacional de Identidad.");
 			}
@@ -920,7 +922,8 @@ public class ingSolicitudSimple extends AbstractPageBean {
 			FacesContext context = FacesContext.getCurrentInstance();
 			//Usuario usuario = getSessionBean1().getUsuario();
 			String tipoDocumentoAut = String.valueOf(ddTipoDocumentoAut.getValue());
-
+			HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
+			DatosReniec personaBean = (DatosReniec) request.getSession().getAttribute("PERSONA_RENIEC_BEAN");
 			Solicitud solicitud = getSessionBean1().getSolicitudUnitaria();
 			String tipoDocumento = String.valueOf(ddTipoDocumento.getValue());
 			String nroDocumento = String.valueOf(txtNumrIdentidad.getValue());
@@ -938,21 +941,29 @@ public class ingSolicitudSimple extends AbstractPageBean {
 				}
 				
 				//Validar si es ciudadano extranjero
-				if((boolean) checkNacidoEnExtrajero.getValue()) {
-					HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
-					if(request.getSession().getAttribute("PERSONA_RENIEC_BEAN") != null) {
-						DatosReniec persona = (DatosReniec) request.getSession().getAttribute("PERSONA_RENIEC_BEAN");
-						if(nroDocumento.equals(persona.getDni())){
-							if(!("00".equals(persona.getCodDistritoNac()) && "00".equals(persona.getCodProvinciaNac()))) {
-								FacesMessage message = new FacesMessage("Revise los datos del lugar de nacimiento. ");
-								message.setSeverity(FacesMessage.SEVERITY_ERROR);
-								context.addMessage("form1:txtLugarNacimiento", message);
-								return null;
-							}
-						}
-					}
-					
-				}
+//				if((boolean) checkNacidoEnExtrajero.getValue()) {
+//					HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
+//					if(request.getSession().getAttribute("PERSONA_RENIEC_BEAN") != null) {
+//						DatosReniec persona = (DatosReniec) request.getSession().getAttribute("PERSONA_RENIEC_BEAN");
+//						if(nroDocumento.equals(persona.getDni())){
+//							if(!("00".equals(persona.getCodDistritoNac()) && "00".equals(persona.getCodProvinciaNac()))) {
+//								FacesMessage message = new FacesMessage("Revise los datos del lugar de nacimiento. ");
+//								message.setSeverity(FacesMessage.SEVERITY_ERROR);
+//								context.addMessage("form1:txtLugarNacimiento", message);
+//								return null;
+//							}
+//						}
+//					}
+//					
+//				}
+				String completo = personaBean.getNombres().replace("-", "");
+				String[] nombresR = StringUtil.separarNombresReniec(completo);
+				
+				solicitud.setAPLL_PATER_SOLIC(personaBean.getApellidoPaterno());
+				solicitud.setAPLL_MATER_SOLIC(personaBean.getApellidoMaterno());
+				solicitud.setNOM1_SOLIC(nombresR[0]);
+				solicitud.setNOM2_SOLIC(nombresR.length > 1 && nombresR[1] != null ? nombresR[1] : "");
+				solicitud.setNOM3_SOLIC(nombresR.length > 2 && nombresR[2] != null ? nombresR[2] : "");
 				
 			}
 
@@ -1046,8 +1057,8 @@ public class ingSolicitudSimple extends AbstractPageBean {
 						(solicitud.getNOM2_SOLIC() == null ? null : solicitud.getNOM2_SOLIC().trim().toUpperCase()));
 				solicitud.setNOM3_SOLIC(
 						(solicitud.getNOM3_SOLIC() == null ? null : solicitud.getNOM3_SOLIC().trim().toUpperCase()));
-				solicitud.setNOM_MADRE(solicitud.getNOM_MADRE().toUpperCase());
-				solicitud.setNOM_PADRE(solicitud.getNOM_PADRE().toUpperCase());
+//				solicitud.setNOM_MADRE(solicitud.getNOM_MADRE().toUpperCase());
+//				solicitud.setNOM_PADRE(solicitud.getNOM_PADRE().toUpperCase());
 				
 				if (getSessionBean1().getFirmaAutorizada() != null)
 					solicitud.setCODG_USU_FIRMA(getSessionBean1().getFirmaAutorizada().getCODG_USU_FIRMA());
@@ -1059,9 +1070,10 @@ public class ingSolicitudSimple extends AbstractPageBean {
 					solicitud.setCODG_USUAR(usuarioSesion.getCODG_USUAR());
 					solicitud.setCODG_USU_REGISTRO(usuarioSesion.getCODG_USUAR());
 					solicitud.setINDC_PROVINCIA("N");
+					solicitud.setFlagNacidoExterior(false);
 					solicitud.setLugarNacimiento(
 						solicitud.getLugarNacimiento()!=null?solicitud.getLugarNacimiento().toUpperCase():null);
-					
+			
 					getSessionBean1().getSolicitudes().add(solicitud);
 				} else {
 					i = getSessionBean1().getIndexListSolicitudes();
@@ -1095,6 +1107,7 @@ public class ingSolicitudSimple extends AbstractPageBean {
 
 		} catch (Exception e) {
 			if (e.getMessage().equalsIgnoreCase("errorDescarte")) {
+				getSessionBean1().setSolicitudUnitaria(new Solicitud());
 				error("Ha ocurrido un error al cotejar la información, por favor intente otra vez. De persistir el error comuníquese con el área de help desk del Poder Judicial");
 				log("error cotejo: " + e.getMessage());
 				getSessionBean1().setAccion(null);
@@ -1188,6 +1201,8 @@ public class ingSolicitudSimple extends AbstractPageBean {
 
 	public void txtApellidoPaterno_validate(FacesContext context, UIComponent component, Object value) {
 		String s = String.valueOf(value);
+		String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue() == null ? ddTipoDocumento.getValue()
+				: ddTipoDocumento.getSubmittedValue());
 		if (s != null)
 			if (s.trim().length() < 1)
 				throw new ValidatorException(
@@ -1195,7 +1210,7 @@ public class ingSolicitudSimple extends AbstractPageBean {
 
 		if (!s.matches(
 				"[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.']+[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.'\\-\\s]*[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.']*")
-				&& !s.matches("[\\*]{3}")) {
+				&& !s.matches("[\\*]{3}") && !tipoDocumento.equals("0010")) {
 
 			throw new ValidatorException(new FacesMessage(
 					"Sólo se permite caracteres de A a la Z, " + "sin espacios en blanco al inicio o al final"));
@@ -1205,14 +1220,15 @@ public class ingSolicitudSimple extends AbstractPageBean {
 
 	public void txtNombre_validate(FacesContext context, UIComponent component, Object value) {
 		boolean req = ((UIInput) component).isRequired();
-
+		String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue() == null ? ddTipoDocumento.getValue()
+				: ddTipoDocumento.getSubmittedValue());
 		String s = String.valueOf(value);
 		if (req && s.trim().length() < 1)
 			throw new ValidatorException(new FacesMessage("Este campo es obligatorio"));
 
 		if (!s.equals("") && !s.matches(
 				"[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.']+[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.'\\-\\s]*[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.']*")
-				&& !s.matches("[\\*]{3}")) {
+				&& !s.matches("[\\*]{3}") && !tipoDocumento.equals("0010")) {
 			throw new ValidatorException(new FacesMessage(
 					"Sólo se permite caracteres de A a la Z, " + "sin espacios en blanco al inicio o al final"));
 		}

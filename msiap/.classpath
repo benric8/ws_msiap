@@ -53,6 +53,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Proyectos/ws/intellij/ws_msiap/MSIAP/msiap/WebContent/WEB-INF/lib/jackson-core-2.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/Proyectos/ws/ws_msiap/MSIAP/msiap/WebContent/WEB-INF/lib/jackson-core-2.5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

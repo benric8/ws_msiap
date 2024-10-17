@@ -151,4 +151,23 @@ public class CommonsUtilities {
 		return macStr;
 		
 	}
+	
+	public static String ofuscarDatos(String dato) {
+		 int numeroCaracteres = dato.length();
+		    
+		   
+		    int nCaracteresVisibles = (int) Math.floor(numeroCaracteres / 2.0);
+		    
+		    
+		    if (nCaracteresVisibles < 2) {
+		        nCaracteresVisibles = 2;
+		    }
+
+		   
+		    String regularExpresion = "(^\\w{" + nCaracteresVisibles + "})(\\w*)";
+		    
+		   String textoOfuscado = dato.replaceAll(regularExpresion, "$1****");
+		    return textoOfuscado;
+	}
+
 }

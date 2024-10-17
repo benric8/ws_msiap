@@ -24,6 +24,7 @@ import pe.gob.pj.rnc.log.MyLogger;
 import pe.gob.pj.rnc.model.Solicitud;
 import pe.gob.pj.rnc.model.SolicitudExterna;
 import pe.gob.pj.rnc.model.Usuario;
+import pe.gob.pj.util.CommonsUtilities;
 import pe.gob.pj.util.Mensaje;
 
 import com.sun.data.provider.RowKey;
@@ -671,6 +672,10 @@ public class ingSolicitudMultiple extends AbstractPageBean {
 
 	public void txtReferencia_validate(FacesContext context, UIComponent component, Object value) {
 
+	}
+	
+	public String ofuscarDatos(String dato) {
+		return CommonsUtilities.ofuscarDatos(dato);
 	}
 
 	public boolean getRenderedReferencia() {

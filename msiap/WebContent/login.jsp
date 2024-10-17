@@ -30,8 +30,9 @@
                                     return true;
                                 }
                 </script>
+                 
 				<ui:form binding="#{login.form1}" id="form1">
-					<table style="height: 600px; width: 776px" align="center"
+					<table style="height: 700px; width: 776px" align="center"
 						cellpadding="1px" cellspacing="0px" border="0" bgcolor="#EDEDEE">
 						<tr>
 							<td
@@ -97,6 +98,20 @@
 								maxlength="15" required="true" style="width: 144px" tabindex="3"/></td>
 							<td style="width: 30px"></td>
 						</tr>
+						<tr style="height: 10px">
+							
+							<td style="height: 10px; width: 100%; background-repeat: no-repeat"
+								colspan="5">
+								<div id="root-captcha" data-name="form1:txtToken" data-api-key="${login.captchaApiKeyWeb}" style="padding-left:30px"></div>
+					 			
+							</td>
+						</tr>
+						<tr style="height: 20px">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
 						<tr style="height: 27px">
 							<td style="width: 15px"></td>
 							<td style="width: 161px"></td>
@@ -124,8 +139,9 @@
 							</td>
 							<td></td>
 						</tr>
+						
 					</table>
-
+					
 					<ui:link binding="#{login.link2}" id="link2" />
 				</ui:form>
 				<!-- inicio erodriguezbu -->
@@ -138,13 +154,21 @@
 								action="pages/forgotUsername?faces-redirect=true" />
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<script src="${pageContext.request.contextPath}/javascript/re-captcha-init.js" ></script>
+							
+							</td>
+							
+						</tr>
 					</table>
 				</ui:form>
 				<br/>
 				<br/>
 				<br/>
-				<!-- fin erodriguezbu -->
+				
 			</ui:body>
+			
 			</ui:html>
 		</ui:page>
 	</f:view>
