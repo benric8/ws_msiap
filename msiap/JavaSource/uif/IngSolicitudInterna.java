@@ -38,6 +38,7 @@ import pe.gob.pj.rnc.msiap.util.Constantes;
 import pe.gob.pj.rnc.msiap.util.StringUtil;
 import pe.gob.pj.rnc.service.TipoDocumentoIdentidadManager;
 import pe.gob.pj.rnc.tipo.Texto;
+import pe.gob.pj.util.CommonsUtilities;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.rave.web.ui.component.Body;
@@ -846,7 +847,8 @@ public class IngSolicitudInterna extends AbstractPageBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		//UIComponent btnGrabar = context.getViewRoot().findComponent("form1:btnGrabar");
 		Solicitud solicitud = getSessionBean1().getSolicitudUnitaria();
-	
+		HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
+		DatosReniec personaBean = (DatosReniec) request.getSession().getAttribute("PERSONA_RENIEC_BEAN");
 		
 		if (validarTramiteReturnNull(solicitud)){
 			return null;
@@ -865,24 +867,7 @@ public class IngSolicitudInterna extends AbstractPageBean {
 				context.addMessage("form1:txtNumrIdentidad", message);
 				return null;
 			}
-			
-			//Validar si es ciudadano extranjero
-			if((boolean) checkNacidoEnExtrajero.getValue()) {
-				HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
-				if(request.getSession().getAttribute("PERSONA_RENIEC_BEAN") != null) {
-					DatosReniec persona = (DatosReniec) request.getSession().getAttribute("PERSONA_RENIEC_BEAN");
-					if(nroDocumento.equals(persona.getDni())){
-						if(!("00".equals(persona.getCodDistritoNac()) && "00".equals(persona.getCodProvinciaNac()))) {
-							context = FacesContext.getCurrentInstance();
-							FacesMessage message = new FacesMessage("Revise los datos del lugar de nacimiento. ");
-							message.setSeverity(FacesMessage.SEVERITY_ERROR);
-							context.addMessage("form1:txtLugarNacimiento", message);
-							return null;
-						}
-					}
-				}
-				
-			}
+					
 		}
 		
 		if (!tipoDocumento.equals("0001")&& txtNumrIdentidad.getValue().toString().equals("")) {
@@ -916,12 +901,14 @@ public class IngSolicitudInterna extends AbstractPageBean {
 		
 		solicitud.setIdTipoDocumentoAutorizacion(Integer.parseInt(tipoDocumentoAut));
 
-		if(!solicitud.isFlag_naci() && solicitud.getFECH_NACIM_SOLIC()==null){
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Debe de ingresar la fecha de nacimiento o seleccionar la opción Sin Fecha","");
-			context.addMessage("form1:calFechNacimiento", message);
-			return null;
-		}
+		String completo = personaBean.getNombres().replace("-", "");
+		String[] nombresR = StringUtil.separarNombresReniec(completo);
+		
+		solicitud.setAPLL_PATER_SOLIC(personaBean.getApellidoPaterno());
+		solicitud.setAPLL_MATER_SOLIC(personaBean.getApellidoMaterno());
+		solicitud.setNOM1_SOLIC(nombresR[0]);
+		solicitud.setNOM2_SOLIC(nombresR.length > 1 && nombresR[1] != null ? nombresR[1] : "");
+		solicitud.setNOM3_SOLIC(nombresR.length > 2 && nombresR[2] != null ? nombresR[2] : "");
 
 		if(this.usuarioSesion.getCOD_PERFIL().equals(Perfil.ADMINISTRADOR_ID)){
 			error("Usted no puede Grabar porque necesita pertenecer a un Juzgado, " +
@@ -935,14 +922,13 @@ public class IngSolicitudInterna extends AbstractPageBean {
 			solicitud.setMOTI_SOLIC(motivo.getCodigo_del_motivo());
 			solicitud.setTIPO_SOLIC(motivo.getCodigo_tipo_de_solicitud());
 		}
-
+		
 		solicitud.setAPLL_PATER_SOLIC((solicitud.getAPLL_PATER_SOLIC()==null?null:solicitud.getAPLL_PATER_SOLIC().trim().toUpperCase()));
 		solicitud.setAPLL_MATER_SOLIC((solicitud.getAPLL_MATER_SOLIC()==null?null:solicitud.getAPLL_MATER_SOLIC().trim().toUpperCase()));
 		solicitud.setNOM1_SOLIC(solicitud.getNOM1_SOLIC().toUpperCase());
 		solicitud.setNOM2_SOLIC((solicitud.getNOM2_SOLIC()==null?null:solicitud.getNOM2_SOLIC().toUpperCase().trim()));
 		solicitud.setNOM3_SOLIC((solicitud.getNOM3_SOLIC()==null?null:solicitud.getNOM3_SOLIC().toUpperCase().trim()) );
-		solicitud.setNOM_MADRE(solicitud.getNOM_MADRE().toUpperCase());
-		solicitud.setNOM_PADRE(solicitud.getNOM_PADRE().toUpperCase());
+	
 
 		//VALIDAR EL TIPO DE DOCUMENTO
 		if(!validarTipoDocumentoAutorizacion(solicitud, context)){
@@ -989,7 +975,7 @@ public class IngSolicitudInterna extends AbstractPageBean {
 		solicitud.setAnio(annio);
 		solicitud.setDia(dia);
 		solicitud.setMes(mes);
-		
+		solicitud.setFlagNacidoExterior(false);
 		solicitud.setLugarNacimiento(
 				solicitud.getLugarNacimiento()!=null?solicitud.getLugarNacimiento().toUpperCase():null);		
 		
@@ -1021,6 +1007,7 @@ public class IngSolicitudInterna extends AbstractPageBean {
 			if (e1.getMessage().equalsIgnoreCase("errorDescarte")) {
 				error("Ha ocurrido un error al cotejar la información, por favor intente otra vez. De persistir el error comuníquese con el área de help desk del Poder Judicial");
 				log("error cotejo: " + e1.getMessage());
+				getSessionBean1().setSolicitudUnitaria(new Solicitud());
 				return null;
 			}			
 			error("Ha ocurrido un error, por favor intente nuevamente. De persistir el error comuníquese con el área de help desk del Poder Judicial");
@@ -1123,37 +1110,24 @@ public class IngSolicitudInterna extends AbstractPageBean {
 					String[] nombresR = StringUtil.separarNombresReniec(beanPersona.getNombres());
 
 
-					txtApellidoPaterno.setSubmittedValue(beanPersona.getApellidoPaterno());
+					txtApellidoPaterno.setSubmittedValue(CommonsUtilities.ofuscarDatos(beanPersona.getApellidoPaterno()));
 					txtApellidoPaterno.setValue(beanPersona.getApellidoPaterno());
-					StringBuffer reniecSegundoApellido = new StringBuffer();
-					reniecSegundoApellido.append( beanPersona.getApellidoMaterno().toUpperCase() ).append(" ").append( beanPersona.getApellidoCasada().toUpperCase().trim() );
-					txtApellidoMaterno.setSubmittedValue(reniecSegundoApellido.toString().trim());
-					txtApellidoMaterno.setValue(reniecSegundoApellido.toString().trim());
-					txtNombre1.setSubmittedValue(nombresR[0]);
-					txtNombre1.setValue(nombresR[0]);
-					txtNombre2.setSubmittedValue(nombresR.length>1 && nombresR[1]!=null?nombresR[1]:"");
-					txtNombre2.setValue(nombresR.length>1 && nombresR[1]!=null?nombresR[1]:"");
-					txtNombre3.setSubmittedValue(nombresR.length>2 && nombresR[2]!=null?nombresR[2]:"");
-					txtNombre3.setValue(nombresR.length>2 && nombresR[2]!=null?nombresR[2]:"");
-					txtNomPadre.setSubmittedValue(beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARA")
-							|| beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARADO")?"":beanPersona.getNombrePadre());
-					txtNomPadre.setValue(beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARA")
-							|| beanPersona.getNombrePadre().equalsIgnoreCase("NO DECLARADO")?"":beanPersona.getNombrePadre());
-					txtNomMadre.setSubmittedValue(beanPersona.getNombreMadre());
-					txtNomMadre.setValue(beanPersona.getNombreMadre());
-					if("00".equals(beanPersona.getCodDistritoNac()) && "00".equals(beanPersona.getCodProvinciaNac())){
-						txtLugarNacimiento.setSubmittedValue(beanPersona.getDepartamentoNac());
-					}
 					
-					try{
-						SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-						calFechNacimiento.setSubmittedValue(sdf.format(beanPersona.getFechaNacimiento()));
-					}catch (Exception e){
-						logger.error("Error al obtener fecha de nacimiento.", e);
-					}
+					txtApellidoMaterno.setSubmittedValue(CommonsUtilities.ofuscarDatos(beanPersona.getApellidoMaterno()));
+					txtApellidoMaterno.setValue(beanPersona.getApellidoMaterno());
+					txtNombre1.setSubmittedValue(CommonsUtilities.ofuscarDatos(nombresR[0]));
+					txtNombre1.setValue(nombresR[0]);
+					txtNombre2.setSubmittedValue(CommonsUtilities.ofuscarDatos(nombresR.length>1 && nombresR[1]!=null?nombresR[1]:""));
+					txtNombre2.setValue(nombresR.length>1 && nombresR[1]!=null?nombresR[1]:"");
+					txtNombre3.setSubmittedValue(CommonsUtilities.ofuscarDatos(nombresR.length>2 && nombresR[2]!=null?nombresR[2]:""));
+					txtNombre3.setValue(nombresR.length>2 && nombresR[2]!=null?nombresR[2]:"");
+					
+					
+					
+					
 					request.getSession().setAttribute("PERSONA_RENIEC_BEAN", beanPersona);
 					
-					seleccionarDepartamento(beanPersona.getDistritoNac(),beanPersona.getProvinciaNac(),beanPersona.getDepartamentoNac());
+				
 
 			} catch (Exception e) {
 				//Resetear valores
@@ -1162,9 +1136,7 @@ public class IngSolicitudInterna extends AbstractPageBean {
 				txtNombre1.resetValue();
 				txtNombre2.resetValue();
 				txtNombre3.resetValue();
-				txtNomPadre.resetValue();
-				txtNomMadre.resetValue();
-				txtLugarNacimiento.resetValue();
+			
 				error("Problema con el servicio de consulta datos del DNI, por favor intente otra vez. De persistir comuníquese con el área de Help Desk del RENIEC.");
 				//error("Ocurrió un error al obtener datos del Documento Nacional de Identidad.");
 			}
@@ -1206,9 +1178,11 @@ public class IngSolicitudInterna extends AbstractPageBean {
 		//if(s!=null)
 			//if(s.trim().length()<1)
 				//throw new ValidatorException(new FacesMessage("Estas enviando "+s.length()+"  caracteres en blanco"));
+		String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue() == null ? ddTipoDocumento.getValue()
+				: ddTipoDocumento.getSubmittedValue());
 		if(s.length()>0)
 			if (!s.matches("[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.']+[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.'\\-\\s]*[A-Za-zãÃñÑäëïöüÿÄËÏÖÜáéíóúÁÉÍÓÚÀÈÌÒÙàèìòù.']*")
-					&& !s.matches("[\\*]{3}")) {
+					&& !s.matches("[\\*]{3}") && !tipoDocumento.equals("0010")) {
 				throw new ValidatorException(
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,"Sólo se permite caracteres de A a la Z, " +
 							"sin espacios en blanco al inicio o al final",""));
@@ -1219,11 +1193,13 @@ public class IngSolicitudInterna extends AbstractPageBean {
 	public void padres_validate(FacesContext context, UIComponent component,
 			Object value) {
 		String s = String.valueOf(value);
+		String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue() == null ? ddTipoDocumento.getValue()
+				: ddTipoDocumento.getSubmittedValue());
 		if ("".equals(s)) {
 			throw new ValidatorException(new FacesMessage("El campo "
 					+ component.getId() + " es requerido"));
 		} else {
-			if (!s.matches("[A-Za-zñÑáéíóúÁÉÍÓÚ]+[A-Za-zñÑáéíóúÁÉÍÓÚ\\-\\s]+[A-Za-zñÑáéíóúÁÉÍÓÚ]+||[\\*]{3}")) {
+			if (!s.matches("[A-Za-zñÑáéíóúÁÉÍÓÚ]+[A-Za-zñÑáéíóúÁÉÍÓÚ\\-\\s]+[A-Za-zñÑáéíóúÁÉÍÓÚ]+||[\\*]{3}") && !tipoDocumento.equals("0010")) {
 				throw new ValidatorException(
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "El campo " + String.valueOf(component.getAttributes().get("alt"))
 										+ " solo permite caracteres de la A a la Z, sin espacios en blanco al inicio o al final",""));

@@ -375,122 +375,7 @@
 									<tr style="height: 10px">
 										<td colspan="5"></td>
 									</tr>
-									<tr style="height: 23px">
-										<td colspan="5"><h:outputText style="font-weight: bold;"
-												binding="#{ingSolicitudInterna.outputText9}"
-												id="outputText9" value="Datos de  Nacimiento:" /></td>
-									</tr>
-									<!-- <tr style="height: 10px">
-										<td colspan="5"></td>
-									</tr>-->
-									<tr style="height: 23px">						
-										<td align="left" colspan="5">
-											<h:outputText value="Nacido en el extrajero"/>
-											<h:selectBooleanCheckbox id="nacidoEnElExtrajero" binding="#{ingSolicitudInterna.checkNacidoEnExtrajero}"
-												value="#{SessionBean1.solicitudUnitaria.flagNacidoExterior}" valueChangeListener="#{ingSolicitudInterna.nacidoEnExtranjero}" onchange="submit()" immediate="true"/>
-										</td>
-									</tr>
-									<tr style="height: 23px">
-										<td style="width: 123px"><h:outputText
-												binding="#{ingSolicitudInterna.outputText10}"
-												id="outputText10" value="(*)Lugar de nacimiento:" /></td>
-										<td><h:selectOneMenu rendered="#{!ingSolicitudInterna.verTxtLugarNacimiento}"
-												binding="#{ingSolicitudInterna.ddLugar}" id="ddLugar"
-												required="true" style="width: 190px" tabindex="11"
-												validator="#{ingSolicitudInterna.ddLugar_validate}"
-												value="#{SessionBean1.solicitudUnitaria.x_CODG_LUGAR_NAC}">
-												<f:selectItem itemLabel="--- Seleccione ---" itemValue="-1" />
-												<f:selectItems
-													binding="#{ingSolicitudInterna.dropdown2SelectItems}"
-													id="dropdown2SelectItems"
-													value="#{SessionBean1.departamentos}" />
-											</h:selectOneMenu>
-											<h:inputText alt="Ingrese lugar de nacimiento" rendered="#{ingSolicitudInterna.verTxtLugarNacimiento}"
-												id="txtLugarNacimiento" maxlength="50" required="true" style="width: 190px" binding="#{ingSolicitudInterna.txtLugarNacimiento}"
-												value="#{SessionBean1.solicitudUnitaria.lugarNacimiento}"/>
-										</td>
-										<td style="width: 10px;" />
-										<td style="width: 123px"><h:outputText
-												binding="#{ingSolicitudInterna.outputText11}"
-												id="outputText11" value="(*)Fecha:" /></td>
-										<td style="width: 182px">
-											<table>
-												<tr>
-													<td><ui:calendar dateFormatPatternHelp="dd/mm/aaaa"
-															binding="#{ingSolicitudInterna.calFechNacimiento}"
-															dateFormatPattern="dd/MM/yyyy" id="calFechNacimiento"
-															selectedDate="#{SessionBean1.solicitudUnitaria.FECH_NACIM_SOLIC}"
-															tabIndex="12" columns="10"
-															onClick="seleccionRango(this);"
-															onBlur="return validarFecha(this);"
-															onKeyPress="return formatearFecha(this,event);" /></td>
-													<td><h:selectBooleanCheckbox
-															binding="#{ingSolicitudInterna.checkSinFech}"
-															value="#{SessionBean1.solicitudUnitaria.flag_naci}">Sin Fecha</h:selectBooleanCheckbox></td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td style="width: 123px"></td>
-										<td colspan="2"><h:message
-												binding="#{ingSolicitudInterna.inlineMessage8}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="ddLugar" id="inlineMessage8" infoClass="infoMessage"
-												showDetail="false" showSummary="true"
-												warnClass="warnMessage" />
-												<h:message
-												binding="#{ingSolicitudInterna.inlineMessage15}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="txtLugarNacimiento" id="inlineMessage15" infoClass="infoMessage"
-												showDetail="false" showSummary="true"
-												warnClass="warnMessage" />
-										</td>
-										<td />
-										<td><h:message
-												binding="#{ingSolicitudInterna.inlineMessage12}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="calFechNacimiento" id="inlineMessage12"
-												infoClass="infoMessage" showDetail="false"
-												showSummary="true" warnClass="warnMessage" /></td>
-									</tr>
-									<tr style="height: 23px">
-										<td style="width: 123px"><h:outputText
-												binding="#{ingSolicitudInterna.outputText12}"
-												id="outputText12" value="(**)Nombre Padre:" /></td>
-										<td style="width: 182px"><h:inputText alt="Nombre Padre"
-												binding="#{ingSolicitudInterna.txtNomPadre}"
-												id="txtNomPadre" maxlength="45" required="true"
-												style="width: 190px" tabindex="13"
-												validator="#{ingSolicitudInterna.txtApellidoPaterno_validate}"
-												value="#{SessionBean1.solicitudUnitaria.NOM_PADRE}" /></td>
-										<td style="width: 10px;" />
-										<td style="width: 123px"><h:outputText
-												binding="#{ingSolicitudInterna.outputText13}"
-												id="outputText13" value="(**)Nombre Madre:" /></td>
-										<td style="width: 182px"><h:inputText alt="Nombre Madre"
-												binding="#{ingSolicitudInterna.txtNomMadre}"
-												id="txtNomMadre" maxlength="45" required="true"
-												style="width: 190px" tabindex="14"
-												validator="#{ingSolicitudInterna.txtApellidoPaterno_validate}"
-												value="#{SessionBean1.solicitudUnitaria.NOM_MADRE}" /></td>
-									</tr>
-									<tr>
-										<td style="width: 123px"></td>
-										<td colspan="2"><h:message
-												binding="#{ingSolicitudInterna.inlineMessage9}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="txtNomPadre" id="inlineMessage9"
-												infoClass="infoMessage" showDetail="false"
-												showSummary="true" warnClass="warnMessage" /></td>
-										<td />
-										<td><h:message
-												binding="#{ingSolicitudInterna.inlineMessage10}"
-												errorClass="errorMessage" fatalClass="fatalMessage"
-												for="txtNomMadre" id="inlineMessage10"
-												infoClass="infoMessage" showDetail="false"
-												showSummary="true" warnClass="warnMessage" /></td>
-									</tr>
+									
 									<tr style="height: 35px">
 										<td style="width: 123px"><h:outputText
 												binding="#{ingSolicitudInterna.outputText14}"
@@ -553,14 +438,6 @@
 												id="outputText1" value="(*)Campos Obligatorios" /></td>
 									</tr>
 
-
-									<tr style="height: 23px" align="center">
-										<td colspan="5"><h:outputText
-												binding="#{ingSolicitudInterna.outputText2}"
-												id="outputText2"
-												value="(**) Campos Obligatorios. Si se desconoce esta información, especificar se desconoce" /></td>
-
-									</tr>
 									<tr style="height: 10px" align="center">
 										<td colspan="5"><ui:staticText
 												style="color: rgb(153, 0, 0); font-size: 10px; font-weight: bold; z-index: 8"
