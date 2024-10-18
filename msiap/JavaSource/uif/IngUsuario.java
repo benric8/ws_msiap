@@ -14,6 +14,7 @@ import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpServletRequest;
 
 //import pe.gob.pj.rnc.criterio.CriterioListarUsuario;
 import pe.gob.pj.rnc.log.MyLogger;
@@ -24,6 +25,7 @@ import pe.gob.pj.rnc.model.Usuario;
 import pe.gob.pj.rnc.model.UsuarioCamposAud;
 import pe.gob.pj.rnc.msiap.util.StringUtil;
 import pe.gob.pj.rnc.service.UsuarioManager;
+import pe.gob.pj.util.CommonsUtilities;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.rave.web.ui.component.Body;
@@ -281,7 +283,9 @@ public class IngUsuario extends AbstractPageBean {
 
 	public void txtNombres_validate(FacesContext context, UIComponent component, Object value) {
 		String s = String.valueOf(value);
-		if (!s.matches("[a-zA-ZñÑ'üäëïöÄËÏÖÜáéíóúÁÉÍÓÚ \\-\\.\\s]*")) {
+		String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue() == null ? ddTipoDocumento.getValue()
+				: ddTipoDocumento.getSubmittedValue());
+		if (!s.matches("[a-zA-ZñÑ'üäëïöÄËÏÖÜáéíóúÁÉÍÓÚ \\-\\.\\s]*") && !tipoDocumento.equals("0010")) {
 			FacesMessage message = new FacesMessage("El campo " + String.valueOf(component.getAttributes().get("id"))
 					+ " contiene caracteres inválidos!");
 			message.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -411,28 +415,21 @@ public class IngUsuario extends AbstractPageBean {
 		//Poner variables en sólo lectura
 		if (tipoDocumento.equals("0010") && nroDocumento.matches("[0-9]{8}")) {
 			try {
+				HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
 					//ReniecService wsReniec = new ReniecService();
 					DatosReniec beanPersona = getSessionBean1().getReniecService().consultarDatos(nroDocumento, getSessionBean1().getUsuario().getCODG_USUAR());
 
 					String[] nombresR = StringUtil.separarNombresReniec(beanPersona.getNombres());
 
-
-					//txtNombres.setSubmittedValue(beanPersona.getApePat());
-					//txtApellidos.setValue(beanPersona.getApePat() + " " + beanPersona.getApeMat());
-					StringBuffer reniecSegundoApellido = new StringBuffer();
-					reniecSegundoApellido.append( beanPersona.getApellidoMaterno().toUpperCase() ).append(" ").append( beanPersona.getApellidoCasada().toUpperCase().trim() );
-					//txtApellidos.setSubmittedValue(beanPersona.getApePat() + " " +reniecSegundoApellido.toString().trim());
-					txtApellidos.setSubmittedValue(beanPersona.getApellidoPaterno() + " " +reniecSegundoApellido.toString().trim());
-					txtApellidos.setValue(beanPersona.getApellidoPaterno() + " " +reniecSegundoApellido.toString().trim());
-					//txtNombres.setSubmittedValue(nombresR[0] +(nombresR.length>1 && nombresR[1]!=null? " " + nombresR[1]:""));
-					//txtNombres.setValue(nombresR[0] +(nombresR.length>1 && nombresR[1]!=null? " " + nombresR[1]:""));
-					//TODO Probar descomentar
-					String nombres=""; 
-					for(int i=0; i<nombresR.length; i++) { nombres+=nombresR[i]+" "; }
-					txtNombres.setSubmittedValue(nombres.trim());
-					txtNombres.setValue(nombres.trim());		
+					txtApellidos.setSubmittedValue(CommonsUtilities.ofuscarDatos(beanPersona.getApellidoPaterno()) + " " + CommonsUtilities.ofuscarDatos(beanPersona.getApellidoMaterno()));
+					txtApellidos.setValue(beanPersona.getApellidoPaterno() + " " + beanPersona.getApellidoMaterno());
 					
-
+					String nombres=""; 
+					for(int i=0; i<nombresR.length; i++) { nombres+=CommonsUtilities.ofuscarDatos(nombresR[i])+" "; }
+					txtNombres.setSubmittedValue(nombres.trim());
+					txtNombres.setValue(nombres.trim());	
+					request.getSession().setAttribute("PERSONA_RENIEC_BEAN", beanPersona);
+	
 			} catch (Exception e) {
 				//Resetear valores
 				txtApellidos.resetValue();
@@ -741,8 +738,13 @@ public class IngUsuario extends AbstractPageBean {
 		
 		String valorReturn = null;
 		
+		String tipoDocumento = String.valueOf(ddTipoDocumento.getSubmittedValue()==null?
+				ddTipoDocumento.getValue():ddTipoDocumento.getSubmittedValue());
 		String conNueva = (String) txtContrasena.getValue();
 		String confirma = (String) txtConfirmarContrasena.getValue();
+		HttpServletRequest request = (HttpServletRequest) this.getFacesContext().getExternalContext().getRequest();
+		DatosReniec beanPersona = (DatosReniec) request.getSession().getAttribute("PERSONA_RENIEC_BEAN");
+		
 		if (!conNueva.equals(confirma)) {
 			error("La nueva contraseña y su confirmación son diferentes");
 			return null;
@@ -780,6 +782,13 @@ public class IngUsuario extends AbstractPageBean {
 		usuario.setNUME_JUZGA(null);
 */
 		try{
+						
+			String[] nombresR = StringUtil.separarNombresReniec(beanPersona.getNombres());
+			
+			String nombres=""; 
+			for(int i=0; i<nombresR.length; i++) { nombres+=nombresR[i]+" "; }
+			
+			
 			UsuarioManager servicioUsuario = new UsuarioManager();
 			Calendar fechActual = Calendar.getInstance();
 			UsuarioCamposAud cau = new UsuarioCamposAud();
@@ -791,9 +800,15 @@ public class IngUsuario extends AbstractPageBean {
 					cau.setC_CLAVE("MODIFICACION");
 			}
 			usuario.setAUD_CODG_USUAR(getSessionBean1().getUsuario().getCODG_USUAR());
-			usuario.setAPLL_USUAR(usuario.getAPLL_USUAR().toUpperCase());
-			usuario.setNOMB_USUAR(usuario.getNOMB_USUAR().toUpperCase());
-			usuario.setDESC_TITULO(usuario.getDESC_TITULO().toUpperCase());
+			
+			if(tipoDocumento.equals("0010")) {
+				usuario.setAPLL_USUAR(beanPersona.getApellidoPaterno() + " " + beanPersona.getApellidoMaterno());
+				usuario.setNOMB_USUAR(nombres);
+			}else {
+				usuario.setAPLL_USUAR(usuario.getAPLL_USUAR().toUpperCase());
+				usuario.setNOMB_USUAR(usuario.getNOMB_USUAR().toUpperCase());
+			}
+			usuario.setDESC_TITULO(usuario.getDESC_TITULO().toUpperCase());	
 			//String codigo = cau.getC_CLAVE().equals("")?usuario.getC_CLAVE():servicioUsuario.encriptarCadena(conNueva);
 			//usuario.setC_CLAVE(codigo);
 			//usuario.setCOD_CLAVE(codigo);

@@ -349,7 +349,7 @@ public class login extends AbstractPageBean {
         FacesContext context = FacesContext.getCurrentInstance();
         String gRecaptchaResponse = context.getExternalContext().getRequestParameterMap().get("form1:txtToken");
         if (gRecaptchaResponse.length()==0) {
-        	info("el captcha es obligatorio");
+        	info("Debe completar el captcha");
         	return null;
         }
         // Validar reCAPTCHA
